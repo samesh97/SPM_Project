@@ -46,11 +46,17 @@ public class MainController
 		highlightClickedButton(btn_tags);
 		changeCenterContent("../TagsMain.fxml");
 	}
+	
+	public void onSubjectsButtonClicked(ActionEvent event) {
+		highlightClickedButton(btn_subjects);
+		changeCenterContent("../SubjectsMain.fxml");
+	}
 	public void changeCenterContent(String fxmlFileName)
 	{
 		Parent root;
 		try {
 			root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+			controllerPane.getChildren().clear();
 			controllerPane.getChildren().add(root);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

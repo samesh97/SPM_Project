@@ -36,7 +36,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="btn_subjects" layoutX="9.0" layoutY="268.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Subjects">
+      <Button fx:id="btn_subjects" layoutX="9.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSubjectsButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Subjects">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
