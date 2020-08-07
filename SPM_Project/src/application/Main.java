@@ -16,7 +16,7 @@ public class Main extends Application{
 		{
 //			BorderPane root = new BorderPane();
 //			Scene scene = new Scene(root,1000,700);
-//			scene.getStylesheets().add(getClass().getResource("Main.fxml").toExternalForm());
+//			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 //			primaryStage.setScene(scene);
 //			primaryStage.show();
 			
@@ -26,6 +26,10 @@ public class Main extends Application{
 			 AnchorPane root = (AnchorPane) loader.load();
 			 Scene scene = new Scene(root);
 			 primaryStage.setScene(scene);
+			 primaryStage.setMinHeight(850);
+			 primaryStage.setMinWidth(1100);
+			 primaryStage.setMaxHeight(850);
+			 primaryStage.setMaxWidth(1100);
 			 primaryStage.show();
 		}
 		catch(Exception e)

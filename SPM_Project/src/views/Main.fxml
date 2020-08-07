@@ -1,74 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="730.0" prefWidth="1083.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="5.0" layoutY="176.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Students" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="176.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY">
          <font>
-            <Font size="19.0" />
+            <Font name="Consolas" size="55.0" />
          </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="231.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Tags" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="231.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="286.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Subjects" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="286.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="341.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Lectures" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="341.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="396.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Working Days &amp; Hours" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="396.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="451.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Locations" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="451.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="506.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Connections" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="506.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="561.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Statistics" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="561.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="616.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Sessions" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="616.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <Button layoutX="5.0" layoutY="669.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="244.0" text="Time Tables" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="5.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <TextField alignment="CENTER" layoutX="5.0" layoutY="5.0" prefHeight="165.0" prefWidth="1073.0" text="SLIIT" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <font>
-            <Font size="73.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="122.0" fitWidth="96.0" layoutX="26.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      </Label>
+      <ImageView fitHeight="103.0" fitWidth="153.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/SLIIT_Logo_Crest.png" />
+            <Image url="@../media/SLIIT_Logo_Crest.png" />
          </image>
       </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="131.0" prefHeight="666.0" prefWidth="248.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" textAlignment="JUSTIFY" textFill="#ff3114">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Label>
+      <Separator layoutY="122.0" prefHeight="12.0" prefWidth="1100.0" />
+      <Separator layoutX="250.0" layoutY="131.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" />
+      <Button defaultButton="true" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Students">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="10.0" layoutY="201.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Tags">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="9.0" layoutY="268.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Subjects">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="10.0" layoutY="335.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Lectures">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="10.0" layoutY="402.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Working days &amp; Hours">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="10.0" layoutY="467.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Locations">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="9.0" layoutY="533.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Connections">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="10.0" layoutY="599.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Statistics">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="9.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Sessions">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="10.0" layoutY="732.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Time Tables">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>
