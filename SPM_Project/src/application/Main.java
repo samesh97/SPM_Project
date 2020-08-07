@@ -34,6 +34,7 @@ public class Main extends Application{
 			 
 			 primaryStage.setTitle("SLIIT Time Table Management");
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
+			 primaryStage.setResizable(false);
 			 primaryStage.show();
 		}
 		catch(Exception e)
