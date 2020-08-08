@@ -1,5 +1,8 @@
 package application;
 	
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -27,14 +30,18 @@ public class Main extends Application{
 			 AnchorPane root = (AnchorPane) loader.load();
 			 Scene scene = new Scene(root);
 			 primaryStage.setScene(scene);
-			 primaryStage.setMinHeight(850);
-			 primaryStage.setMinWidth(1100);
-			 primaryStage.setMaxHeight(850);
-			 primaryStage.setMaxWidth(1100);
 			 
+			 
+			 GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+			 int width = (int) (gd.getDisplayMode().getWidth() / 1.5);
+			 int height = (int) (gd.getDisplayMode().getHeight() / 1.25);
+			 
+			 
+			 primaryStage.setMinHeight(height);
+			 primaryStage.setMinWidth(width);
 			 primaryStage.setTitle("SLIIT Time Table Management");
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
-			 primaryStage.setResizable(false);
+			 //primaryStage.setResizable(false);
 			 primaryStage.show();
 		}
 		catch(Exception e)

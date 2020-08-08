@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -53,15 +54,44 @@ public class MainController
 	}
 	public void changeCenterContent(String fxmlFileName)
 	{
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+		
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
 			controllerPane.getChildren().clear();
-			controllerPane.getChildren().add(root);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
 			e.printStackTrace();
 		}
+		
+		
+		
+		
+		
+		
+		
+//		
+//		Parent root;
+//		try
+//		{
+//			root = FXMLLoader.load(getClass().getResource(fxmlFileName));
+//			controllerPane.getChildren().clear();
+//			controllerPane.getChildren().add(root);
+//		} 
+//		catch (IOException e)
+//		{
+//			e.printStackTrace();
+//		}
 	}
 	public void highlightClickedButton(Button button)
 	{

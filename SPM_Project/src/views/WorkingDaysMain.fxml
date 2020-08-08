@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="665.0" prefWidth="820.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Label alignment="CENTER" layoutX="171.0" layoutY="14.0" prefHeight="38.0" prefWidth="478.0" text="Working Days &amp; Hours ">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="118.0" prefHeight="38.0" prefWidth="218.0" text="Type Of Working days">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox editable="true" layoutX="301.0" layoutY="122.0" prefHeight="31.0" prefWidth="269.0" />
+   </children>
+</AnchorPane>

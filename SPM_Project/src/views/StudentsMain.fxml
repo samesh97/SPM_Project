@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="665.0" prefWidth="820.0" style="-fx-background-color: #000000;" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
+<AnchorPane style="-fx-background-color: #000000;" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="303.0" prefHeight="43.0" prefWidth="361.0" text="Student Tab" textAlignment="RIGHT" textFill="WHITE" />
       <Button layoutX="393.0" layoutY="346.0" mnemonicParsing="false" onAction="#onSampleButtonClicked" text="Click" />

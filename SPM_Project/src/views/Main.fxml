@@ -10,37 +10,37 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.MainController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
          <font>
             <Font name="Consolas" size="55.0" />
          </font>
       </Label>
-      <ImageView fitHeight="103.0" fitWidth="153.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="153.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="12.0">
          <image>
             <Image url="@../media/SLIIT_Logo_Crest.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="131.0" prefHeight="666.0" prefWidth="248.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" textAlignment="JUSTIFY" textFill="#ff3114">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="131.0" prefHeight="666.0" prefWidth="248.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" textAlignment="JUSTIFY" textFill="#ff3114" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="131.0">
          <font>
             <Font size="55.0" />
          </font>
       </Label>
       <Separator layoutY="122.0" prefHeight="12.0" prefWidth="1100.0" />
       <Separator layoutX="250.0" layoutY="131.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" />
-      <Button fx:id="btn_students" defaultButton="true" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" onAction="#onStudentButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Students">
+      <Button fx:id="btn_students" defaultButton="true" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" onAction="#onStudentButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Students" AnchorPane.leftAnchor="10.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btn_tags" layoutX="10.0" layoutY="201.0" mnemonicParsing="false" onAction="#onTagButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Tags">
+      <Button fx:id="btn_tags" layoutX="10.0" layoutY="201.0" mnemonicParsing="false" onAction="#onTagButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Tags" AnchorPane.leftAnchor="10.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="btn_subjects" layoutX="9.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSubjectsButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Subjects">
+      <Button fx:id="btn_subjects" layoutX="9.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSubjectsButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Subjects" AnchorPane.leftAnchor="10.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="btn_lectures" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Lectures">
+      <Button fx:id="btn_lectures" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Lectures" AnchorPane.leftAnchor="10.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
@@ -68,6 +68,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <AnchorPane fx:id="controllerPane" layoutX="257.0" layoutY="133.0" prefHeight="660.0" prefWidth="839.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" />
+      <AnchorPane fx:id="controllerPane" layoutX="257.0" layoutY="133.0" prefHeight="660.0" prefWidth="839.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="133.0" />
    </children>
 </AnchorPane>
