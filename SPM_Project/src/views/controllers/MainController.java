@@ -47,10 +47,15 @@ public class MainController
 		highlightClickedButton(btn_tags);
 		changeCenterContent("../TagsMain.fxml");
 	}
-	
-	public void onSubjectsButtonClicked(ActionEvent event) {
+	public void onSubjectsButtonClicked(ActionEvent event) 
+	{
 		highlightClickedButton(btn_subjects);
 		changeCenterContent("../SubjectsMain.fxml");
+	}
+	public void onWorkingDaysButtonClicked(ActionEvent event) 
+	{
+		highlightClickedButton(btn_working_days);
+		changeCenterContent("../WorkingDaysMain.fxml");
 	}
 	public void changeCenterContent(String fxmlFileName)
 	{
