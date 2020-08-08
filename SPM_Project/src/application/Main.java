@@ -33,13 +33,18 @@ public class Main extends Application{
 			 
 			 
 			 GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-			 int width = (int) (gd.getDisplayMode().getWidth() / 1.5);
-			 int height = (int) (gd.getDisplayMode().getHeight() / 1.25);
+			 int width = (int) (gd.getDisplayMode().getWidth());
+			 int height = (int) (gd.getDisplayMode().getHeight());
 			 
 			 
-			 primaryStage.setMinHeight(height);
-			 primaryStage.setMinWidth(width);
+			 float heightSpace = 1.2f;
+			 float widthSpace = 1.5f;
+			 
+			 primaryStage.setMinHeight(height / heightSpace);
+			 primaryStage.setMinWidth(width / widthSpace);
 			 primaryStage.setTitle("SLIIT Time Table Management");
+			 primaryStage.setWidth(width / widthSpace);
+			 primaryStage.setHeight(height / heightSpace);
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
 			 //primaryStage.setResizable(false);
 			 primaryStage.show();

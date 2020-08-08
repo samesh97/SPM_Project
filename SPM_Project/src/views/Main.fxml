@@ -6,11 +6,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.MainController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.MainController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" prefWidth="1090.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
          <font>
             <Font name="Consolas" size="55.0" />
          </font>
@@ -26,48 +27,61 @@
          </font>
       </Label>
       <Separator layoutY="122.0" prefHeight="12.0" prefWidth="1100.0" />
-      <Separator layoutX="250.0" layoutY="131.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" />
-      <Button fx:id="btn_students" defaultButton="true" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" onAction="#onStudentButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Students" AnchorPane.leftAnchor="10.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="btn_tags" layoutX="10.0" layoutY="201.0" mnemonicParsing="false" onAction="#onTagButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Tags" AnchorPane.leftAnchor="10.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_subjects" layoutX="9.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSubjectsButtonClicked" prefHeight="63.0" prefWidth="233.0" text="Subjects" AnchorPane.leftAnchor="10.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_lectures" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Lectures" AnchorPane.leftAnchor="10.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_working_days" layoutX="10.0" layoutY="402.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Working days &amp; Hours">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_locations" layoutX="10.0" layoutY="467.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Locations">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_connections" layoutX="9.0" layoutY="533.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Connections">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_statistics" layoutX="10.0" layoutY="599.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Statistics">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_sessions" layoutX="9.0" layoutY="666.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Sessions">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="btn_time_table" layoutX="10.0" layoutY="732.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="233.0" text="Time Tables">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
+      <Separator layoutX="250.0" layoutY="131.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="131.0" />
       <AnchorPane fx:id="controllerPane" layoutX="257.0" layoutY="133.0" prefHeight="660.0" prefWidth="839.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="133.0" />
+      <VBox alignment="CENTER" layoutX="3.0" layoutY="132.0" prefHeight="722.0" prefWidth="248.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="137.0">
+         <children>
+            <Button fx:id="btn_students" defaultButton="true" mnemonicParsing="false" onAction="#onStudentButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Students">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_tags" mnemonicParsing="false" onAction="#onTagButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Tags">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_subjects" mnemonicParsing="false" onAction="#onSubjectsButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Subjects">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_lectures" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Lectures">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_working_days" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Working days &amp; Hours">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_locations" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Locations">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_connections" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Connections">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_statistics" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Statistics">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_sessions" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Sessions">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_time_table" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Time Tables">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
