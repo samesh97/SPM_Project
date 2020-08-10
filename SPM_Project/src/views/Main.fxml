@@ -26,8 +26,8 @@
             <Font size="55.0" />
          </font>
       </Label>
-      <Separator layoutY="122.0" prefHeight="12.0" prefWidth="1100.0" />
-      <Separator layoutX="250.0" layoutY="131.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="131.0" />
+      <Separator layoutY="122.0" prefHeight="12.0" prefWidth="1100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Separator layoutX="250.0" layoutY="128.0" orientation="VERTICAL" prefHeight="666.0" prefWidth="7.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="128.0" />
       <AnchorPane fx:id="controllerPane" layoutX="257.0" layoutY="133.0" prefHeight="660.0" prefWidth="839.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="133.0" />
       <VBox alignment="CENTER" layoutX="3.0" layoutY="132.0" prefHeight="722.0" prefWidth="248.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="137.0">
          <children>

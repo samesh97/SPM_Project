@@ -95,16 +95,16 @@
                   </Button>
                </children>
             </HBox>
-            <AnchorPane prefHeight="48.0" prefWidth="810.0">
+            <AnchorPane prefHeight="76.0" prefWidth="728.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="46.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="561.0" text="Add Time Slot" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="30.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="46.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="561.0" text="Add Time Slot" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets left="300.0" right="300.0" />
                </VBox.margin>
             </AnchorPane>
          </children>
