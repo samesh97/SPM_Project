@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.controllers.SubjectsMainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.SubjectsMainController">
    <children>
-      <Button fx:id="btn_button1" layoutX="217.0" layoutY="91.0" mnemonicParsing="false" onAction="#onButton1Selected" text="Button" />
+      <Button fx:id="btn_button1" layoutX="516.0" layoutY="23.0" mnemonicParsing="false" onAction="#onButton1Selected" text="Button" />
+      <AnchorPane layoutY="81.0" prefHeight="426.0" prefWidth="601.0">
+         <children>
+            <Button fx:id="btn_ViewAllSubjects1" layoutX="46.0" layoutY="26.0" mnemonicParsing="false" onAction="#onViewAllSubjectsClicked" prefHeight="31.0" prefWidth="507.0" text="View All Subjects" AnchorPane.leftAnchor="46.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="97.0" layoutY="81.0" text="Subject Code" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="99.0" layoutY="113.0" text="Name" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="98.0" layoutY="150.0" text="Offered Year" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="99.0" layoutY="180.0" text="Offered Semester" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="99.0" layoutY="213.0" text="Lecture Hours" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="98.0" layoutY="252.0" text="Tutorial Hours" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="97.0" layoutY="290.0" text="Lab Hours" AnchorPane.leftAnchor="97.0" />
+            <Label layoutX="91.0" layoutY="324.0" text="Evaluation Hours" AnchorPane.leftAnchor="97.0" />
+            <TextField fx:id="add_SubjectCode" layoutX="227.0" layoutY="77.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField fx:id="add_SubjectName" layoutX="227.0" layoutY="109.0" prefHeight="25.0" prefWidth="276.0" />
+            <Button fx:id="btn_Add" layoutX="47.0" layoutY="367.0" mnemonicParsing="false" onAction="#onAddClicked" prefHeight="25.0" prefWidth="507.0" text="ADD" AnchorPane.leftAnchor="46.0" />
+            <TextField fx:id="add_LectureHrs" layoutX="227.0" layoutY="209.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField fx:id="add_TutorialHrs" layoutX="227.0" layoutY="248.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField fx:id="add_LabHrs" layoutX="227.0" layoutY="286.0" prefHeight="25.0" prefWidth="276.0" />
+            <TextField fx:id="add_EvaluationHrs" layoutX="227.0" layoutY="320.0" prefHeight="25.0" prefWidth="276.0" />
+            <ComboBox fx:id="add_OfferedYear" layoutX="227.0" layoutY="146.0" prefHeight="25.0" prefWidth="276.0" />
+            <ComboBox fx:id="add_OfferedSemester" layoutX="227.0" layoutY="176.0" prefHeight="25.0" prefWidth="276.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="271.0" layoutY="22.0" prefHeight="27.0" prefWidth="77.0" text="Subjects" textAlignment="CENTER" AnchorPane.leftAnchor="271.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
