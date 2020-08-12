@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.WorkingDaysMainController">
    <children>
       <Label alignment="CENTER" layoutX="171.0" layoutY="14.0" prefHeight="38.0" prefWidth="478.0" text="Working Days &amp; Hours " AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="14.0">
          <font>
@@ -28,7 +28,7 @@
                         <Insets left="-165.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox editable="true" prefHeight="41.0" prefWidth="295.0">
+                  <ComboBox fx:id="combo_working_days_type" prefHeight="41.0" prefWidth="295.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -42,7 +42,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox editable="true" prefHeight="41.0" prefWidth="295.0" />
+                  <ComboBox fx:id="combo_number_of_working_days" prefHeight="41.0" prefWidth="295.0" />
                   <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -62,7 +62,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox editable="true" prefHeight="41.0" prefWidth="295.0" />
+                  <ComboBox fx:id="combo_working_days" prefHeight="41.0" prefWidth="295.0" />
                   <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -82,7 +82,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox editable="true" prefHeight="41.0" prefWidth="295.0" />
+                  <ComboBox prefHeight="41.0" prefWidth="295.0" />
                   <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
