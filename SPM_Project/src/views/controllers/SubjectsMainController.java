@@ -10,19 +10,19 @@ public class SubjectsMainController {
 	@FXML
 	private Button btn_button1;
 	@FXML
-	private Button btn_ViewAllSubjects1;
+	private Button btn_ViewAllSubjectsAdd;
 	@FXML
-	private Button btn_Add;
+	private Button btn_AddSubject;
 
 	public void onButton1Selected(ActionEvent event) {
 		System.out.println("Button 1 selected");
 	}
 	
-	public void onViewAllSubjectsClicked(ActionEvent event) {
+	public void onViewAllSubjectsAddClicked(ActionEvent event) {
 		System.out.println("View All Subjects clicked");
 	}
 	
-	public void onAddClicked(ActionEvent event) {
+	public void onAddSubjectClicked(ActionEvent event) {
 		System.out.println("Add Subjects clicked");
 	}
 }
