@@ -8,27 +8,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-
-public class SubjectsMainController  {
+public class SubjectsViewController  {
 	
+	@FXML 
+	private Button btn_AddNewSubject;
 	
-	@FXML
-	private Button btn_ViewAllSubjectsAdd;
-	@FXML
-	private Button btn_AddSubject;
-
-	public void  onViewAllSubjectsAddClicked(ActionEvent event) 
-	{
+	public void onAddNewSubjectClicked(ActionEvent event) {
 		System.out.println("Vuew all Subjects clicked");
-		Scene scene = btn_ViewAllSubjectsAdd.getScene();
+		Scene scene = btn_AddNewSubject.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../SubjectsView.fxml");
+		changeCenterContent(pane,"../SubjectsMain.fxml");
+		
 	}
 	
-	
-	public void onAddSubjectClicked(ActionEvent event) {
-		System.out.println("Add Subjects clicked");
-	}
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
@@ -70,4 +62,7 @@ public class SubjectsMainController  {
 //			e.printStackTrace();
 //		}
 	}
+
+
+	
 }

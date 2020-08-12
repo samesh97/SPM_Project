@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="507.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.LecturersMainController">
+   <children>
+      <Label layoutX="253.0" layoutY="20.0" prefHeight="27.0" prefWidth="77.0" text="Lecturers">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="179.0" text="Employee ID" AnchorPane.leftAnchor="96.0" />
+      <TextField fx:id="add_LecturerName" layoutX="238.0" layoutY="143.0" prefHeight="25.0" prefWidth="297.0" AnchorPane.leftAnchor="238.0" />
+      <TextField fx:id="add_EmployeeID" layoutX="249.0" layoutY="184.0" prefHeight="25.0" prefWidth="297.0" AnchorPane.leftAnchor="238.0" />
+      <Label layoutX="93.0" layoutY="221.0" text="Faculty" AnchorPane.leftAnchor="96.0" />
+      <Label layoutX="88.0" layoutY="258.0" text="Department" AnchorPane.leftAnchor="96.0" />
+      <ComboBox fx:id="add_Faculty" layoutX="249.0" layoutY="217.0" prefHeight="25.0" prefWidth="297.0" promptText="choose faculty" AnchorPane.leftAnchor="238.0" />
+      <ComboBox fx:id="add_Department" layoutX="249.0" layoutY="254.0" prefHeight="25.0" prefWidth="297.0" promptText="choode department" AnchorPane.leftAnchor="238.0" />
+      <Label layoutX="89.0" layoutY="293.0" text="Center" AnchorPane.leftAnchor="96.0" />
+      <Label layoutX="98.0" layoutY="326.0" text="Building" AnchorPane.leftAnchor="96.0" />
+      <ComboBox fx:id="add_Center" layoutX="249.0" layoutY="289.0" prefHeight="25.0" prefWidth="297.0" promptText="choose center" AnchorPane.leftAnchor="238.0" />
+      <ComboBox fx:id="add_Building" layoutX="249.0" layoutY="322.0" prefHeight="25.0" prefWidth="297.0" promptText="choose building" AnchorPane.leftAnchor="238.0" />
+      <Label layoutX="93.0" layoutY="366.0" text="Level" AnchorPane.leftAnchor="96.0" />
+      <Label layoutX="94.0" layoutY="401.0" text="Rank" AnchorPane.leftAnchor="96.0" />
+      <TextField fx:id="add_Rank" layoutX="249.0" layoutY="401.0" prefHeight="25.0" prefWidth="297.0" AnchorPane.leftAnchor="238.0" />
+      <ComboBox fx:id="add_Level" layoutX="249.0" layoutY="362.0" prefHeight="25.0" prefWidth="297.0" promptText="choose level" AnchorPane.leftAnchor="238.0" />
+      <Button fx:id="btn_AddLecturer" layoutX="83.0" layoutY="455.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="452.0" text="ADD" AnchorPane.leftAnchor="83.0" />
+      <Label layoutX="96.0" layoutY="147.0" text="Name" AnchorPane.leftAnchor="96.0" />
+      <Button fx:id="btn_ViewAllLecturersAdd" layoutX="75.0" layoutY="69.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="461.0" text="View All Lecturers">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -9,7 +9,6 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.SubjectsMainController">
    <children>
-      <Button fx:id="btn_button1" layoutX="516.0" layoutY="23.0" mnemonicParsing="false" onAction="#onButton1Selected" text="Button" />
       <AnchorPane layoutY="48.0" prefHeight="439.0" prefWidth="601.0">
          <children>
             <Button fx:id="btn_ViewAllSubjectsAdd" layoutX="46.0" layoutY="24.0" mnemonicParsing="false" onAction="#onViewAllSubjectsAddClicked" prefHeight="31.0" prefWidth="507.0" text="View All Subjects" AnchorPane.leftAnchor="46.0">
