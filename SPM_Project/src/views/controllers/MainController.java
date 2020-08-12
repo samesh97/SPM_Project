@@ -1,16 +1,17 @@
 package views.controllers;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class MainController 
+public class MainController implements Initializable
 {
 	@FXML
 	private AnchorPane controllerPane;
@@ -36,6 +37,14 @@ public class MainController
 	private Button btn_time_table;
 	
 	
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1)
+	{
+		//start default when load the FXML
+		highlightClickedButton(btn_students);
+		changeCenterContent("../StudentsMain.fxml");
+	}
 	
 	public void onStudentButtonClicked(ActionEvent event)
 	{
@@ -114,5 +123,7 @@ public class MainController
 		
 		button.setDefaultButton(true);
 	}
+
+
 }
 
