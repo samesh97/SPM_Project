@@ -46,7 +46,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_lectures" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Lectures">
+            <Button fx:id="btn_lecturers" mnemonicParsing="false" onAction="#onLecturersButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Lectures">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

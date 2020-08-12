@@ -22,7 +22,7 @@ public class MainController implements Initializable
 	@FXML
 	private Button btn_subjects;
 	@FXML
-	private Button btn_lectures;
+	private Button btn_lecturers;
 	@FXML
 	private Button btn_working_days;
 	@FXML
@@ -60,6 +60,13 @@ public class MainController implements Initializable
 	{
 		highlightClickedButton(btn_subjects);
 		changeCenterContent("../SubjectsMain.fxml");
+	}
+	
+	
+	public void onLecturersButtonClicked(ActionEvent event) 
+	{
+		highlightClickedButton(btn_lecturers);
+		changeCenterContent("../LecturersMain.fxml");
 	}
 	public void onWorkingDaysButtonClicked(ActionEvent event) 
 	{
@@ -112,7 +119,7 @@ public class MainController implements Initializable
 		btn_students.setDefaultButton(false);
 		btn_tags.setDefaultButton(false);
 		btn_subjects.setDefaultButton(false);
-		btn_lectures.setDefaultButton(false);
+		btn_lecturers.setDefaultButton(false);
 		btn_working_days.setDefaultButton(false);
 		btn_locations.setDefaultButton(false);
 		btn_connections.setDefaultButton(false);
