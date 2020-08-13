@@ -12,9 +12,9 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.SubjectsMainController">
    <children>
-      <VBox layoutX="69.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+      <VBox layoutX="69.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <children>
-            <AnchorPane prefHeight="500.0" prefWidth="600.0">
+            <AnchorPane prefHeight="519.0" prefWidth="600.0">
                <children>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="560.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -23,19 +23,19 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_ViewAllSubjectsAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onViewAllSubjectsAddClicked" prefHeight="30.0" prefWidth="3000.0" text="View All Subjects">
+                        <Button fx:id="btn_ViewAllSubjectsAdd" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onViewAllSubjectsAddClicked" prefHeight="31.0" prefWidth="3000.0" text="View All Subjects">
                            <font>
-                              <Font size="15.0" />
+                              <Font size="14.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="20.0" left="100.0" right="100.0" top="30.0" />
                            </VBox.margin>
                         </Button>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Subject Code">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Subject Code">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="20.0" />
+                                    <Insets top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -43,16 +43,19 @@
                               </Label>
                               <TextField fx:id="add_SubjectCode" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="20.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Name">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Name">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -60,16 +63,19 @@
                               </Label>
                               <TextField fx:id="add_SubjectName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Offered Year">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Offered Year">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -77,16 +83,19 @@
                               </Label>
                               <ComboBox fx:id="add_OfferedYear" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </ComboBox>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Offered Semester">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Offered Semester">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -94,16 +103,19 @@
                               </Label>
                               <ComboBox fx:id="add_OfferedSemester" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </ComboBox>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Lecture Hours">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Lecture Hours">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -111,16 +123,19 @@
                               </Label>
                               <TextField fx:id="add_LectureHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Tutorial Hours">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Tutorial Hours">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -128,16 +143,19 @@
                               </Label>
                               <TextField fx:id="add_TutorialHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Lab Hours">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Lab Hours">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -145,16 +163,19 @@
                               </Label>
                               <TextField fx:id="add_LabHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
                         <HBox prefHeight="300.0" prefWidth="200.0">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="150.0" text="Evaluation Hours">
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Evaluation Hours">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="5.0" top="15.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font name="System Bold" size="14.0" />
@@ -162,19 +183,35 @@
                               </Label>
                               <TextField fx:id="add_EvaluationHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
                                  <HBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
+                                    <Insets bottom="8.0" top="5.0" />
                                  </HBox.margin>
                               </TextField>
                            </children>
+                           <padding>
+                              <Insets left="100.0" right="150.0" />
+                           </padding>
                         </HBox>
-                        <Button fx:id="btn_AddSubject" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onAddSubjectClicked" prefHeight="100.0" prefWidth="3000.0" text="ADD">
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="btn_AddSubject" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onAddSubjectClicked" prefHeight="31.0" prefWidth="3000.0" text="ADD" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="100.0" right="100.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="10.0" top="15.0" />
                            </VBox.margin>
-                        </Button>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
             </AnchorPane>
          </children>
          <opaqueInsets>
