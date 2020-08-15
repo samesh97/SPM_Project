@@ -1,7 +1,11 @@
 package views.controllers;
 
 import java.net.URL;
+import java.sql.DriverManager;
 import java.util.ResourceBundle;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +26,7 @@ public class WorkingDaysMainController implements Initializable
 		initializeWorkingDaysTypeCombo();
 		initializeNumberOfWorkingDaysCombo();
 		initializeWorkingDaysCombo();
+	
 		
 	}
 	private void initializeWorkingDaysTypeCombo()

@@ -3,6 +3,7 @@ package application;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import database.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -48,6 +49,10 @@ public class Main extends Application{
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
 		
 			 primaryStage.show();
+			 
+			 
+			 //connect to the database
+			 DatabaseHandler.makeConnection();
 		}
 		catch(Exception e)
 		{
