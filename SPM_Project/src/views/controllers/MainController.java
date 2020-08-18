@@ -3,6 +3,7 @@ package views.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import database.DatabaseHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,6 +68,7 @@ public class MainController implements Initializable
 	{
 		highlightClickedButton(btn_lecturers);
 		changeCenterContent("../LecturersMain.fxml");
+		DatabaseHandler.addSampledata();
 	}
 	public void onWorkingDaysButtonClicked(ActionEvent event) 
 	{
