@@ -9,15 +9,24 @@ import com.mysql.jdbc.PreparedStatement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
 
 public class WorkingDaysMainController implements Initializable
 {
 	
 	@FXML
 	private ComboBox<Object> combo_working_days_type,combo_number_of_working_days,combo_working_days;
+	
+	@FXML
+	private Button addTimeSlotButton;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
@@ -71,8 +80,34 @@ public class WorkingDaysMainController implements Initializable
 		combo_working_days.setItems(null);
 		combo_working_days.setItems(data);
 		
+	}
+	public void onAddTimeSlotButtonClicked(ActionEvent event)
+	{
+		Scene scene = addTimeSlotButton.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../WorkingDaysTimeSlots.fxml");
+	}
+	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	{
 		
-	
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
+			controllerPane.getChildren().clear();
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 }
