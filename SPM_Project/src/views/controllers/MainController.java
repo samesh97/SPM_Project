@@ -52,6 +52,11 @@ public class MainController implements Initializable
 		highlightClickedButton(btn_students);
 		changeCenterContent("../StudentsMain.fxml");
 	}
+	public void onSessionsButtonClicked(ActionEvent event)
+	{
+		highlightClickedButton(btn_sessions);
+		changeCenterContent("../SessionsMain.fxml");
+	}
 	public void onTagButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_tags);
