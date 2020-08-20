@@ -126,6 +126,63 @@ public class QueriesOfWorkingDays
 		
 		return false;
 	}
+	public static boolean deleteNumberOfWorkingDays(int type)
+	{
+		boolean res= checkWhetherARowExists(type);
+		if(res)
+		{
+			//update
+			String query = " UPDATE WorkingDaysAndHours SET NumberOfWorkingDays=(?) WHERE Type=(?)";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,-99);
+				preparedStmt.setInt(2,type);
+	
+				
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		return false;
+	}
+	public static boolean deleteWorkingTimeDuration(int type)
+	{
+		boolean res= checkWhetherARowExists(type);
+		if(res)
+		{
+			//update
+			String query = " UPDATE WorkingDaysAndHours SET WorkingTimeHours=(?),WorkingTimeMinutes=(?) WHERE Type=(?)";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,-99);
+				preparedStmt.setInt(2,-99);
+				preparedStmt.setInt(3,type);
+	
+				
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		return false;
+	}
 	public static ResultSet sync(int type)
 	{
 		

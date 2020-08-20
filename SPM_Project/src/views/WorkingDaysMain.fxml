@@ -49,7 +49,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Delete">
+                  <Button mnemonicParsing="false" onAction="#deleteNumberOfWorkingDays" prefHeight="31.0" prefWidth="71.0" text="Delete">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -93,7 +93,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Delete">
+                  <Button mnemonicParsing="false" onAction="#deleteWorkingTimeDuration" prefHeight="31.0" prefWidth="71.0" text="Delete">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

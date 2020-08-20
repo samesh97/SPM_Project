@@ -159,8 +159,17 @@ public class WorkingDaysMainController implements Initializable
 			{
 				set.next();
 				int workingDays = set.getInt(2);
-				initializeNumberOfWorkingDaysCombo(workingDays);
-				numberOfWorkingDaysAddBtn.setText("Update");
+				if(workingDays != -99)
+				{
+					initializeNumberOfWorkingDaysCombo(workingDays);
+					numberOfWorkingDaysAddBtn.setText("Update");
+				}
+				else
+				{
+					numberOfWorkingDaysAddBtn.setText("Add");
+					initializeNumberOfWorkingDaysCombo(-99);
+				}
+				
 			} 
 			catch (SQLException e)
 			{
@@ -219,6 +228,19 @@ public class WorkingDaysMainController implements Initializable
 		}
 		
 	}
+	public void deleteNumberOfWorkingDays(ActionEvent event)
+	{
+		boolean res = QueriesOfWorkingDays.deleteNumberOfWorkingDays(programType);
+		if(res)
+		{
+			showAlert("Success");
+			setupNumberOfWorkingDaysRow();
+		}
+		else
+		{
+			showAlert("Failed");
+		}
+	}
 	public void addWorkingTimeDuration(ActionEvent event)
 	{
 		try
@@ -246,6 +268,19 @@ public class WorkingDaysMainController implements Initializable
 			showAlert("Please enter only Integers");
 		}
 	
+	}
+	public void deleteWorkingTimeDuration(ActionEvent event)
+	{
+		boolean res = QueriesOfWorkingDays.deleteWorkingTimeDuration(programType);
+		if(res)
+		{
+			showAlert("Success");
+			setupNumberOfWorkingDaysRow();
+		}
+		else
+		{
+			showAlert("Failed");
+		}
 	}
 	public void showAlert(String message)
 	{
