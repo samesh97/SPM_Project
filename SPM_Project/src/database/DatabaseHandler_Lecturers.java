@@ -19,20 +19,20 @@ public class DatabaseHandler_Lecturers {
 	{
 		if(conn != null)
 		{
-			String query = " INSERT into Subjects(SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)" + " VALUES (SubjectCode)";
+			String query = " INSERT into Subjects(SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)" + " VALUES (SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)";
 
 			 
 		    try
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) conn.clientPrepareStatement(query);
 				preparedStmt.setString(1, "SubjectCode");
-				preparedStmt.setString(2, "SPM_SAMPLE");
-				preparedStmt.setString(3, "SPM_SAMPLE");
-				preparedStmt.setString(4, "SPM_SAMPLE");
-				preparedStmt.setString(5, "SPM_SAMPLE");
-				preparedStmt.setString(6, "SPM_SAMPLE");
-				preparedStmt.setString(7, "SPM_SAMPLE");
-				preparedStmt.setString(8, "SPM_SAMPLE");
+				preparedStmt.setString(2, "SubjectName");
+				preparedStmt.setString(3, "OfferedYear");
+				preparedStmt.setString(4, "OfferedSem");
+				preparedStmt.setString(5, "LectureHrsE");
+				preparedStmt.setString(6, "TutorialHrs");
+				preparedStmt.setString(7, "LabHrs");
+				preparedStmt.setString(8, "EvaluationHrs");
 				
 				preparedStmt.execute();
 			} 

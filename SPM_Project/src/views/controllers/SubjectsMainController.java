@@ -85,20 +85,6 @@ public class SubjectsMainController  {
 		
 		
 		
-		
-		
-		
-//		
-//		Parent root;
-//		try
-//		{
-//			root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-//			controllerPane.getChildren().clear();
-//			controllerPane.getChildren().add(root);
-//		} 
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
+	
 	}
 }
