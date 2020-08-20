@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import enums.ProgramType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +28,9 @@ public class WorkingDaysMainController implements Initializable
 	
 	@FXML
 	private Button addTimeSlotButton;
+	
+	private int programType = ProgramType.WEEK_DAY;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
@@ -47,6 +51,7 @@ public class WorkingDaysMainController implements Initializable
 		combo_working_days_type.setItems(data);
 		
 		combo_working_days_type.getSelectionModel().selectFirst();
+		
 	
 	}
 	private void initializeNumberOfWorkingDaysCombo()
