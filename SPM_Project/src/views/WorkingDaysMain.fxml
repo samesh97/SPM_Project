@@ -44,7 +44,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="combo_number_of_working_days" prefHeight="41.0" prefWidth="295.0" promptText="Choose a number (1-7)" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
+                  <Button fx:id="numberOfWorkingDaysAddBtn" mnemonicParsing="false" onAction="#addNumberOfWorkingDays" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -83,12 +83,12 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="38.0" prefWidth="143.0" text="enter hours">
+                  <TextField fx:id="hoursTextFiled" prefHeight="38.0" prefWidth="143.0" text="enter hours">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></TextField>
-                  <TextField prefHeight="38.0" prefWidth="142.0" text="enter minutes" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
+                  <TextField fx:id="minutesTextFiled" prefHeight="38.0" prefWidth="142.0" text="enter minutes" />
+                  <Button fx:id="workingTimeDurationAddBtn" mnemonicParsing="false" onAction="#addWorkingTimeDuration" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
