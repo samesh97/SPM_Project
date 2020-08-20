@@ -16,7 +16,7 @@ public class DatabaseHandler
 	private static final String USER_NAME = "sql12361005";
 	private static final String PASSWORD = "IwIYLZd2HX";
 	
-	private static Connection conn = null;
+	public static Connection conn = null;
 	
 	public static void makeConnection()
 	{
