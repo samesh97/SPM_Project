@@ -7,45 +7,43 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class DatabaseHandler_Lecturers {
 
-	private static Connection conn = null;
 	
-	
-		//conn= DatabaseHandler.makeConnection();
-	
-	
-
 		
-	public static void addSubjects(String SubjectCode,String SubjectName,String OfferedYear,String OfferedSem,String LectureHrs,String TutorialHrs,String LabHrs,String EvaluationHrs)
+	public static boolean addSubjects(String SubjectCode,String SubjectName,int OfferedYear,int OfferedSem,int LectureHrs,int TutorialHrs,int LabHrs,int EvaluationHrs)
 	{
 		
-		boolean isSuccess= false;
-		if(conn != null)
+		
+		if(DatabaseHandler.conn != null)
 		{
-			String query = " INSERT into Subjects(SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)" + " VALUES (SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)";
+			String query = " INSERT into Subjects(SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)" + " VALUES (?,?,?,?,?,?,?,?)";
 
 			 
 		    try
 		    {
-				PreparedStatement preparedStmt = (PreparedStatement) conn.clientPrepareStatement(query);
-				preparedStmt.setString(1, "SubjectCode");
-				preparedStmt.setString(2, "SubjectName");
-				preparedStmt.setString(3, "OfferedYear");
-				preparedStmt.setString(4, "OfferedSem");
-				preparedStmt.setString(5, "LectureHrsE");
-				preparedStmt.setString(6, "TutorialHrs");
-				preparedStmt.setString(7, "LabHrs");
-				preparedStmt.setString(8, "EvaluationHrs");
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, SubjectCode);
+				preparedStmt.setString(2, SubjectName);
+				preparedStmt.setInt(3, OfferedYear);
+				preparedStmt.setInt(4, OfferedSem);
+				preparedStmt.setInt(5, LectureHrs);
+				preparedStmt.setInt(6, TutorialHrs);
+				preparedStmt.setInt(7, LabHrs);
+				preparedStmt.setInt(8, EvaluationHrs);
 				
 				preparedStmt.execute();
+				return true;
 			} 
 		    catch (SQLException e)
 		    {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		    
 		 
 		}
+		return false;
+		
 	}
 
 }
