@@ -17,6 +17,8 @@ public class DatabaseHandler_Lecturers {
 		
 	public static void addSubjects(String SubjectCode,String SubjectName,String OfferedYear,String OfferedSem,String LectureHrs,String TutorialHrs,String LabHrs,String EvaluationHrs)
 	{
+		
+		boolean isSuccess= false;
 		if(conn != null)
 		{
 			String query = " INSERT into Subjects(SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)" + " VALUES (SubjectCode,SubjectName,OfferedYear,OfferedSem,LectureHrs,TutorialHrs,LabHrs,EvaluationHrs)";
@@ -41,6 +43,8 @@ public class DatabaseHandler_Lecturers {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		    
+		 
 		}
 	}
 
