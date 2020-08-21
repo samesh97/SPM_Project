@@ -2,6 +2,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -233,5 +234,75 @@ public class QueriesOfWorkingDays
 			}
 		}
 		return false;
+	}
+	public static boolean createNewSlot(int type,String duration,int startHours,int startMinutes)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			//insert
+			String query = " INSERT into Slots(Type,Duration,StartTimeInHours,StartTimeInMinutes)" + " VALUES (?,?,?,?)";
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,type);
+				preparedStmt.setString(2,duration);
+				preparedStmt.setInt(3,startHours);
+				preparedStmt.setInt(4,startMinutes);
+				
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return false;
+		
+		
+	}
+	public static ResultSet getWorkingDays(int type)
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM WorkingDays WHERE Type=(?)";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,type);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	public static boolean updateWorkingDays(int id,boolean isTrue)
+	{
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " UPDATE WorkingDays SET isSelected=(?) WHERE Id=(?)";
+
+			    try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.setString(1,String.valueOf(isTrue));
+					preparedStmt.setInt(2, id);
+					preparedStmt.execute();
+				} 
+			    catch (SQLException e)
+			    {
+					e.printStackTrace();
+				}
+			}
+		return true;
 	}
 }

@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -30,7 +31,9 @@ public class WorkingDaysMainController implements Initializable
 {
 	
 	@FXML
-	private ComboBox<Object> combo_working_days_type,combo_working_days;
+	private ComboBox<Object> combo_working_days_type;
+//	@FXML
+//	private ComboBox<Integer> combo_working_days;
 
 	
 	@FXML
@@ -42,6 +45,10 @@ public class WorkingDaysMainController implements Initializable
 	@FXML
 	private TextField hoursTextFiled,minutesTextFiled;
 	
+	
+	@FXML
+	private CheckBox MondayCombo,TuesdayCombo,WednesdayCombo,ThursdayCombo,FridayCombo,SaturdayCombo,SundayCombo;
+	
 	private int programType = ProgramType.WEEK_DAY;
 
 
@@ -50,12 +57,12 @@ public class WorkingDaysMainController implements Initializable
 	{
 		
 		initializeWorkingDaysTypeCombo();
-		initializeWorkingDaysCombo();
+		//initializeWorkingDaysCombo();
 		setupNumberOfWorkingDaysRow();
+		setCheckBoxes();
 		
 		
-		
-		
+
 		//listeners
 		combo_working_days_type.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
 	         
@@ -69,6 +76,7 @@ public class WorkingDaysMainController implements Initializable
 			}
 			
 			setupNumberOfWorkingDaysRow();
+			setCheckBoxes();
 	    }
 	    ); 
 	
@@ -105,23 +113,23 @@ public class WorkingDaysMainController implements Initializable
 		}
 		
 	}
-
-	private void initializeWorkingDaysCombo()
-	{
-		ObservableList<Object> data = FXCollections.observableArrayList();
-	
-		
-		data.add("Monday");
-		data.add("Tuesday");
-		data.add("Wednesday");
-		data.add("Thursday");
-		data.add("Friday");
-		data.add("Saturday");
-		data.add("Sunday");
-		combo_working_days.setItems(null);
-		combo_working_days.setItems(data);
-		
-	}
+//
+//	private void initializeWorkingDaysCombo()
+//	{
+//		ObservableList<Object> data = FXCollections.observableArrayList();
+//	
+//		
+//		data.add("Monday");
+//		data.add("Tuesday");
+//		data.add("Wednesday");
+//		data.add("Thursday");
+//		data.add("Friday");
+//		data.add("Saturday");
+//		data.add("Sunday");
+//		combo_working_days.setItems(null);
+//		combo_working_days.setItems(data);
+//		
+//	}
 	public void onAddTimeSlotButtonClicked(ActionEvent event)
 	{
 		Scene scene = addTimeSlotButton.getScene();
@@ -287,6 +295,122 @@ public class WorkingDaysMainController implements Initializable
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setContentText(message);
 		alert.show();
+	}
+	public void setCheckBoxes()
+	{
+		ResultSet set = QueriesOfWorkingDays.getWorkingDays(programType);
+		if(set != null)
+		{
+			try
+			{
+				while(set.next())
+				{
+					String text = set.getString(3);
+					String isSelected = set.getString(4);
+					
+					boolean isSelect = Boolean.parseBoolean(isSelected);
+					if(text != null)
+					{
+						
+						if(text.equals("Monday"))
+						{
+							if(isSelect)
+								MondayCombo.setSelected(true);
+							else
+								MondayCombo.setSelected(false);
+						}
+						else if(isSelect && text.equals("Tuesday"))
+						{
+							if(isSelect)
+								TuesdayCombo.setSelected(true);
+							else
+								TuesdayCombo.setSelected(false);
+							
+						}
+						else if(isSelect && text.equals("Wednesday"))
+						{
+							if(isSelect)
+								WednesdayCombo.setSelected(true);
+							else
+								WednesdayCombo.setSelected(false);
+							
+						}
+						else if(isSelect && text.equals("Thursday"))
+						{
+							if(isSelect)
+								ThursdayCombo.setSelected(true);
+							else
+								ThursdayCombo.setSelected(false);
+							
+						}
+						else if(isSelect && text.equals("Friday"))
+						{
+							if(isSelect)
+								FridayCombo.setSelected(true);
+							else
+								FridayCombo.setSelected(false);
+							
+						}
+						else if(isSelect && text.equals("Saturday"))
+						{
+							if(isSelect)
+								SaturdayCombo.setSelected(true);
+							else
+								SaturdayCombo.setSelected(false);
+							
+						}
+						else if(isSelect && text.equals("Sunday"))
+						{
+							if(isSelect)
+								SundayCombo.setSelected(true);
+							else
+								SundayCombo.setSelected(false);
+							
+						}
+					}
+					
+				}
+			} 
+			catch (SQLException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			
+		}
+	}
+	public void onWorkingDaysUpdateButtonClicked(ActionEvent event)
+	{
+		if(programType == ProgramType.WEEK_DAY)
+		{
+			boolean res = QueriesOfWorkingDays.updateWorkingDays(1, MondayCombo.isSelected());
+			if(res)
+			{
+				showAlert("Success");
+				setCheckBoxes();
+			}
+			else
+			{
+				showAlert("Failed");
+			}
+		}
+		else
+		{
+			boolean res = QueriesOfWorkingDays.updateWorkingDays(8, MondayCombo.isSelected());
+			if(res)
+			{
+				showAlert("Success");
+				setCheckBoxes();
+			}
+			else
+			{
+				showAlert("Failed");
+			}
+		}
+		
 	}
 	
 }
