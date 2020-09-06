@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -21,7 +22,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="81.0" prefWidth="810.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="217.0" text="Type Of Working days">
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="237.0" text="Type Of Working days">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -29,7 +30,7 @@
                         <Insets left="-165.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="combo_working_days_type" prefHeight="41.0" prefWidth="295.0" promptText="Choose Weekday / Weekend">
+                  <ComboBox fx:id="combo_working_days_type" prefHeight="41.0" prefWidth="359.0" promptText="Choose Weekday / Weekend">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -38,12 +39,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="71.0" prefWidth="810.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="238.0" text="Number Of Working Days">
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="264.0" text="Number Of Working Days">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="combo_number_of_working_days" prefHeight="41.0" prefWidth="295.0" promptText="Choose a number (1-7)" />
+                  <ComboBox fx:id="combo_number_of_working_days" prefHeight="41.0" prefWidth="364.0" promptText="Choose a number (1-7)" />
                   <Button fx:id="numberOfWorkingDaysAddBtn" mnemonicParsing="false" onAction="#addNumberOfWorkingDays" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -58,13 +59,47 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="72.0" prefWidth="810.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="238.0" text="Working Days">
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="247.0" text="Working Days">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="combo_working_days" prefHeight="41.0" prefWidth="295.0" promptText="Choose &amp; check details" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Add">
+                  <CheckBox fx:id="MondayCombo" mnemonicParsing="false" text="Mon">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="TuesdayCombo" mnemonicParsing="false" text="Tue">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="WednesdayCombo" mnemonicParsing="false" text="Wed">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="ThursdayCombo" mnemonicParsing="false" text="Thu">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="FridayCombo" mnemonicParsing="false" text="Fri">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="SaturdayCombo" mnemonicParsing="false" text="Sat">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="SundayCombo" mnemonicParsing="false" text="Sun">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Button mnemonicParsing="false" onAction="#onWorkingDaysUpdateButtonClicked" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
@@ -78,16 +113,16 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="74.0" prefWidth="810.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="238.0" text="Working Time Duration">
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="261.0" text="Working Time Duration">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="hoursTextFiled" prefHeight="38.0" prefWidth="143.0" text="enter hours">
+                  <TextField fx:id="hoursTextFiled" prefHeight="38.0" prefWidth="181.0" text="enter hours">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></TextField>
-                  <TextField fx:id="minutesTextFiled" prefHeight="38.0" prefWidth="142.0" text="enter minutes" />
+                  <TextField fx:id="minutesTextFiled" prefHeight="38.0" prefWidth="186.0" text="enter minutes" />
                   <Button fx:id="workingTimeDurationAddBtn" mnemonicParsing="false" onAction="#addWorkingTimeDuration" prefHeight="31.0" prefWidth="77.0" text="Add">
                      <HBox.margin>
                         <Insets left="20.0" />
