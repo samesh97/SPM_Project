@@ -49,33 +49,32 @@ public class QueriesOfWorkingDays
 				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
 				if(!isCreated)
 				{
-					String query = "CREATE TABLE WorkingDays(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Name INTEGER,isSelected VARCHAR(50))";
+					String query = "CREATE TABLE WorkingDays(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Day INTEGER,isSelected VARCHAR(50))";
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
-					boolean res = preparedStmt.execute();
-					if(res)
-					{
-						System.out.println("Created Table " + tableName);
-						//weekday is equal to 0
-						addWorkingDays(Program.WEEK_DAY,Day.MONDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.TUESDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.WEDNESDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.THURSDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.FRIDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.SATURDAY,false);
-						addWorkingDays(Program.WEEK_DAY,Day.SUNDAY,false);
-						
-						
-						//weekend is equal to 1
-						addWorkingDays(Program.WEEK_END,Day.MONDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.TUESDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.WEDNESDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.THURSDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.FRIDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.SATURDAY,false);
-						addWorkingDays(Program.WEEK_END,Day.SUNDAY,false);
-						
-						System.out.println("Data added to " + tableName);
-					}
+					preparedStmt.execute();
+					
+					System.out.println("Created Table " + tableName);
+					//weekday is equal to 0
+					addWorkingDays(Program.WEEK_DAY,Day.MONDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.TUESDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.WEDNESDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.THURSDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.FRIDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.SATURDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.SUNDAY,false);
+					
+					
+					//weekend is equal to 1
+					addWorkingDays(Program.WEEK_END,Day.MONDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.TUESDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.WEDNESDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.THURSDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.FRIDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.SATURDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.SUNDAY,false);
+					
+					System.out.println("Data added to " + tableName);
+					
 				}
 				else
 				{
@@ -370,17 +369,18 @@ public class QueriesOfWorkingDays
 		}
 		return null;
 	}
-	public static boolean updateWorkingDays(int id,boolean isTrue)
+	public static boolean updateWorkingDays(int type,int day,boolean isTrue)
 	{
 			if(DatabaseHandler.conn != null)
 			{
-				String query = " UPDATE WorkingDays SET isSelected=(?) WHERE Id=(?)";
+				String query = " UPDATE WorkingDays SET isSelected=(?) WHERE Type=(?) AND Day=(?)";
 
 			    try
 			    {
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 					preparedStmt.setString(1,String.valueOf(isTrue));
-					preparedStmt.setInt(2, id);
+					preparedStmt.setInt(2, type);
+					preparedStmt.setInt(3, day);
 					preparedStmt.execute();
 				} 
 			    catch (SQLException e)
@@ -395,7 +395,7 @@ public class QueriesOfWorkingDays
 		
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " INSERT INTO WorkingDays(Type,Name,isSelected) VALUES(?,?,?)";
+			String query = " INSERT INTO WorkingDays(Type,Day,isSelected) VALUES(?,?,?)";
 
 		    try
 		    {

@@ -311,7 +311,6 @@ public class WorkingDaysMainController implements Initializable
 				{
 					int day = set.getInt(3);
 					String isSelected = set.getString(4);
-					
 					boolean isSelect = Boolean.parseBoolean(isSelected);
 					
 						if(day == Day.MONDAY)
@@ -386,31 +385,22 @@ public class WorkingDaysMainController implements Initializable
 	}
 	public void onWorkingDaysUpdateButtonClicked(ActionEvent event)
 	{
-		if(programType == Program.WEEK_DAY)
+		
+		boolean res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.MONDAY, MondayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.TUESDAY, TuesdayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.WEDNESDAY, WednesdayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.THURSDAY, ThursdayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.FRIDAY, FridayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.SATURDAY, SaturdayCombo.isSelected());
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.SUNDAY, SundayCombo.isSelected());
+		if(res)
 		{
-			boolean res = QueriesOfWorkingDays.updateWorkingDays(1, MondayCombo.isSelected());
-			if(res)
-			{
-				showAlert("Success");
-				setCheckBoxes();
-			}
-			else
-			{
-				showAlert("Failed");
-			}
+			showAlert("Success");
+			setCheckBoxes();
 		}
 		else
 		{
-			boolean res = QueriesOfWorkingDays.updateWorkingDays(8, MondayCombo.isSelected());
-			if(res)
-			{
-				showAlert("Success");
-				setCheckBoxes();
-			}
-			else
-			{
-				showAlert("Failed");
-			}
+			showAlert("Failed");
 		}
 		
 	}
