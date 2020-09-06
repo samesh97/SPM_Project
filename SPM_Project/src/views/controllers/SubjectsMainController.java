@@ -49,7 +49,7 @@ public class SubjectsMainController implements Initializable  {
 
 	public void  onViewAllSubjectsAddClicked(ActionEvent event) 
 	{
-		System.out.println("Vuew all Subjects clicked");
+		System.out.println("View all Subjects clicked");
 		Scene scene = btn_ViewAllSubjectsAdd.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsView.fxml");

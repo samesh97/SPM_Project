@@ -157,6 +157,37 @@ public class LecturersMainController implements Initializable{
 			ObservableList<String> department_data = FXCollections.observableArrayList();
 			
 			department_data.add("none");
+			department_data.add("Computer Science& Software Engineering");
+			department_data.add("Cyber Security");
+			department_data.add("Information Technology");
+			department_data.add("Information Systems Engineering");
+			department_data.add("Interactive Media");
+			department_data.add("Data Science");
+			department_data.add("Computer Systems & Network Engineering");
+			
+			department_data.add("Civil Engineering");
+			department_data.add("Electrical & Electronic Engineering");
+			department_data.add("Materials Engineering");
+			department_data.add("Mechanical Engineering");
+			department_data.add("Mechatronics Engineering");
+			department_data.add("Quanity Serveying");
+			
+			department_data.add("Business Analytics");
+			department_data.add("Accounting & Finance");
+			department_data.add("Human Capital Mangement");
+			department_data.add("Quality Management");
+			department_data.add("Logistics & Supply Chain Management");
+			department_data.add("Management Information Systems");
+			
+			department_data.add("Business Analytics");
+			department_data.add("Accounting & Finance");
+			department_data.add("Human Capital Mangement");
+			department_data.add("Quality Management");
+			department_data.add("Logistics & Supply Chain Management");
+			department_data.add("Management Information Systems");
+			
+			department_data.add("Architecture");
+			
 			add_Department.setItems(null);
 			add_Department.setItems(department_data);
 	

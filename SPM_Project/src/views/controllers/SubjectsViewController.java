@@ -59,10 +59,7 @@ public class SubjectsViewController implements Initializable  {
 	private TableColumn<Subject,Integer>  column_LabHrs;
 	@FXML
 	private TableColumn<Subject,Integer>  column_EvaluationHrs;
-	@FXML
-	private TableColumn<Subject,Button>   column_Update;
-	@FXML
-	private TableColumn <Subject,Button> column_Delete;
+	
 	
 	@FXML
 	private TextField search_Subject;
@@ -85,11 +82,40 @@ public class SubjectsViewController implements Initializable  {
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsUpdate.fxml");
 		
-		String Subjectid = getSelectedRecord();
+	/*	String Subjectid = getSelectedRecord();
 		
+		Subject sub = table_ViewSubjects.getSelectionModel().getSelectedItem();
+		System.out.println(sub.getName()); 
+		String subjectCode= sub.getSubjectCode();
+		String name =sub.getName();
+		int offeredYear=sub.getOfferedYear();
+		int offeredSemester =sub.getOfferedSemester();
+		int lectureHours=sub.getLectureHours();
+		int tutorialHours=sub.getTutorialHours();
+		int labHours=sub.getLabHours();
+		int evaluationHours=sub.getEvaluationHours();
+		
+		sendDetails(subjectCode,name,offeredYear,offeredSemester,lectureHours,tutorialHours,labHours,evaluationHours);
+		*/
+		
+	
+	}
+	
+	/*public void sendDetails(String subjectCode,String name,int offeredYear,int offeredSemester,int lectureHours,int tutorialHours,int labHours,int evaluationHours) {
+		Subject sub = table_ViewSubjects.getSelectionModel().getSelectedItem();
+
+	     subjectCode= sub.getSubjectCode();
+		 name =sub.getName();
+		 offeredYear=sub.getOfferedYear();
+		 offeredSemester =sub.getOfferedSemester();
+		 lectureHours=sub.getLectureHours();
+		 tutorialHours=sub.getTutorialHours();
+		 labHours=sub.getLabHours();
+		 evaluationHours=sub.getEvaluationHours();
 		
 	}
-
+*/
+	
 	
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
@@ -186,8 +212,8 @@ public class SubjectsViewController implements Initializable  {
 		column_TutorialHrs.setCellValueFactory(new PropertyValueFactory<Subject,Integer>("tutorialHours"));
 		column_LabHrs.setCellValueFactory(new PropertyValueFactory<Subject,Integer>("labHours"));
 		column_EvaluationHrs.setCellValueFactory(new PropertyValueFactory<Subject,Integer>("evaluationHours"));
-		column_Update.setCellValueFactory(new PropertyValueFactory<Subject,Button>("buttonUpdate"));
-		column_Delete.setCellValueFactory(new PropertyValueFactory<Subject,Button>("buttonDelete"));
+		//column_Update.setCellValueFactory(new PropertyValueFactory<Subject,Button>("buttonUpdate"));
+		//column_Delete.setCellValueFactory(new PropertyValueFactory<Subject,Button>("buttonDelete"));
 		
 		
 	}
@@ -215,8 +241,7 @@ public class SubjectsViewController implements Initializable  {
 					sub.setTutorialHours(set.getInt(6));
 					sub.setLabHours(set.getInt(7));
 					sub.setEvaluationHours(set.getInt(8));
-					sub.setButtonUpdate(buttonUpdate);
-					sub.setButtonDelete(buttonDelete);
+					
 					
 					
 					list.add(sub);
