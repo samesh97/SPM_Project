@@ -1,18 +1,27 @@
 package views.controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import database.DatabaseHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import listeners.OnTaskCompleteListener;
 
-public class MainController implements Initializable
+public class MainController implements Initializable,OnTaskCompleteListener
 {
 	@FXML
 	private AnchorPane controllerPane;
@@ -37,6 +46,13 @@ public class MainController implements Initializable
 	@FXML
 	private Button btn_time_table;
 	
+	private VBox progressDialogVBox;
+	
+	@FXML
+	private ImageView successFailedIcon;
+	@FXML
+	private Text successFailedText;
+	
 	
 
 	@Override
@@ -45,6 +61,20 @@ public class MainController implements Initializable
 		//start default when load the FXML
 		highlightClickedButton(btn_students);
 		changeCenterContent("../StudentsMain.fxml");
+		
+		
+		 showProgressDialog(controllerPane);
+		 
+		 //connect to the database
+		 
+		 Runnable r = new Runnable() 
+		 {
+	         public void run()
+	         {
+	        	 DatabaseHandler.makeConnection(MainController.this);
+	         }
+	     };
+	     new Thread(r).start();
 	}
 	
 	public void onStudentButtonClicked(ActionEvent event)
@@ -101,24 +131,7 @@ public class MainController implements Initializable
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
-		
-		
-//		
-//		Parent root;
-//		try
-//		{
-//			root = FXMLLoader.load(getClass().getResource(fxmlFileName));
-//			controllerPane.getChildren().clear();
-//			controllerPane.getChildren().add(root);
-//		} 
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
+
 	}
 	public void highlightClickedButton(Button button)
 	{
@@ -135,6 +148,39 @@ public class MainController implements Initializable
 		
 		
 		button.setDefaultButton(true);
+	}
+	public void showProgressDialog(AnchorPane root)
+	{
+		 ProgressIndicator pi = new ProgressIndicator();
+		 progressDialogVBox = new VBox(pi);
+		 progressDialogVBox.setAlignment(Pos.CENTER);
+         
+		 AnchorPane.setTopAnchor(progressDialogVBox, 0.0);
+		 AnchorPane.setRightAnchor(progressDialogVBox, 0.0);
+		 AnchorPane.setLeftAnchor(progressDialogVBox, 0.0);
+		 AnchorPane.setBottomAnchor(progressDialogVBox, 0.0);
+         root.getChildren().add(progressDialogVBox);
+	}
+
+	@Override
+	public void onFinished(boolean isSuccess)
+	{
+		progressDialogVBox.setVisible(false);
+		if(isSuccess)
+		{
+			File file = new File("src/media/success.png");
+		    Image image = new Image(file.toURI().toString());
+			successFailedIcon.setImage(image);
+			successFailedText.setText("Connected");
+		}
+		else
+		{
+			File file = new File("src/media/failed.png");
+		    Image image = new Image(file.toURI().toString());
+			successFailedIcon.setImage(image);
+			successFailedText.setText("No Internet");
+		}
+		
 	}
 
 

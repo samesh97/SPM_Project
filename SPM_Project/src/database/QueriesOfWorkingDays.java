@@ -2,7 +2,6 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -33,7 +32,7 @@ public class QueriesOfWorkingDays
 				}
 				else
 				{
-					System.out.println("Table " + tableName + " Already Exists");
+					System.out.println("Table " + tableName + " already exists");
 				}
 			} 
 			catch (SQLException e)
@@ -131,7 +130,6 @@ public class QueriesOfWorkingDays
 					//insert
 					String query = " INSERT into WorkingDaysAndHours(Type,NumberOfWorkingDays)" + " VALUES (?,?)";
 
-					 
 				    try
 				    {
 						PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
