@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.WorkingDaysMainController">
+<AnchorPane fx:id="workingDaysMainPane" prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.WorkingDaysMainController">
    <children>
       <Label alignment="CENTER" layoutX="171.0" layoutY="14.0" prefHeight="38.0" prefWidth="478.0" text="Working Days &amp; Hours " AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <VBox layoutX="388.0" layoutY="74.0" prefHeight="574.0" prefWidth="418.0" style="-fx-background-color: #F1F1F1;" stylesheets="@../application/application.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="74.0">
+      <VBox fx:id="contentVBox" layoutX="388.0" layoutY="74.0" prefHeight="574.0" prefWidth="418.0" style="-fx-background-color: #F1F1F1;" stylesheets="@../application/application.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="74.0">
          <children>
             <HBox alignment="CENTER" prefHeight="81.0" prefWidth="810.0">
                <children>
@@ -99,7 +99,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Button mnemonicParsing="false" onAction="#onWorkingDaysUpdateButtonClicked" prefHeight="31.0" prefWidth="77.0" text="Add">
+                  <Button mnemonicParsing="false" onAction="#onWorkingDaysUpdateButtonClicked" prefHeight="31.0" prefWidth="77.0" text="Update">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

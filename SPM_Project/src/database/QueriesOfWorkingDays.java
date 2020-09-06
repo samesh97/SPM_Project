@@ -7,10 +7,11 @@ import com.mysql.jdbc.PreparedStatement;
 
 import enums.Day;
 import enums.Program;
+import listeners.OnTaskCompleteListener;
 
 public class QueriesOfWorkingDays
 {
-	public static void createTables()
+	public static void createTables(OnTaskCompleteListener listener)
 	{
 		
 		if(DatabaseHandler.conn != null)
@@ -24,19 +25,14 @@ public class QueriesOfWorkingDays
 				{
 					String query = "CREATE TABLE WorkingDaysAndHours(Type INTEGER PRIMARY KEY,NumberOfWorkingDays INTEGER,WorkingTimeHours INTEGER,WorkingTimeMinutes INTEGER)";
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
-					boolean res = preparedStmt.execute();
-					if(res)
-					{
-						System.out.println("Created Table " + tableName);
-					}
+					preparedStmt.execute();
+				
 				}
-				else
-				{
-					System.out.println("Table " + tableName + " already exists");
-				}
+				
 			} 
 			catch (SQLException e)
 			{
+			
 				e.printStackTrace();
 			}
 			
@@ -110,6 +106,8 @@ public class QueriesOfWorkingDays
 			{
 				e.printStackTrace();
 			}
+			
+			listener.onFinished(true);
 			
 			
 			
