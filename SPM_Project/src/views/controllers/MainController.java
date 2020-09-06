@@ -46,6 +46,8 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	private Button btn_sessions;
 	@FXML
 	private Button btn_time_table;
+	@FXML
+	private VBox allButtonVBox;
 	
 	private VBox progressDialogVBox;
 	
@@ -156,6 +158,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	}
 	public void showProgressDialog(AnchorPane pane)
 	{
+		disableOrEnableBackground(true);
 		
 		
 		 ProgressIndicator pi = new ProgressIndicator();
@@ -173,6 +176,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	public void onFinished(boolean isSuccess)
 	{
 		progressDialogVBox.setVisible(false);
+		disableOrEnableBackground(false);
 		if(isSuccess)
 		{
 			File file = new File("src/media/success.png");
@@ -188,6 +192,19 @@ public class MainController implements Initializable,OnTaskCompleteListener
 			successFailedText.setText("No Internet");
 		}
 		
+	}
+	public void disableOrEnableBackground(boolean value)
+	{
+		if(value)
+		{
+			controllerPane.setDisable(true);
+			allButtonVBox.setDisable(true);
+		}
+		else
+		{
+			controllerPane.setDisable(false);
+			allButtonVBox.setDisable(false);
+		}
 	}
 
 
