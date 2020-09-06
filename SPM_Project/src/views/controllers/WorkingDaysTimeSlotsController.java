@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import database.QueriesOfWorkingDays;
-import enums.ProgramType;
+import enums.Program;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -148,11 +148,11 @@ public class WorkingDaysTimeSlotsController implements Initializable
 	         
 			if(newValue.equals("Weekend"))
 			{
-				programType = ProgramType.WEEK_END;
+				programType = Program.WEEK_END;
 			}
 			else if(newValue.equals("Weekday"))
 			{
-				programType = ProgramType.WEEK_DAY;
+				programType = Program.WEEK_DAY;
 			}
 	    }
 	    ); 

@@ -6,8 +6,117 @@ import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import enums.Day;
+import enums.Program;
+
 public class QueriesOfWorkingDays
 {
+	public static void createTables()
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			
+			try
+			{
+				String tableName = "WorkingDaysAndHours";
+				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				if(!isCreated)
+				{
+					String query = "CREATE TABLE WorkingDaysAndHours(Type INTEGER PRIMARY KEY,NumberOfWorkingDays INTEGER,WorkingTimeHours INTEGER,WorkingTimeMinutes INTEGER)";
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					boolean res = preparedStmt.execute();
+					if(res)
+					{
+						System.out.println("Created Table " + tableName);
+					}
+				}
+				else
+				{
+					System.out.println("Table " + tableName + " Already Exists");
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+
+			try
+			{
+				String tableName = "WorkingDays";
+				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				if(!isCreated)
+				{
+					String query = "CREATE TABLE WorkingDays(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Day INTEGER,isSelected VARCHAR(50))";
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.execute();
+					
+					System.out.println("Created Table " + tableName);
+					//weekday is equal to 0
+					addWorkingDays(Program.WEEK_DAY,Day.MONDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.TUESDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.WEDNESDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.THURSDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.FRIDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.SATURDAY,false);
+					addWorkingDays(Program.WEEK_DAY,Day.SUNDAY,false);
+					
+					
+					//weekend is equal to 1
+					addWorkingDays(Program.WEEK_END,Day.MONDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.TUESDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.WEDNESDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.THURSDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.FRIDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.SATURDAY,false);
+					addWorkingDays(Program.WEEK_END,Day.SUNDAY,false);
+					
+					System.out.println("Data added to " + tableName);
+					
+				}
+				else
+				{
+					System.out.println("Table " + tableName + " Already Exists");
+				}
+				
+				
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+			try
+			{
+				String tableName = "Slots";
+				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				if(!isCreated)
+				{
+					String query = "CREATE TABLE Slots(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Duration VARCHAR(50),StartTimeInHours INTEGER,StartTimeInMinutes INTEGER)";
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.execute();
+					
+					System.out.println("Created Table " + tableName);
+					
+				}
+				else
+				{
+					System.out.println("Table " + tableName + " Already Exists");
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+	}
+	
 	public static boolean addNumberOfWorkingDays(int type,int value)
 	{
 		
@@ -285,17 +394,18 @@ public class QueriesOfWorkingDays
 		}
 		return null;
 	}
-	public static boolean updateWorkingDays(int id,boolean isTrue)
+	public static boolean updateWorkingDays(int type,int day,boolean isTrue)
 	{
 			if(DatabaseHandler.conn != null)
 			{
-				String query = " UPDATE WorkingDays SET isSelected=(?) WHERE Id=(?)";
+				String query = " UPDATE WorkingDays SET isSelected=(?) WHERE Type=(?) AND Day=(?)";
 
 			    try
 			    {
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 					preparedStmt.setString(1,String.valueOf(isTrue));
-					preparedStmt.setInt(2, id);
+					preparedStmt.setInt(2, type);
+					preparedStmt.setInt(3, day);
 					preparedStmt.execute();
 				} 
 			    catch (SQLException e)
@@ -304,5 +414,49 @@ public class QueriesOfWorkingDays
 				}
 			}
 		return true;
+	}
+	public static boolean addWorkingDays(int type,int day,boolean isSelected)
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT INTO WorkingDays(Type,Day,isSelected) VALUES(?,?,?)";
+
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1, type);
+				preparedStmt.setInt(2, day);
+				preparedStmt.setString(3,String.valueOf(isSelected));
+				
+				preparedStmt.execute();
+				
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
+	public static void dropTable(String name)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = "DROP TABLE " + name;
+
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.execute();
+		
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
 	}
 }
