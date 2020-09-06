@@ -51,6 +51,7 @@
                </VBox.margin>
             </HBox>
             <Button fx:id="btn_UpdateLecturerRecord" mnemonicParsing="false" onAction="#onUpdateLecturerRecord" text="Upate" />
+            <Button fx:id="btn_DeleteLecturerRecord" mnemonicParsing="false" onAction="#onDeleteLecturerRecord" text="Delete" />
             <TableView fx:id="tbl_Lecturer" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="column_LecturerName" prefWidth="-1.0" text="Name" />

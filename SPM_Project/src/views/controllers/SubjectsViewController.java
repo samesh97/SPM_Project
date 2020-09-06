@@ -84,6 +84,10 @@ public class SubjectsViewController implements Initializable  {
 		Scene scene = btn_UpdateRecord.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsUpdate.fxml");
+		
+		String Subjectid = getSelectedRecord();
+		
+		
 	}
 
 	
@@ -235,7 +239,7 @@ public class SubjectsViewController implements Initializable  {
 		String key = search_Subject.getText();
 		if(key == null || key.equals(""))
 		{
-			showAlert("Enter a valid subject code");
+			showAlert("Please enter a subject code");
 		}
 		else
 		{
@@ -272,6 +276,27 @@ public class SubjectsViewController implements Initializable  {
 	}
 	
 	public void onViewAllEnteredSubjects(ActionEvent event) {
+		setTableView();
+	}
+	
+	public String getSelectedRecord() {
+		Subject record = table_ViewSubjects.getSelectionModel().getSelectedItem();
+		if(record==null) {
+			System.out.println("No record is selected");
+			return null;
+		}
+		else {
+			System.out.println("A record is selected");
+			return record.getSubjectCode();
+		}
+		
+	}
+	
+	public void onDeleteRecord(ActionEvent event) {
+		String Subjectid = getSelectedRecord();
+		DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
+			
+		//to refresh the data grid
 		setTableView();
 	}
 	

@@ -154,6 +154,40 @@ public class DatabaseHandler_Lecturers {
 	}
 	
 	
+		    	 
+	
+	
+	
+	public static boolean deleteSubjects(String Subjectid)
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " DELETE FROM Subjects WHERE SubjectCode=(?) ";
+
+			 
+			try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, Subjectid);
+				return preparedStmt.execute();
+				
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			} 
+		    	 
+		}
+		return false;		
+	}
+	
+	
+	
+	
 	
 	//----------------------------Lecturers methods ---------------------------------------------------
 	
@@ -264,7 +298,7 @@ public class DatabaseHandler_Lecturers {
 				} 
 			    catch (SQLException e)
 			    {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 					
 				}    
@@ -298,6 +332,36 @@ public class DatabaseHandler_Lecturers {
 			}
 			return null;	
 		}
+		
+		//the method to delete a selected lecturer
+		public static boolean deleteLecturers(String Lecturerid)
+		{
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " DELETE FROM Lecturers WHERE EmployeeID=(?) ";
+
+				 
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.setString(1, Lecturerid);
+					return preparedStmt.execute();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			    	 
+			}
+			return false;		
+		}
+		
+		
 		
 
 	

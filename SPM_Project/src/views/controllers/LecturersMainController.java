@@ -72,6 +72,8 @@ public class LecturersMainController implements Initializable{
 	  		{
 	  			showAlert("Please fill the empty fields");
 	  		}
+	    
+	    //theresanexception
 	    /*
 	    String Level="";
 	    
@@ -103,7 +105,7 @@ public class LecturersMainController implements Initializable{
 	    }
 	    */
 	    
-	    
+	    else {
 	    try {
 		    boolean result= DatabaseHandler_Lecturers.addLecturers(LecturerName, EmployeeID, Faculty, Department, Center, Building, Level, Rank);
 			if(result== true) {
@@ -117,7 +119,7 @@ public class LecturersMainController implements Initializable{
 	    catch(Exception e) {
 	    	showAlert("Please enter details correctly");
 	    }
-		     
+	    }     
 	}
 	
 	

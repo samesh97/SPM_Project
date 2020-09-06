@@ -51,6 +51,7 @@
                </VBox.margin>
             </HBox>
             <Button fx:id="btn_UpdateRecord" mnemonicParsing="false" onAction="#onUpdateRecord" prefHeight="25.0" prefWidth="48.0" text="Update record" />
+            <Button fx:id="btn_DeleteRecord" mnemonicParsing="false" onAction="#onDeleteRecord" text="Delete" />
             <TableView fx:id="table_ViewSubjects" editable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="259.0" prefWidth="461.0">
               <columns>
                 <TableColumn fx:id="column_SubjectCode" prefWidth="75.0" text="Subject Code" />

@@ -33,11 +33,17 @@ public class LecturersViewController implements Initializable {
     @FXML 
 	private Button btn_ViewAllLecturersUpdate;
     
+	
+	@FXML
+	private TableView<Lecturer> tbl_Lecturer;
+	
 	@FXML
 	private Button btn_UpdateLecturerRecord;
 	
 	@FXML
-	private TableView<Lecturer> tbl_Lecturer;
+	private Button btn_DeleteLecturerRecord;
+	
+	
 	
 
 	
@@ -212,6 +218,29 @@ public class LecturersViewController implements Initializable {
 	
 	public void onViewAllEnteredLecturersClicked(ActionEvent action) {
 		setTableView();
+	}
+	
+	
+	public String getSelectedRecord() {
+		Lecturer record = tbl_Lecturer.getSelectionModel().getSelectedItem();
+		if(record==null) {
+			System.out.println("No record is selected");
+			return null;
+		}
+		else {
+			System.out.println("A redord is selected");
+			return record.getEmployeeID();
+		}
+		
+	}
+	
+	public void onDeleteLecturerRecord(ActionEvent event) {
+		String Lecturerid = getSelectedRecord();
+		DatabaseHandler_Lecturers.deleteLecturers(Lecturerid);
+		
+		//to refresh the data grid
+		setTableView();
+				
 	}
 	
 	
