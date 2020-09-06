@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
@@ -52,6 +53,10 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	private ImageView successFailedIcon;
 	@FXML
 	private Text successFailedText;
+	@FXML
+	private AnchorPane mainAnchorPane;
+
+	
 	
 	
 
@@ -63,7 +68,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		changeCenterContent("../StudentsMain.fxml");
 		
 		
-		 showProgressDialog(controllerPane);
+		 showProgressDialog(mainAnchorPane);
 		 
 		 //connect to the database
 		 
@@ -149,8 +154,10 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		
 		button.setDefaultButton(true);
 	}
-	public void showProgressDialog(AnchorPane root)
+	public void showProgressDialog(AnchorPane pane)
 	{
+		
+		
 		 ProgressIndicator pi = new ProgressIndicator();
 		 progressDialogVBox = new VBox(pi);
 		 progressDialogVBox.setAlignment(Pos.CENTER);
@@ -159,7 +166,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		 AnchorPane.setRightAnchor(progressDialogVBox, 0.0);
 		 AnchorPane.setLeftAnchor(progressDialogVBox, 0.0);
 		 AnchorPane.setBottomAnchor(progressDialogVBox, 0.0);
-         root.getChildren().add(progressDialogVBox);
+         pane.getChildren().add(progressDialogVBox);
 	}
 
 	@Override
@@ -172,12 +179,12 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		    Image image = new Image(file.toURI().toString());
 			successFailedIcon.setImage(image);
 			successFailedText.setText("Connected");
+		
 		}
 		else
 		{
 			File file = new File("src/media/failed.png");
 		    Image image = new Image(file.toURI().toString());
-			successFailedIcon.setImage(image);
 			successFailedText.setText("No Internet");
 		}
 		

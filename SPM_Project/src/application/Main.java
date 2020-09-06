@@ -22,9 +22,6 @@ import javafx.scene.text.Text;
 
 public class Main extends Application{
 	
-	private VBox progressDialogVBox;
-
-	
 	
 	@Override
 	public void start(Stage primaryStage)
