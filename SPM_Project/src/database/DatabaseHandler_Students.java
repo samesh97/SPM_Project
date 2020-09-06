@@ -22,8 +22,7 @@ public static boolean createStudentTable() {
 				e1.printStackTrace();
 			}
 			if(!exists){
-			 //   s = DatabaseHandler.conn.createStatement();
-			 //   s.execute(" CREATE TABLE Subjects (SubjectCode VARCHAR(6),SubjectName VARCHAR(30),OfferedYear int,OfferedSem int,LectureHrs int,TutorialHrs int,LabHrs int,EvaluationHrs int)");
+			 
 				 String query = " CREATE TABLE student (SID int NOT NULL AUTO_INCREMENT,yearSem VARCHAR(10),program VARCHAR(10),groupNo VARCHAR(10),subGroupNo VARCHAR(10),groupId VARCHAR(10),subGroupId VARCHAR(10),PRIMARY KEY (SID))";  
 				 
 				    try

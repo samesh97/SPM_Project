@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Lecturers;
+import database.DatabaseHandler_Students;
 import enums.Subject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -195,7 +196,7 @@ public class SubjectsViewController implements Initializable  {
 	{
 		
 		ObservableList<Subject> list = FXCollections.observableArrayList();
-		ResultSet set = DatabaseHandler_Lecturers.getAllSubjects();
+		ResultSet set = DatabaseHandler_Lecturers.getAllLecturers();
 		if(set != null)
 		{
 			try 
