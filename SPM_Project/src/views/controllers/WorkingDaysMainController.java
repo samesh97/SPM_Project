@@ -10,7 +10,8 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import database.QueriesOfWorkingDays;
-import enums.ProgramType;
+import enums.Day;
+import enums.Program;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,18 +50,21 @@ public class WorkingDaysMainController implements Initializable
 	@FXML
 	private CheckBox MondayCombo,TuesdayCombo,WednesdayCombo,ThursdayCombo,FridayCombo,SaturdayCombo,SundayCombo;
 	
-	private int programType = ProgramType.WEEK_DAY;
+	private int programType = Program.WEEK_DAY;
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
 		
+		QueriesOfWorkingDays.createTables();
+		
 		initializeWorkingDaysTypeCombo();
 		//initializeWorkingDaysCombo();
 		setupNumberOfWorkingDaysRow();
 		setCheckBoxes();
 		
+	
 		
 
 		//listeners
@@ -68,11 +72,11 @@ public class WorkingDaysMainController implements Initializable
 	         
 			if(newValue.equals("Weekend"))
 			{
-				programType = ProgramType.WEEK_END;
+				programType = Program.WEEK_END;
 			}
 			else if(newValue.equals("Weekday"))
 			{
-				programType = ProgramType.WEEK_DAY;
+				programType = Program.WEEK_DAY;
 			}
 			
 			setupNumberOfWorkingDaysRow();
@@ -305,21 +309,19 @@ public class WorkingDaysMainController implements Initializable
 			{
 				while(set.next())
 				{
-					String text = set.getString(3);
+					int day = set.getInt(3);
 					String isSelected = set.getString(4);
 					
 					boolean isSelect = Boolean.parseBoolean(isSelected);
-					if(text != null)
-					{
-						
-						if(text.equals("Monday"))
+					
+						if(day == Day.MONDAY)
 						{
 							if(isSelect)
 								MondayCombo.setSelected(true);
 							else
 								MondayCombo.setSelected(false);
 						}
-						else if(isSelect && text.equals("Tuesday"))
+						else if(day == Day.TUESDAY)
 						{
 							if(isSelect)
 								TuesdayCombo.setSelected(true);
@@ -327,7 +329,7 @@ public class WorkingDaysMainController implements Initializable
 								TuesdayCombo.setSelected(false);
 							
 						}
-						else if(isSelect && text.equals("Wednesday"))
+						else if(day == Day.WEDNESDAY)
 						{
 							if(isSelect)
 								WednesdayCombo.setSelected(true);
@@ -335,7 +337,7 @@ public class WorkingDaysMainController implements Initializable
 								WednesdayCombo.setSelected(false);
 							
 						}
-						else if(isSelect && text.equals("Thursday"))
+						else if(day == Day.THURSDAY)
 						{
 							if(isSelect)
 								ThursdayCombo.setSelected(true);
@@ -343,7 +345,7 @@ public class WorkingDaysMainController implements Initializable
 								ThursdayCombo.setSelected(false);
 							
 						}
-						else if(isSelect && text.equals("Friday"))
+						else if(day == Day.FRIDAY)
 						{
 							if(isSelect)
 								FridayCombo.setSelected(true);
@@ -351,7 +353,7 @@ public class WorkingDaysMainController implements Initializable
 								FridayCombo.setSelected(false);
 							
 						}
-						else if(isSelect && text.equals("Saturday"))
+						else if(day == Day.SATURDAY)
 						{
 							if(isSelect)
 								SaturdayCombo.setSelected(true);
@@ -359,7 +361,7 @@ public class WorkingDaysMainController implements Initializable
 								SaturdayCombo.setSelected(false);
 							
 						}
-						else if(isSelect && text.equals("Sunday"))
+						else if(day == Day.SUNDAY)
 						{
 							if(isSelect)
 								SundayCombo.setSelected(true);
@@ -367,7 +369,7 @@ public class WorkingDaysMainController implements Initializable
 								SundayCombo.setSelected(false);
 							
 						}
-					}
+					
 					
 				}
 			} 
@@ -384,7 +386,7 @@ public class WorkingDaysMainController implements Initializable
 	}
 	public void onWorkingDaysUpdateButtonClicked(ActionEvent event)
 	{
-		if(programType == ProgramType.WEEK_DAY)
+		if(programType == Program.WEEK_DAY)
 		{
 			boolean res = QueriesOfWorkingDays.updateWorkingDays(1, MondayCombo.isSelected());
 			if(res)
