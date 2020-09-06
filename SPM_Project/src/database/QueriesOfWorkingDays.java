@@ -80,12 +80,37 @@ public class QueriesOfWorkingDays
 				{
 					System.out.println("Table " + tableName + " Already Exists");
 				}
+				
+				
 			} 
 			catch (SQLException e)
 			{
 				e.printStackTrace();
 			}
 			
+			
+			try
+			{
+				String tableName = "Slots";
+				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				if(!isCreated)
+				{
+					String query = "CREATE TABLE Slots(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Duration VARCHAR(50),StartTimeInHours INTEGER,StartTimeInMinutes INTEGER)";
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.execute();
+					
+					System.out.println("Created Table " + tableName);
+					
+				}
+				else
+				{
+					System.out.println("Table " + tableName + " Already Exists");
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			
 			
 			

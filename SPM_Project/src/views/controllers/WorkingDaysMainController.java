@@ -404,5 +404,26 @@ public class WorkingDaysMainController implements Initializable
 		}
 		
 	}
+	public void onWorkingDaysDeleteButtonClicked(ActionEvent event)
+	{
+		
+		boolean res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.MONDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.TUESDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.WEDNESDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.THURSDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.FRIDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.SATURDAY, false);
+		res = QueriesOfWorkingDays.updateWorkingDays(programType,Day.SUNDAY, false);
+		if(res)
+		{
+			showAlert("Success");
+			setCheckBoxes();
+		}
+		else
+		{
+			showAlert("Failed");
+		}
+		
+	}
 	
 }
