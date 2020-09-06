@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="507.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.SubjectsUpdateController">
+<AnchorPane prefHeight="507.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.LecturersUpdateController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Subjects" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Lecturers">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -28,7 +28,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Subject Code">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Name">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -36,7 +36,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_SubjectCode" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="update_LecturerName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
@@ -49,9 +49,9 @@
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Name">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Employee ID">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -59,22 +59,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_SubjectName" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="update_EmployeeID" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="77.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Offered Year">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Faculty">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -82,22 +79,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="update_OfferedYear" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <ComboBox fx:id="update_Faculty" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
                   </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Offered Semester">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Department">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -105,22 +99,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="update_OfferedSemester" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <ComboBox fx:id="update_Department" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
                   </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="50.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Lecture Hours">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Center">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -128,25 +119,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_LectureHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <ComboBox fx:id="update_Center" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
-                     <padding>
-                        <Insets right="100.0" />
-                     </padding>
-                  </TextField>
+                  </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="142.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Tutorial Hours">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Building">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -154,22 +139,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_TutorialHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <ComboBox fx:id="update_Building" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
-                  </TextField>
+                  </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="152.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Lab Hours">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Level">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -177,22 +159,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_LabHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <ComboBox fx:id="update_Level" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
-                  </TextField>
+                  </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Evaluation Hours">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Rank">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -200,22 +179,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="update_EvaluationHrs" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="update_Rank" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="8.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="187.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btn_UpdateSubject" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdateSubjectClicked" prefHeight="31.0" prefWidth="3000.0" text="UPDATE">
+                  <Button fx:id="btn_UpdateLecturer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdateLecturerClicked" prefHeight="31.0" prefWidth="3000.0" text="UPDATE">
                      <HBox.margin>
                         <Insets bottom="20.0" left="100.0" right="130.0" top="10.0" />
                      </HBox.margin>

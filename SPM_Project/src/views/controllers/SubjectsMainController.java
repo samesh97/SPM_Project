@@ -1,4 +1,4 @@
-package views.controllers;
+ package views.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,6 +58,10 @@ public class SubjectsMainController implements Initializable  {
 	
 	public void onAddSubjectClicked(ActionEvent event) {
 		System.out.println("Add Subjects clicked");
+		
+		
+		
+		
 		String SubjectCode = add_SubjectCode.getText();
 		String SubjectName = add_SubjectName.getText();
 	    int OfferedYear = (int) add_OfferedYear.getSelectionModel().getSelectedIndex();
@@ -69,11 +73,18 @@ public class SubjectsMainController implements Initializable  {
 	    String LabHours= add_LabHrs.getText();
 	    String EvaluationHours = add_EvaluationHrs.getText();
 	    
+	    if(SubjectCode.equals("") ||SubjectName.equals("")|| OfferedYear <=0 || OfferedSem <=0|| LectureHours.equals("")||TutorialHours.equals("")||LabHours.equals("")||EvaluationHours.equals(""))
+		{
+			showAlert("Please fill the empty fields");
+		}
+	    
 	    int LectureHrs = Integer.parseInt(LectureHours);
 	    int TutorialHrs = Integer.parseInt(TutorialHours);
 	    int LabHrs = Integer.parseInt(LabHours);
 	    int EvaluationHrs = Integer.parseInt(EvaluationHours);
 	    
+	    
+	   
 	    try {
 	    boolean result= DatabaseHandler_Lecturers.addSubjects(SubjectCode, SubjectName, OfferedYear, OfferedSem, LectureHrs, TutorialHrs, LabHrs, EvaluationHrs);
 		if(result== true) {
@@ -85,7 +96,7 @@ public class SubjectsMainController implements Initializable  {
 		
 	    }
 	    catch(Exception e) {
-	    	showAlert("Please enter a number");
+	    	showAlert("Please enter details correctly");
 	    }
 		
 	}
@@ -100,25 +111,27 @@ public class SubjectsMainController implements Initializable  {
 	
 	public void setComboBoxes()
 	{
-		ObservableList<Integer> data = FXCollections.observableArrayList();
+		//offered year combo box
+		ObservableList<Integer> year_data = FXCollections.observableArrayList();
 	
-		
-		data.add(1);
-		data.add(2);
-		data.add(3);
-		data.add(4);
+		year_data.add(1);
+		year_data.add(2);
+		year_data.add(3);
+		year_data.add(4);
 		
 		add_OfferedYear.setItems(null);
-		add_OfferedYear.setItems(data);
+		add_OfferedYear.setItems(year_data);
 		
-		ObservableList<Integer> data2 = FXCollections.observableArrayList();
+		//offered semester combo box
+		ObservableList<Integer> sem_data = FXCollections.observableArrayList();
 	
 		
-		data2.add(1);
-		data2.add(2);
+		sem_data.add(1);
+		sem_data.add(2);
 			
 		add_OfferedSemester.setItems(null);
-		add_OfferedSemester.setItems(data2);
+		add_OfferedSemester.setItems(sem_data);
+		
 	}
 	
 	
@@ -143,10 +156,6 @@ public class SubjectsMainController implements Initializable  {
 		{
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 	
 	}
 
@@ -154,7 +163,7 @@ public class SubjectsMainController implements Initializable  {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
-		// TODO Auto-generated method stub
+		DatabaseHandler_Lecturers.createSubjectTable();
 		setComboBoxes();
 		
 	}
