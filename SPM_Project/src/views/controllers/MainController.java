@@ -73,7 +73,6 @@ public class MainController implements Initializable
 	{
 		highlightClickedButton(btn_lecturers);
 		changeCenterContent("../LecturersMain.fxml");
-		DatabaseHandler.addSampledata();
 	}
 	public void onWorkingDaysButtonClicked(ActionEvent event) 
 	{
