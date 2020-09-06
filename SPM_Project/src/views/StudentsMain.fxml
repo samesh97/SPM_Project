@@ -1,33 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
    <children>
-      <Button fx:id="btn_ViewAllStudent" layoutX="101.0" layoutY="27.0" mnemonicParsing="false" onAction="#onSampleButtonClicked" prefHeight="31.0" prefWidth="433.0" text="View Student Details" />
-      <Label layoutX="223.0" layoutY="74.0" prefHeight="25.0" prefWidth="155.0" text="Add Student Details " textAlignment="CENTER">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="101.0" layoutY="127.0" text="Year and semester" />
-      <Label layoutX="101.0" layoutY="170.0" text="Program" />
-      <Label layoutX="101.0" layoutY="213.0" text="Group number" />
-      <TextField layoutX="266.0" layoutY="208.0" prefHeight="31.0" prefWidth="225.0" />
-      <Label layoutX="101.0" layoutY="258.0" text="Add sub group no" />
-      <TextField layoutX="266.0" layoutY="253.0" prefHeight="31.0" prefWidth="225.0" />
-      <TextField layoutX="266.0" layoutY="295.0" prefHeight="31.0" prefWidth="225.0" />
-      <Label layoutX="101.0" layoutY="300.0" text="Generate group ID " />
-      <Button layoutX="265.0" layoutY="334.0" mnemonicParsing="false" text="Generate group ID" />
-      <Label layoutX="101.0" layoutY="387.0" text="Generate sub group ID " />
-      <TextField layoutX="266.0" layoutY="382.0" prefHeight="31.0" prefWidth="225.0" />
-      <Button layoutX="265.0" layoutY="421.0" mnemonicParsing="false" text="Generate sub group ID" />
-      <Button layoutX="101.0" layoutY="464.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="452.0" text="Add" />
-      <TextField layoutX="266.0" layoutY="165.0" prefHeight="31.0" prefWidth="225.0" />
-      <TextField layoutX="266.0" layoutY="122.0" prefHeight="31.0" prefWidth="225.0" />
+      <VBox layoutX="69.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Students">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="3000.0" text="View All Students">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="100.0" right="130.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Year Semester">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="yearSemText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Program">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="programText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Group No">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="GroupNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Sub Group No">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="SubNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Group ID">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="groupIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="300.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Sub Group ID">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="subIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="addStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#AddNewStudentClicked" prefHeight="31.0" prefWidth="3000.0" text="ADD" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="100.0" right="130.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
    </children>
 </AnchorPane>
