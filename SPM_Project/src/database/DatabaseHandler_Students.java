@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -87,6 +88,29 @@ public static boolean addStudents(String yearSem,String program,String groupNo,S
 	    	 
 	}
 	return false;		
+}
+public static ResultSet getAllStudents()
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM student";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}    
+	 
+	}
+	return null;	
 }
 
 

@@ -31,6 +31,8 @@ public class StudentsMainController
 	
 	@FXML
 	private Button addStudentButton;
+	@FXML
+	private Button viewStudentButton;
 	
 	public void AddNewStudentClicked(ActionEvent event) {
 		
@@ -40,7 +42,6 @@ public class StudentsMainController
 		String subNo = SubNoText.getText();
 		String gId = groupIDText.getText();
 		String subId = subIDText.getText();
-		
 		
 		try {
 		    boolean result= DatabaseHandler_Students.addStudents(yearSem, program, gNo, subNo, gId, subId);
@@ -68,50 +69,35 @@ public class StudentsMainController
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@FXML
-//	private Button btn_ViewAllStudent;
-//	
-//	
-//	
-//	public void onSampleButtonClicked(ActionEvent event)
-//	{
-//		System.out.println("Hello From Student");
-//		Scene scene = btn_ViewAllStudent.getScene();
-//		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-//		changeCenterContent(pane,"../StudentsView.fxml");
-//	}
-//	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
-//	{
-//		
-//		try
-//		{
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
-//			Node _node = loader.load();
-//			AnchorPane.setTopAnchor(_node, 0.0);
-//			AnchorPane.setRightAnchor(_node, 0.0);
-//			AnchorPane.setLeftAnchor(_node, 0.0);
-//			AnchorPane.setBottomAnchor(_node, 0.0);
-//			// container child clear
-//			controllerPane.getChildren().clear();
-//
-//			// new container add
-//			controllerPane.getChildren().add(_node);
-//		}
-//		catch(Exception e)
-//		{
-//			e.printStackTrace();
-//		}
-//		
-//		
-//	}
+	public void viewStudentListClicked(ActionEvent event)
+	{
+		System.out.println("Hello From Student");
+		Scene scene = viewStudentButton.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../StudentsView.fxml");
+	}
+	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	{
+		
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
+			controllerPane.getChildren().clear();
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
