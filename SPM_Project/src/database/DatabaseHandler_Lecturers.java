@@ -154,6 +154,74 @@ public class DatabaseHandler_Lecturers {
 	}
 	
 	
+		    	 
+	
+	
+	//method to delete a selected record in database
+	public static boolean deleteSubjects(String Subjectid)
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " DELETE FROM Subjects WHERE SubjectCode=(?) ";
+
+			 
+			try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, Subjectid);
+				return preparedStmt.execute();
+				
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			} 
+		    	 
+		}
+		return false;		
+	}
+	
+	//method to update a record in database
+	public static boolean updateSubjects(String SubjectCode,String SubjectName,int OfferedYear,int OfferedSem,int LectureHrs,int TutorialHrs,int LabHrs,int EvaluationHrs)
+	{
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " UPDATE Subjects SubjectCode=(?),SubjectName=(?),OfferedYear=(?),OfferedSem=(?),LectureHrs=(?),TutorialHrs=(?),LabHrs=(?),EvaluationHrs=(?) WHERE SubjectCode=(?) ";
+
+			 
+			try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, SubjectCode);
+				preparedStmt.setString(2, SubjectName);
+				preparedStmt.setInt(3, OfferedYear);
+				preparedStmt.setInt(4, OfferedSem);
+				preparedStmt.setInt(5, LectureHrs);
+				preparedStmt.setInt(6, TutorialHrs);
+				preparedStmt.setInt(7, LabHrs);
+				preparedStmt.setInt(8, EvaluationHrs);
+				preparedStmt.setString(9, SubjectCode);
+				return preparedStmt.execute();
+				
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			} 
+		    	 
+		}
+		return false;		
+	}
+	
+	
 	
 	//----------------------------Lecturers methods ---------------------------------------------------
 	
@@ -264,7 +332,7 @@ public class DatabaseHandler_Lecturers {
 				} 
 			    catch (SQLException e)
 			    {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 					
 				}    
@@ -298,6 +366,36 @@ public class DatabaseHandler_Lecturers {
 			}
 			return null;	
 		}
+		
+		//the method to delete a selected lecturer
+		public static boolean deleteLecturers(String Lecturerid)
+		{
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " DELETE FROM Lecturers WHERE EmployeeID=(?) ";
+
+				 
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.setString(1, Lecturerid);
+					return preparedStmt.execute();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			    	 
+			}
+			return false;		
+		}
+		
+		
 		
 
 	

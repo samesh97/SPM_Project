@@ -49,7 +49,7 @@ public class SubjectsMainController implements Initializable  {
 
 	public void  onViewAllSubjectsAddClicked(ActionEvent event) 
 	{
-		System.out.println("Vuew all Subjects clicked");
+		System.out.println("View all Subjects clicked");
 		Scene scene = btn_ViewAllSubjectsAdd.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsView.fxml");
@@ -78,13 +78,14 @@ public class SubjectsMainController implements Initializable  {
 			showAlert("Please fill the empty fields");
 		}
 	    
+	    else {
+	    
 	    int LectureHrs = Integer.parseInt(LectureHours);
 	    int TutorialHrs = Integer.parseInt(TutorialHours);
 	    int LabHrs = Integer.parseInt(LabHours);
 	    int EvaluationHrs = Integer.parseInt(EvaluationHours);
 	    
 	    
-	   
 	    try {
 	    boolean result= DatabaseHandler_Lecturers.addSubjects(SubjectCode, SubjectName, OfferedYear, OfferedSem, LectureHrs, TutorialHrs, LabHrs, EvaluationHrs);
 		if(result== true) {
@@ -99,6 +100,7 @@ public class SubjectsMainController implements Initializable  {
 	    	showAlert("Please enter details correctly");
 	    }
 		
+	    }
 	}
 	
 	

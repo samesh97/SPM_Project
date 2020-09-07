@@ -5,10 +5,15 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
 
 public class LecturersUpdateController implements Initializable{
 
@@ -28,8 +33,14 @@ private ComboBox<String> update_Level;
 
 
 	
-	public void onUpdateLecturerClicked(){
+	public void onUpdateLecturerClicked(ActionEvent event){
 		System.out.println("Update the lecturer details");
+		
+			
+			Scene scene = btn_UpdateLecturer.getScene();
+			AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+			changeCenterContent(pane,"../LecturersView.fxml");
+		
 	}
 	
 	public void setComboBoxes() {
@@ -106,6 +117,30 @@ private ComboBox<String> update_Level;
 		update_Level.setItems(null);
 		update_Level.setItems(level_data);
 	
+	}
+	
+	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	{
+		
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
+			controllerPane.getChildren().clear();
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

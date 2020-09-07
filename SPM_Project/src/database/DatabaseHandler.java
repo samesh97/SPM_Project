@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import listeners.OnTaskCompleteListener;
+
 public class DatabaseHandler
 {
 	//DB4Free
@@ -18,7 +20,7 @@ public class DatabaseHandler
 	
 	public static Connection conn = null;
 	
-	public static void makeConnection()
+	public static void makeConnection(OnTaskCompleteListener listener)
 	{
 		
 		try
@@ -30,10 +32,13 @@ public class DatabaseHandler
 			
 			//FREE SQL HOSTING
 //			conn = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12361005",USER_NAME,PASSWORD);
+			listener.onFinished(true);
 			System.out.println("Successfully Connected to the Database");
+			
 		}
 		catch(Exception e)
 		{
+			listener.onFinished(false);
 			System.out.println("Error while connecting to the Database");
 			e.printStackTrace();
 		}

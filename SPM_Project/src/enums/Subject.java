@@ -13,13 +13,15 @@ public class Subject
 	private int tutorialHours;
 	private int labHours;
 	private int evaluationHours;
-	private Button buttonUpdate;
-	private Button buttonDelete;
+	//private Button buttonUpdate;
+	//private Button buttonDelete;
 	
 	public Subject() {}
 	
 	public Subject(String subjectCode, String name, int offeredYear, int offeredSemester, int lectureHours,
-			int tutorialHours, int labHours, int evaluationHours,Button buttonUpdate,Button buttonDelete) {
+			int tutorialHours, int labHours, int evaluationHours
+			//,Button buttonUpdate,Button buttonDelete
+			) {
 		super();
 		this.subjectCode = subjectCode;
 		this.name = name;
@@ -29,8 +31,8 @@ public class Subject
 		this.tutorialHours = tutorialHours;
 		this.labHours = labHours;
 		this.evaluationHours = evaluationHours;
-		this.buttonUpdate= new Button("UPDATE");
-		this.buttonDelete= new Button("DELETE");
+		//this.buttonUpdate= new Button("UPDATE");
+		//this.buttonDelete= new Button("DELETE");
 	}
 
 	public String getSubjectCode() {
@@ -97,6 +99,7 @@ public class Subject
 		this.evaluationHours = evaluationHours;
 	}
 
+	/*
 	public Button getButtonUpdate() {
 		return buttonUpdate;
 	}
@@ -113,6 +116,7 @@ public class Subject
 		this.buttonDelete = buttonDelete;
 	}
 	
+	*/
 
 	
 	

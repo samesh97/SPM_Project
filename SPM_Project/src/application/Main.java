@@ -5,15 +5,24 @@ import java.awt.GraphicsEnvironment;
 
 import database.DatabaseHandler;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
+import listeners.OnTaskCompleteListener;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 public class Main extends Application{
+	
+	
 	@Override
 	public void start(Stage primaryStage)
 	{
@@ -49,10 +58,8 @@ public class Main extends Application{
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
 		
 			 primaryStage.show();
-			 
-			 
-			 //connect to the database
-			 DatabaseHandler.makeConnection();
+	
+			
 		}
 		catch(Exception e)
 		{
@@ -63,4 +70,5 @@ public class Main extends Application{
 	{
 		launch(args);
 	}
+	
 }
