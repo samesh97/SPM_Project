@@ -111,6 +111,29 @@ public static ResultSet getAllStudents()
 	}
 	return null;	
 }
+public static boolean deleteStudents(String program) {
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " DELETE FROM student WHERE program = '"+program+"'";
 
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.execute();
+			return true;
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+			
+		}    
+	 
+	}
+	return false;
+}
 
 }

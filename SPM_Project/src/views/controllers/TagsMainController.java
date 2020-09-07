@@ -3,10 +3,14 @@ package views.controllers;
 import database.DatabaseHandler_Tags;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 
 public class TagsMainController
 {
@@ -22,8 +26,8 @@ public class TagsMainController
 	
 	@FXML
 	private Button addTagButton;
-//	@FXML
-//	private Button viewStudentButton;
+	@FXML
+	private Button viewTagsButton;
 	
 	public void AddNewTagClicked(ActionEvent event) {
 		
@@ -54,5 +58,37 @@ public class TagsMainController
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setContentText(message);
 		alert.show();
+	}
+	
+	public void viewAllTagsClicked(ActionEvent event)
+	{
+		
+		Scene scene = viewTagsButton.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../TagsView.fxml");
+	}
+	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	{
+		
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
+			controllerPane.getChildren().clear();
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

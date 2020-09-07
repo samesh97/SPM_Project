@@ -64,6 +64,7 @@ public class StudentsMainController
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setContentText(message);
 		alert.show();
+		
 	}
 	
 	

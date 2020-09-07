@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -86,4 +87,52 @@ public static boolean addTags(String tag,String name,String yearSem,String dis )
 	}
 	return false;		
 }
+public static ResultSet getAllTags()
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM tags";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}    
+	 
+	}
+	return null;	
+}
+public static boolean deleteTags(String tag) {
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " DELETE FROM tags WHERE tag= '"+tag+"'";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.execute();
+			return true;
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+			
+		}    
+	 
+	}
+	return false;
+}
+
 }

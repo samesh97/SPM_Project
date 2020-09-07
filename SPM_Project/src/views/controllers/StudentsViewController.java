@@ -14,11 +14,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class StudentsViewController implements Initializable {
 	
@@ -39,6 +45,19 @@ public class StudentsViewController implements Initializable {
 	
 	@FXML
 	private TableView<Student> table_ViewStudent;
+	
+	@FXML
+	private Button delete_button;
+	
+	@FXML
+	private Button updateButton;
+	
+	private String program;
+	private String yearSem;
+	private String groupNo;
+	private String subGroupNo;
+	private String groupId;
+	private String subGroupId;
 	
 	public void mapFields()
 	{
@@ -102,7 +121,77 @@ public class StudentsViewController implements Initializable {
 	
 	//mouse click
 	public void tableMouseClicked() {
-		System.out.println("item selected");
+		Student st = table_ViewStudent.getSelectionModel().getSelectedItem();
+		
+		this.program = st.getProgram();
+		this.yearSem = st.getYearSem();
+		this.groupNo = st.getGroupNo();
+		this.subGroupNo = st.getSubGroupNo();
+		this.groupId = st.getGroupId();
+		this.subGroupId = st.getSubGroupId();
+		
+		
+	}
+	public void deleteRecord() {
+		
+		try {
+		    boolean result= DatabaseHandler_Students.deleteStudents(program);
+			if(result== true) {
+				showAlert("Successfully Deleted");
+			}
+			else {
+				showAlert("Unsuccessful");
+			}
+			mapFields();
+			setTableView();
+	
+	}catch(Exception e) {
+    	showAlert("Error!");
+    }
+		
+	}
+	public void showAlert(String message)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(message);
+		alert.show();
+	}
+	
+	
+	
+	
+	
+	
+	public void updateStudentClicked(ActionEvent event)
+	{
+//		StudentsUpdateController StudentsUpdateController = new StudentsUpdateController();
+//		StudentsUpdateController.UpdateStudentSet(yearSem, program, groupNo, subGroupNo, groupId, subGroupId);
+		Scene scene = updateButton.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../StudentsUpdate.fxml");
+	}
+	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	{
+		
+		try
+		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+			Node _node = loader.load();
+			AnchorPane.setTopAnchor(_node, 0.0);
+			AnchorPane.setRightAnchor(_node, 0.0);
+			AnchorPane.setLeftAnchor(_node, 0.0);
+			AnchorPane.setBottomAnchor(_node, 0.0);
+			// container child clear
+			controllerPane.getChildren().clear();
+
+			// new container add
+			controllerPane.getChildren().add(_node);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 	}
 
