@@ -226,7 +226,7 @@ public class SubjectsViewController implements Initializable  {
 	{
 		
 		ObservableList<Subject> list = FXCollections.observableArrayList();
-		ResultSet set = DatabaseHandler_Lecturers.getAllLecturers();
+		ResultSet set = DatabaseHandler_Lecturers.getAllSubjects();
 		if(set != null)
 		{
 			try 
