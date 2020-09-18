@@ -15,9 +15,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class SubjectsUpdateController implements Initializable  {
@@ -78,9 +80,42 @@ public class SubjectsUpdateController implements Initializable  {
 	public void onUpdateSubjectClicked(ActionEvent event) {
 		System.out.println("Update this record");
 		 
-		//DatabaseHandler_Lecturers.updateSubjects(subjectCode, name, offeredYear, offeredSemester, lectureHours, tutorialHours, labHours, evaluationHours);
-	
-		System.out.println("Update button clicked");
+		String SubjectCode = update_SubjectCode.getText();
+		String SubjectName = update_SubjectName.getText();
+	    int OfferedYear = (int) update_OfferedYear.getSelectionModel().getSelectedIndex();
+	    OfferedYear++;
+	    int OfferedSem = (int) update_OfferedSemester.getSelectionModel().getSelectedIndex();
+	    OfferedSem++;
+	    String LectureHours= update_LectureHrs.getText();
+	    String TutorialHours = update_TutorialHrs.getText();
+	    String LabHours= update_LabHrs.getText();
+	    String EvaluationHours = update_EvaluationHrs.getText();
+	    int LectureHrs = Integer.parseInt(LectureHours);
+	    int TutorialHrs = Integer.parseInt(TutorialHours);
+	    int LabHrs = Integer.parseInt(LabHours);
+	    int EvaluationHrs = Integer.parseInt(EvaluationHours);
+	   
+	    
+		
+		
+		
+		 try {
+			    boolean result= DatabaseHandler_Lecturers.updateSubjects(SubjectCode, SubjectName, OfferedYear, OfferedSem, LectureHrs, TutorialHrs, LabHrs, EvaluationHrs);
+				if(result== true) {
+					showAlert("Successfully updated");
+				}
+				else{
+					showAlert("Unsuccessful update");
+				}
+				
+			    }
+			    catch(Exception e) {
+			    	showAlert("Please enter details correctly");
+			    }
+				
+			    
+		
+		
 		Scene scene = btn_UpdateSubject.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsView.fxml");
@@ -165,11 +200,13 @@ public class SubjectsUpdateController implements Initializable  {
 			}
 		}
 		
-		
-		
+	}
 	
-		System.out.println("");
-		
+	public void showAlert(String message)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(message);
+		alert.show();
 	}
 
 	@Override

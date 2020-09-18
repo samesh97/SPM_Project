@@ -85,12 +85,15 @@ public class SubjectsViewController implements Initializable  {
 	
 	public void onUpdateRecord(ActionEvent event) {
 		System.out.println("Upate a record clicked");
+		
+		String Subjectid = getSelectedRecord();
+		id= Subjectid;
+		
 		Scene scene = btn_UpdateRecord.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsUpdate.fxml");
 		
-		String Subjectid = getSelectedRecord();
-		id= Subjectid;
+		
 		
 	/*	String Subjectid = getSelectedRecord();
 		
@@ -322,6 +325,7 @@ public class SubjectsViewController implements Initializable  {
 		}
 		else {
 			System.out.println("A record is selected");
+			System.out.println("id is "+ record.getSubjectCode());
 			return record.getSubjectCode();
 		}
 		
@@ -331,7 +335,19 @@ public class SubjectsViewController implements Initializable  {
 		
 		String Subjectid = getSelectedRecord();
 		
-		DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
+		boolean result =DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
+		
+		try {
+		if(result==true) {
+			showAlert("Successfully deleted");
+		}
+		else {
+			showAlert("unsuccessful deletion");
+		}
+		}
+		catch(Exception e) {
+			showAlert("error");
+		}
 			
 		//to refresh the data grid
 		setTableView();
