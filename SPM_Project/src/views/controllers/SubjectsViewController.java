@@ -29,6 +29,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubjectsViewController implements Initializable  {
 	
+	
+
+	static String id=null;
+
 	ObservableList<Subject> subjectList = FXCollections.observableArrayList();
 	
 	@FXML 
@@ -69,6 +73,8 @@ public class SubjectsViewController implements Initializable  {
 	
 	
 	
+	
+	
 	public void onAddNewSubjectClicked(ActionEvent event) {
 		System.out.println("Vuew all Subjects clicked");
 		Scene scene = btn_AddNewSubject.getScene();
@@ -82,6 +88,9 @@ public class SubjectsViewController implements Initializable  {
 		Scene scene = btn_UpdateRecord.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../SubjectsUpdate.fxml");
+		
+		String Subjectid = getSelectedRecord();
+		id= Subjectid;
 		
 	/*	String Subjectid = getSelectedRecord();
 		
@@ -319,7 +328,9 @@ public class SubjectsViewController implements Initializable  {
 	}
 	
 	public void onDeleteRecord(ActionEvent event) {
+		
 		String Subjectid = getSelectedRecord();
+		
 		DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
 			
 		//to refresh the data grid
