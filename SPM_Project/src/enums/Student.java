@@ -3,7 +3,7 @@ package enums;
 import javafx.scene.control.Button;
 
 public class Student {
-	
+	private String id;
 	private String yearSem;
 	private String program;
 	private String groupNo;
@@ -93,7 +93,13 @@ public class Student {
 		this.buttonDelete = buttonDelete;
 	}
 	
-	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	
 	

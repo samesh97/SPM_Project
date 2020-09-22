@@ -52,6 +52,7 @@
             </HBox>
             <TableView fx:id="table_ViewStudent" editable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#tableMouseClicked" prefHeight="259.0" prefWidth="461.0">
               <columns>
+                  <TableColumn fx:id="colum_id" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="column_yearSem" prefWidth="75.0" text="Year/Sem" />
                 <TableColumn fx:id="column_program" prefWidth="75.0" text="Program" />
                   <TableColumn fx:id="column_groupNo" prefWidth="75.0" text="Group No" />
