@@ -170,8 +170,8 @@ public class DatabaseHandler_Lecturers {
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 				preparedStmt.setString(1, Subjectid);
-				return preparedStmt.execute();
-				
+				preparedStmt.execute();
+				return true;
 		
 			} 
 		    catch (SQLException e)
@@ -191,7 +191,7 @@ public class DatabaseHandler_Lecturers {
 		
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " UPDATE Subjects SubjectCode=(?),SubjectName=(?),OfferedYear=(?),OfferedSem=(?),LectureHrs=(?),TutorialHrs=(?),LabHrs=(?),EvaluationHrs=(?) WHERE SubjectCode=(?) ";
+			String query = " UPDATE Subjects SET SubjectCode=(?),SubjectName=(?),OfferedYear=(?),OfferedSem=(?),LectureHrs=(?),TutorialHrs=(?),LabHrs=(?),EvaluationHrs=(?) WHERE SubjectCode=(?) ";
 
 			 
 			try
@@ -206,7 +206,8 @@ public class DatabaseHandler_Lecturers {
 				preparedStmt.setInt(7, LabHrs);
 				preparedStmt.setInt(8, EvaluationHrs);
 				preparedStmt.setString(9, SubjectCode);
-				return preparedStmt.execute();
+				preparedStmt.execute();
+				return true;
 				
 		
 			} 
@@ -394,6 +395,10 @@ public class DatabaseHandler_Lecturers {
 			}
 			return false;		
 		}
+		
+		
+//-------------Sessions methods--------------------------------------------------------------
+		
 		
 		
 		

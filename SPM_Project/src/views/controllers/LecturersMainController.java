@@ -60,6 +60,7 @@ public class LecturersMainController implements Initializable{
 		System.out.println("Add lecturer clicked");
 		
 		String LecturerName = add_LecturerName.getText();
+		
 		String EmployeeID = add_EmployeeID.getText();
 	    String Faculty = add_Faculty.getValue();
 	    String Department =  add_Department.getValue();
@@ -73,7 +74,7 @@ public class LecturersMainController implements Initializable{
 	  			showAlert("Please fill the empty fields");
 	  		}
 	    
-	    //theresanexception
+	    //there's an exception
 	    /*
 	    String Level="";
 	    

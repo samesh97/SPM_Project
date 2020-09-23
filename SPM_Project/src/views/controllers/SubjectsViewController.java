@@ -29,6 +29,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class SubjectsViewController implements Initializable  {
 	
+	
+
+	static String id=null;
+
 	ObservableList<Subject> subjectList = FXCollections.observableArrayList();
 	
 	@FXML 
@@ -69,6 +73,8 @@ public class SubjectsViewController implements Initializable  {
 	
 	
 	
+	
+	
 	public void onAddNewSubjectClicked(ActionEvent event) {
 		System.out.println("Vuew all Subjects clicked");
 		Scene scene = btn_AddNewSubject.getScene();
@@ -79,9 +85,27 @@ public class SubjectsViewController implements Initializable  {
 	
 	public void onUpdateRecord(ActionEvent event) {
 		System.out.println("Upate a record clicked");
-		Scene scene = btn_UpdateRecord.getScene();
-		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../SubjectsUpdate.fxml");
+		String Subjectid = getSelectedRecord();
+		id= Subjectid;
+		
+		if(Subjectid==null) {
+			System.out.println("No record is selected");
+			
+		}
+		
+		else {
+
+			Scene scene = btn_UpdateRecord.getScene();
+			AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+			changeCenterContent(pane,"../SubjectsUpdate.fxml");
+			
+		}
+		
+		
+		
+		
+		
+		
 		
 	/*	String Subjectid = getSelectedRecord();
 		
@@ -313,17 +337,40 @@ public class SubjectsViewController implements Initializable  {
 		}
 		else {
 			System.out.println("A record is selected");
+			System.out.println("id is "+ record.getSubjectCode());
 			return record.getSubjectCode();
 		}
 		
 	}
 	
 	public void onDeleteRecord(ActionEvent event) {
+		
 		String Subjectid = getSelectedRecord();
-		DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
+		
+		if(Subjectid==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first");
+		}
+		else {
+			boolean result =DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
 			
-		//to refresh the data grid
-		setTableView();
+			try {
+			if(result==true) {
+				showAlert("Successfully deleted");
+			}
+			else {
+				showAlert("unsuccessful deletion");
+			}
+			}
+			catch(Exception e) {
+				showAlert("error");
+			}
+				
+			//to refresh the data grid
+			setTableView();
+		}
+		
+		
 	}
 	
 	

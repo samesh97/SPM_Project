@@ -111,6 +111,30 @@ public static ResultSet getAllStudents()
 	}
 	return null;	
 }
+public static ResultSet getAllStudents(String Studentid)
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM student WHERE SID=(?)";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, Studentid);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	}
+	return null;	
+}
+
 public static boolean deleteStudents(String program) {
 	if(DatabaseHandler.conn != null)
 	{
@@ -134,6 +158,40 @@ public static boolean deleteStudents(String program) {
 	 
 	}
 	return false;
+}
+public static boolean updateStudents(int id,String yearSem,String program,String groupNo,String subGroupNo,String groupId,String subGroupId)
+{
+	
+	
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " UPDATE student SET yearSem=(?),program=(?),groupNo=(?),subGroupNo=(?),groupId=(?),subGroupId=(?) WHERE SID=(?) ";
+
+		 
+		try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, yearSem);
+			preparedStmt.setString(2, program);
+			preparedStmt.setString(3, groupNo);
+			preparedStmt.setString(4, subGroupNo);
+			preparedStmt.setString(5, groupId);
+			preparedStmt.setString(6, subGroupId);
+			preparedStmt.setInt(7, id);
+			preparedStmt.execute();
+			return true;
+			
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	    	 
+	}
+	return false;		
 }
 
 }

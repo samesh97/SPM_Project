@@ -84,9 +84,21 @@ public class LecturersViewController implements Initializable {
 	
 	public void onUpdateLecturerRecord(ActionEvent event){
 		System.out.println("Update the lecturer details");
-		Scene scene = btn_UpdateLecturerRecord.getScene();
-		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../LecturersUpdate.fxml");
+		String Lecturerid = getSelectedRecord();
+		
+		if(Lecturerid==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first"); 
+			
+		}
+		else {
+			Scene scene = btn_UpdateLecturerRecord.getScene();
+			AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+			changeCenterContent(pane,"../LecturersUpdate.fxml");
+			
+		}
+		
+		 
 	}
 	
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
@@ -236,11 +248,19 @@ public class LecturersViewController implements Initializable {
 	
 	public void onDeleteLecturerRecord(ActionEvent event) {
 		String Lecturerid = getSelectedRecord();
+		
+	
+		if(Lecturerid==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first");
+			
+		}
+		else {
 		DatabaseHandler_Lecturers.deleteLecturers(Lecturerid);
 		
 		//to refresh the data grid
 		setTableView();
-				
+		}
 	}
 	
 	

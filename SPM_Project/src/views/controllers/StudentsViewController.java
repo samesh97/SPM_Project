@@ -1,6 +1,7 @@
 package views.controllers;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -25,11 +27,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class StudentsViewController implements Initializable {
-	
+	static String id=null;
 	ObservableList<Student> subjectList = FXCollections.observableArrayList();
 	
+	@FXML
+	private TableColumn<Student,String> colum_id;
 	@FXML
 	private TableColumn<Student,String> column_yearSem;
 	@FXML
@@ -61,6 +66,7 @@ public class StudentsViewController implements Initializable {
 	
 	public void mapFields()
 	{
+		colum_id.setCellValueFactory(new PropertyValueFactory<Student,String>("id"));
 		column_yearSem.setCellValueFactory(new PropertyValueFactory<Student,String>("yearSem"));
 		column_program.setCellValueFactory(new PropertyValueFactory<Student,String>("program"));
 		column_groupNo.setCellValueFactory(new PropertyValueFactory<Student,String>("groupNo"));
@@ -68,9 +74,6 @@ public class StudentsViewController implements Initializable {
 		column_groupID.setCellValueFactory(new PropertyValueFactory<Student,String>("groupId"));
 		column_subGroupID.setCellValueFactory(new PropertyValueFactory<Student,String>("subGroupId"));
 
-		
-		
-		
 		
 	}
 	private void setTableView() 
@@ -84,7 +87,9 @@ public class StudentsViewController implements Initializable {
 			{
 				while(set.next())
 				{
+					System.out.println(set.getString(1));
 					Student std = new Student();
+					std.setId(set.getString(1));
 					std.setYearSem(set.getString(2));
 					std.setProgram(set.getString(3));
 					std.setGroupNo(set.getString(4));
@@ -162,13 +167,28 @@ public class StudentsViewController implements Initializable {
 	
 	
 	
-	public void updateStudentClicked(ActionEvent event)
+	public void updateStudentClicked(ActionEvent event) throws IOException
 	{
-//		StudentsUpdateController StudentsUpdateController = new StudentsUpdateController();
-//		StudentsUpdateController.UpdateStudentSet(yearSem, program, groupNo, subGroupNo, groupId, subGroupId);
+		String Subjectid = getSelectedRecord();
+		id= Subjectid;
+		
 		Scene scene = updateButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../StudentsUpdate.fxml");
+		
+	}
+	public String getSelectedRecord() {
+		Student record = table_ViewStudent.getSelectionModel().getSelectedItem();
+		if(record==null) {
+			System.out.println("No record is selected");
+			return null;
+		}
+		else {
+			System.out.println("A record is selected");
+			System.out.println("id is "+ record.getId());
+			return record.getId();
+		}
+		
 	}
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
