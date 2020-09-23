@@ -127,6 +127,11 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		highlightClickedButton(btn_statistics);
 		changeCenterContent("../StatisticsMain.fxml");
 	}
+	public void onTimeTableButtonClicked(ActionEvent event)
+	{
+		highlightClickedButton(btn_time_table);
+		changeCenterContent("../TimeTableMain.fxml");
+	}
 	
 	public void changeCenterContent(String fxmlFileName)
 	{

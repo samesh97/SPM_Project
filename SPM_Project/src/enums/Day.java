@@ -9,4 +9,5 @@ public class Day
 	public static final int FRIDAY = 4;
 	public static final int SATURDAY = 5;
 	public static final int SUNDAY = 6;
+	
 }

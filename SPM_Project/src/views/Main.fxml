@@ -77,7 +77,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_time_table" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Time Tables">
+            <Button fx:id="btn_time_table" mnemonicParsing="false" onAction="#onTimeTableButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Time Tables">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
