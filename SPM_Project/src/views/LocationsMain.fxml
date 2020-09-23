@@ -3,23 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.LocationsMainController">
    <children>
-      <TableView layoutX="17.0" layoutY="19.0" prefHeight="414.0" prefWidth="567.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="19.0">
+      <TableView fx:id="tblLocationsView" layoutX="17.0" layoutY="19.0" onMouseClicked="#onTableItemSelect" prefHeight="269.0" prefWidth="567.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="19.0">
         <columns>
-          <TableColumn prefWidth="92.0" text="Building ID" />
-          <TableColumn prefWidth="81.0" text="Block ID" />
-            <TableColumn prefWidth="82.0" text="Room ID" />
-            <TableColumn prefWidth="102.0" text="Room Type" />
-            <TableColumn prefWidth="113.0" text="Update" />
-            <TableColumn prefWidth="82.0" text="Delete" />
+          <TableColumn fx:id="locationId" prefWidth="92.0" text="Location ID" />
+          <TableColumn fx:id="buildingId" prefWidth="126.0" text="Building ID" />
+            <TableColumn fx:id="blockId" prefWidth="114.0" text="Block ID" />
+            <TableColumn fx:id="roomId" prefWidth="110.0" text="Room ID" />
+            <TableColumn fx:id="roomType" prefWidth="124.0" text="Room Type" />
         </columns>
       </TableView>
-      <Button fx:id="btnAddNewLocation" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#onAddNewLocationButtonClicked" prefHeight="25.0" prefWidth="162.0" text="Add New Location" />
-      <Button fx:id="btnDeleteAllLocations" layoutX="212.0" layoutY="446.0" mnemonicParsing="false" onAction="#onDeleteAllLocationsButtonClicked" prefHeight="25.0" prefWidth="177.0" text="Delete All Locations" />
-      <Button fx:id="btnViewAllLocations" layoutX="422.0" layoutY="446.0" mnemonicParsing="false" onAction="#onViewAllLocationsButtonClicked" prefHeight="25.0" prefWidth="162.0" text="View All Locations" />
+      <Button fx:id="btnAddNewLocation" layoutX="17.0" layoutY="386.0" mnemonicParsing="false" onAction="#onAddNewLocationButtonClicked" prefHeight="25.0" prefWidth="162.0" text="Add New Location" />
+      <Button fx:id="btnDeleteLocation" layoutX="402.0" layoutY="386.0" mnemonicParsing="false" onAction="#onDeleteLocationButtonClicked" prefHeight="25.0" prefWidth="177.0" text="Delete Location" />
+      <TextField fx:id="buildingIdText" layoutX="17.0" layoutY="308.0" prefHeight="25.0" prefWidth="254.0" promptText="Building ID" />
+      <TextField fx:id="blockIdText" layoutX="325.0" layoutY="308.0" prefHeight="25.0" prefWidth="254.0" promptText="Block ID" />
+      <TextField fx:id="roomIdText" layoutX="17.0" layoutY="344.0" prefHeight="25.0" prefWidth="254.0" promptText="Room ID" />
+      <TextField fx:id="roomTypeText" layoutX="325.0" layoutY="344.0" prefHeight="25.0" prefWidth="254.0" promptText="Room Type" />
+      <Button fx:id="updateLocationBtn" layoutX="201.0" layoutY="386.0" mnemonicParsing="false" onAction="#onUpdateLocationButtonClicked" prefHeight="25.0" prefWidth="183.0" text="Update Location" />
+      <Button fx:id="btnDeleteAllLocations" layoutX="17.0" layoutY="437.0" mnemonicParsing="false" onAction="#onDeleteAllLocationsButtonClicked" prefHeight="25.0" prefWidth="560.0" text="Delete All Locations" />
    </children>
 </AnchorPane>
