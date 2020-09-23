@@ -72,7 +72,8 @@ public class LocationsMainController implements Initializable {
 	
 	private ObservableList<Location> locations = FXCollections.observableArrayList(
             new Location("NewBuilding", "E-Block", "LE1", "Lab"),
-            new Location("MainBuilding", "C-Block", "A501", "Lecture")
+            new Location("MainBuilding", "C-Block", "A501", "Lecture"),
+            new Location("MainBuilding", "F-Block", "401", "Lecture")
             
     );
 	
