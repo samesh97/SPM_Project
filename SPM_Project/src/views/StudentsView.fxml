@@ -50,7 +50,7 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="table_ViewStudent" editable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#tableMouseClicked" prefHeight="259.0" prefWidth="461.0">
+            <TableView fx:id="table_ViewStudent" editable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="259.0" prefWidth="461.0">
               <columns>
                   <TableColumn fx:id="colum_id" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="column_yearSem" prefWidth="75.0" text="Year/Sem" />
@@ -59,8 +59,6 @@
                   <TableColumn fx:id="column_subGroupNo" minWidth="-Infinity" prefWidth="75.0" text="Sub Group No" />
                   <TableColumn fx:id="column_groupID" prefWidth="75.0" text="Group ID" />
                   <TableColumn fx:id="column_subGroupID" prefWidth="75.0" text="Sub Group ID" />
-                  <TableColumn fx:id="column_Update" prefWidth="75.0" text="Update" />
-                  <TableColumn fx:id="column_Delete" prefWidth="75.0" text="Delete" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="70.0" right="70.0" top="20.0" />

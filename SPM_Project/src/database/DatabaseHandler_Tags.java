@@ -134,5 +134,62 @@ public static boolean deleteTags(String tag) {
 	}
 	return false;
 }
+public static ResultSet getAllTags(String TagID)
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM tags WHERE TID=(?)";
 
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, TagID);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	}
+	return null;	
+}
+
+
+
+public static boolean updateTags(int id,String tag,String name,String yearSem,String dis)
+{
+
+	
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " UPDATE tags SET tag=(?),name=(?),yearSem=(?),dis=(?) WHERE TID=(?) ";
+
+		 
+		try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, tag);
+			preparedStmt.setString(2, name);
+			preparedStmt.setString(3, yearSem);
+			preparedStmt.setString(4, dis);
+			preparedStmt.setInt(5, id);
+			preparedStmt.execute();
+			return true;
+			
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	    	 
+	}
+	return false;		
+}
 }

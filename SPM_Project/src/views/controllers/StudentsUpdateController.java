@@ -44,7 +44,7 @@ public void StudentInit(Student student) {
 //	yearSemText.setText(selectedStudent.getYearSem());
 
 }
-public void onUpdateSubjectClicked(ActionEvent event) {
+public void onUpdateStudentsClicked(ActionEvent event) {
 	System.out.println("Update this record");
 	 
 	String yearSem = yearSemText.getText();

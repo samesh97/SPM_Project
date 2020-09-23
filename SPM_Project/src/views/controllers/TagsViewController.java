@@ -1,5 +1,6 @@
 package views.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,18 +14,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class TagsViewController implements Initializable {
-	
+	static String id=null;
 ObservableList<Tag> subjectList = FXCollections.observableArrayList();
 	
+@FXML
+private TableColumn<Tag,String> column_id ;
 	@FXML
 	private TableColumn<Tag,String> column_tags;
 	@FXML
@@ -36,25 +43,25 @@ ObservableList<Tag> subjectList = FXCollections.observableArrayList();
 	@FXML
 	private Button delete_button;
 	
+	@FXML
+	private Button updateButton;
 	
 	@FXML
-	private TableView<Tag> table_ViewStudent;
+	private TableView<Tag> table_ViewTags;
 	
 	private String tag;
 	
 	public void mapFields()
 	{
+		column_id.setCellValueFactory(new PropertyValueFactory<Tag,String>("id"));
 		column_tags.setCellValueFactory(new PropertyValueFactory<Tag,String>("tag"));
 		column_name.setCellValueFactory(new PropertyValueFactory<Tag,String>("name"));
 		column_yearSem.setCellValueFactory(new PropertyValueFactory<Tag,String>("yearSem"));
 		column_discription.setCellValueFactory(new PropertyValueFactory<Tag,String>("discription"));
 	
-
-		
-		
-		
 		
 	}
+	
 	private void setTableView() 
 	{
 		
@@ -67,6 +74,7 @@ ObservableList<Tag> subjectList = FXCollections.observableArrayList();
 				while(set.next())
 				{
 					Tag std = new Tag();
+					std.setId(set.getString(1));
 					std.setTag(set.getString(2));
 					std.setName(set.getString(3));
 					std.setYearSem(set.getString(4));
@@ -83,8 +91,8 @@ ObservableList<Tag> subjectList = FXCollections.observableArrayList();
 				e.printStackTrace();
 			}
 		}
-		table_ViewStudent.setItems(null);
-		table_ViewStudent.setItems(list);
+		table_ViewTags.setItems(null);
+		table_ViewTags.setItems(list);
 		
 	}
 	public void onViewAllEnteredSubjects(ActionEvent event) {
@@ -103,13 +111,10 @@ ObservableList<Tag> subjectList = FXCollections.observableArrayList();
 	//mouse click
 	
 	public void tableMouseClicked() {
-		Tag tag1 = table_ViewStudent.getSelectionModel().getSelectedItem();
+		Tag tag1 = table_ViewTags.getSelectionModel().getSelectedItem();
 		
 		this.tag = tag1.getTag();
-		System.out.println(tag);
-		System.out.println("asdf");
-		
-		
+	
 	}
 	public void deleteRecord() {
 		
@@ -134,4 +139,55 @@ public void showAlert(String message)
 	alert.setContentText(message);
 	alert.show();
 }
+
+
+
+public void updateTagsClicked(ActionEvent event) throws IOException
+{
+	String TagsID = getSelectedRecord();
+	id= TagsID;
+	
+	Scene scene = updateButton.getScene();
+	AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+	changeCenterContent(pane,"../TagsUpdate.fxml");
+	
+}
+public String getSelectedRecord() {
+	Tag record = table_ViewTags.getSelectionModel().getSelectedItem();
+	if(record==null) {
+		System.out.println("No record is selected");
+		return null;
+	}
+	else {
+		System.out.println("A record is selected");
+		System.out.println("id is "+ record.getId());
+		return record.getId();
+	}
+	
+}
+public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+{
+	
+	try
+	{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+		Node _node = loader.load();
+		AnchorPane.setTopAnchor(_node, 0.0);
+		AnchorPane.setRightAnchor(_node, 0.0);
+		AnchorPane.setLeftAnchor(_node, 0.0);
+		AnchorPane.setBottomAnchor(_node, 0.0);
+		// container child clear
+		controllerPane.getChildren().clear();
+
+		// new container add
+		controllerPane.getChildren().add(_node);
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+	
+	
+}
+
 }

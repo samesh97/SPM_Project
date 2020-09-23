@@ -23,8 +23,8 @@ public static boolean createStudentTable() {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE student (SID int NOT NULL AUTO_INCREMENT,yearSem VARCHAR(10),program VARCHAR(10),groupNo VARCHAR(10),subGroupNo VARCHAR(10),groupId VARCHAR(10),subGroupId VARCHAR(10),PRIMARY KEY (SID))";  
-				 
+				 String query = " CREATE TABLE student (SID int NOT NULL AUTO_INCREMENT,yearSem VARCHAR(30),program VARCHAR(10),groupNo VARCHAR(10),subGroupNo VARCHAR(10),groupId VARCHAR(10),subGroupId VARCHAR(10),PRIMARY KEY (SID))";  
+//				 String query = "drop table student";
 				    try
 				    {
 						PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
@@ -135,10 +135,10 @@ public static ResultSet getAllStudents(String Studentid)
 	return null;	
 }
 
-public static boolean deleteStudents(String program) {
+public static boolean deleteStudents(String id) {
 	if(DatabaseHandler.conn != null)
 	{
-		String query = " DELETE FROM student WHERE program = '"+program+"'";
+		String query = " DELETE FROM student WHERE SID = '"+id+"'";
 
 		 
 	    try

@@ -50,8 +50,9 @@
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="table_ViewStudent" editable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#tableMouseClicked" prefHeight="259.0" prefWidth="461.0">
+            <TableView fx:id="table_ViewTags" editable="true" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#tableMouseClicked" prefHeight="259.0" prefWidth="461.0">
               <columns>
+                  <TableColumn fx:id="column_id" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="column_tags" prefWidth="75.0" text="Tags" />
                 <TableColumn fx:id="column_name" prefWidth="75.0" text="Name" />
                   <TableColumn fx:id="column_yearSem" prefWidth="75.0" text="Year/Sem" />
@@ -74,7 +75,7 @@
                         <Insets bottom="20.0" left="70.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="193.0" text="Update">
+                  <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateTagsClicked" prefHeight="40.0" prefWidth="193.0" text="Update">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

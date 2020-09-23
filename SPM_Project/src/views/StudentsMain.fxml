@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,11 +40,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="yearSemText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
-                     <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ComboBox fx:id="yearSemText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="Select one" />
                </children>
                <padding>
                   <Insets left="100.0" right="150.0" />
@@ -59,7 +56,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="programText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="programText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="8.0" />
                      </HBox.margin>
@@ -79,7 +76,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="GroupNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="GroupNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="10.0" />
                      </HBox.margin>
@@ -99,7 +96,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="SubNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="SubNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="8.0" />
                      </HBox.margin>
@@ -119,7 +116,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="groupIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="groupIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="8.0" />
                      </HBox.margin>
@@ -139,7 +136,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="subIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="2000.0">
+                  <TextField fx:id="subIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
                      <HBox.margin>
                         <Insets bottom="20.0" top="8.0" />
                      </HBox.margin>

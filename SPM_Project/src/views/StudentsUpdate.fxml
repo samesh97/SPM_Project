@@ -151,7 +151,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="updateButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdateSubjectClicked" prefHeight="31.0" prefWidth="3000.0" text="Update" textAlignment="CENTER">
+                  <Button fx:id="updateButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdateStudentsClicked" prefHeight="31.0" prefWidth="3000.0" text="Update" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="20.0" left="100.0" right="130.0" top="10.0" />
                      </HBox.margin>

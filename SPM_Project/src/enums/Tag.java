@@ -2,6 +2,7 @@ package enums;
 
 public class Tag {
 	
+	private String id;
 	private String tag;
 	private String name;
 	private String yearSem;
@@ -10,6 +11,17 @@ public class Tag {
 	public Tag() {
 		
 	}
+	
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 
 	public Tag(String tag, String name, String yearSem, String discription) {
 		super();

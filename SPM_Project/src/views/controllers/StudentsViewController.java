@@ -57,13 +57,7 @@ public class StudentsViewController implements Initializable {
 	@FXML
 	private Button updateButton;
 	
-	private String program;
-	private String yearSem;
-	private String groupNo;
-	private String subGroupNo;
-	private String groupId;
-	private String subGroupId;
-	
+
 	public void mapFields()
 	{
 		colum_id.setCellValueFactory(new PropertyValueFactory<Student,String>("id"));
@@ -87,7 +81,7 @@ public class StudentsViewController implements Initializable {
 			{
 				while(set.next())
 				{
-					System.out.println(set.getString(1));
+					
 					Student std = new Student();
 					std.setId(set.getString(1));
 					std.setYearSem(set.getString(2));
@@ -123,24 +117,12 @@ public class StudentsViewController implements Initializable {
 		setTableView();
 		
 	}
-	
-	//mouse click
-	public void tableMouseClicked() {
-		Student st = table_ViewStudent.getSelectionModel().getSelectedItem();
-		
-		this.program = st.getProgram();
-		this.yearSem = st.getYearSem();
-		this.groupNo = st.getGroupNo();
-		this.subGroupNo = st.getSubGroupNo();
-		this.groupId = st.getGroupId();
-		this.subGroupId = st.getSubGroupId();
-		
-		
-	}
+
 	public void deleteRecord() {
-		
+		String studentID = getSelectedRecord();
+		id= studentID;
 		try {
-		    boolean result= DatabaseHandler_Students.deleteStudents(program);
+		    boolean result= DatabaseHandler_Students.deleteStudents(id);
 			if(result== true) {
 				showAlert("Successfully Deleted");
 			}
@@ -169,8 +151,8 @@ public class StudentsViewController implements Initializable {
 	
 	public void updateStudentClicked(ActionEvent event) throws IOException
 	{
-		String Subjectid = getSelectedRecord();
-		id= Subjectid;
+		String studentID = getSelectedRecord();
+		id= studentID;
 		
 		Scene scene = updateButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
@@ -180,12 +162,9 @@ public class StudentsViewController implements Initializable {
 	public String getSelectedRecord() {
 		Student record = table_ViewStudent.getSelectionModel().getSelectedItem();
 		if(record==null) {
-			System.out.println("No record is selected");
 			return null;
 		}
-		else {
-			System.out.println("A record is selected");
-			System.out.println("id is "+ record.getId());
+		else {		
 			return record.getId();
 		}
 		
