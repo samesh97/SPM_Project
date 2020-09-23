@@ -116,6 +116,23 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		highlightClickedButton(btn_working_days);
 		changeCenterContent("../WorkingDaysMain.fxml");
 	}
+	public void onLocationsButtonClicked(ActionEvent event) 
+	{
+		highlightClickedButton(btn_locations);
+		changeCenterContent("../LocationsMain.fxml");
+	}
+	public void onStatisticsButtonClicked(ActionEvent event) 
+	{
+		System.out.println("Statistics button clicked");
+		highlightClickedButton(btn_statistics);
+		changeCenterContent("../StatisticsMain.fxml");
+	}
+	public void onTimeTableButtonClicked(ActionEvent event)
+	{
+		highlightClickedButton(btn_time_table);
+		changeCenterContent("../TimeTableMain.fxml");
+	}
+	
 	public void changeCenterContent(String fxmlFileName)
 	{
 		

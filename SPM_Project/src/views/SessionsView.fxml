@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.controllers.SessionsViewController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.SessionsViewController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -28,7 +27,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="3000.0" text="Create A Session">
+                  <Button fx:id="btn_CreateASession" mnemonicParsing="false" onAction="#onCreateASessionClicked" prefHeight="31.0" prefWidth="3000.0" text="Create A Session">
                      <HBox.margin>
                         <Insets bottom="15.0" left="120.0" right="120.0" top="15.0" />
                      </HBox.margin>

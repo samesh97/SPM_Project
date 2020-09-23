@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import database.QueriesOfWorkingDays;
+import enums.Duration;
 import enums.Program;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -88,7 +89,7 @@ public class WorkingDaysTimeSlotsController implements Initializable
 				{
 					if(isOneHour)
 					{
-						boolean res = QueriesOfWorkingDays.createNewSlot(programType, "1 Hour", intHours, intMinutes);
+						boolean res = QueriesOfWorkingDays.createNewSlot(programType, Duration.ONE_HOUR, intHours, intMinutes,(intHours + 1),intMinutes);
 						if(res)
 						{
 							showAlert("Created");
@@ -100,15 +101,31 @@ public class WorkingDaysTimeSlotsController implements Initializable
 					}
 					else
 					{
-						boolean res = QueriesOfWorkingDays.createNewSlot(programType, "30 Minutes", intHours, intMinutes);
-						if(res)
+						if(intMinutes == 0)
 						{
-							showAlert("Created");
+							boolean res = QueriesOfWorkingDays.createNewSlot(programType, Duration.THIRTY_MINUTES, intHours, intMinutes,intHours,(intMinutes + 30));
+							if(res)
+							{
+								showAlert("Created");
+							}
+							else
+							{
+								showAlert("Failed to create");
+							}
 						}
 						else
 						{
-							showAlert("Failed to create");
+							boolean res = QueriesOfWorkingDays.createNewSlot(programType, Duration.THIRTY_MINUTES, intHours, intMinutes,(intHours + 1),00);
+							if(res)
+							{
+								showAlert("Created");
+							}
+							else
+							{
+								showAlert("Failed to create");
+							}
 						}
+						
 					}
 				}
 				else

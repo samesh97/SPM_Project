@@ -90,7 +90,7 @@ public class QueriesOfWorkingDays
 				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
 				if(!isCreated)
 				{
-					String query = "CREATE TABLE Slots(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Duration VARCHAR(50),StartTimeInHours INTEGER,StartTimeInMinutes INTEGER)";
+					String query = "CREATE TABLE Slots(Id INTEGER PRIMARY KEY AUTO_INCREMENT,Type INTEGER,Duration INTEGER,StartTimeInHours INTEGER,StartTimeInMinutes INTEGER,EndTimeInHours INTEGER,EndTimeInMinutes INTEGER)";
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 					preparedStmt.execute();
 					
@@ -340,19 +340,21 @@ public class QueriesOfWorkingDays
 		}
 		return false;
 	}
-	public static boolean createNewSlot(int type,String duration,int startHours,int startMinutes)
+	public static boolean createNewSlot(int type,int duration,int startHours,int startMinutes,int endHours,int endMinutes)
 	{
 		if(DatabaseHandler.conn != null)
 		{
 			//insert
-			String query = " INSERT into Slots(Type,Duration,StartTimeInHours,StartTimeInMinutes)" + " VALUES (?,?,?,?)";
+			String query = " INSERT into Slots(Type,Duration,StartTimeInHours,StartTimeInMinutes,EndTimeInHours,EndTimeInMinutes)" + " VALUES (?,?,?,?,?,?)";
 		    try
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 				preparedStmt.setInt(1,type);
-				preparedStmt.setString(2,duration);
+				preparedStmt.setInt(2,duration);
 				preparedStmt.setInt(3,startHours);
 				preparedStmt.setInt(4,startMinutes);
+				preparedStmt.setInt(5,endHours);
+				preparedStmt.setInt(6,endMinutes);
 				
 				preparedStmt.execute();
 				return true;
@@ -368,6 +370,26 @@ public class QueriesOfWorkingDays
 		return false;
 		
 		
+	}
+	public static ResultSet getSlotsByProgram(int type)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Slots WHERE Type=(?) ORDER BY EndTimeInHours ASC";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,type);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 	public static ResultSet getWorkingDays(int type)
 	{

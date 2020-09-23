@@ -109,6 +109,7 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 		ObservableList<Object> data = FXCollections.observableArrayList();
 		data.add("Weekday");
 		data.add("Weekend");
+
 		
 		Platform.runLater(new Runnable()
 		{
@@ -530,6 +531,7 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	@Override
 	public void onFinished(boolean isSuccess)
 	{
+		
 		progressDialogVBox.setVisible(false);
 		initializeWorkingDaysTypeCombo();
 		setupNumberOfWorkingDaysRow();
@@ -545,11 +547,11 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 			@Override
 			public void run() 
 			{
-				
 				numberOfWorkingDaysAddBtn.setText(text);
 			}
 			 
 		});
+		
 	}
 	public void showProgressDialog(AnchorPane pane)
 	{
@@ -565,6 +567,7 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 		 AnchorPane.setLeftAnchor(progressDialogVBox, 0.0);
 		 AnchorPane.setBottomAnchor(progressDialogVBox, 0.0);
          pane.getChildren().add(progressDialogVBox);
+         
 	}
 	private void disableOrEnableBackground(boolean b)
 	{
