@@ -397,6 +397,10 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
+//-------------Sessions methods--------------------------------------------------------------
+		
+		
+		
 		
 
 	
