@@ -371,6 +371,26 @@ public class QueriesOfWorkingDays
 		
 		
 	}
+	public static ResultSet getSlotsByProgram(int type)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Slots WHERE Type=(?) ORDER BY EndTimeInHours ASC";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,type);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 	public static ResultSet getWorkingDays(int type)
 	{
 		
