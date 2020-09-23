@@ -27,4 +27,4 @@
       <Button fx:id="btnDeleteAllLocations" layoutX="17.0" layoutY="437.0" mnemonicParsing="false" onAction="#onDeleteAllLocationsButtonClicked" prefHeight="25.0" prefWidth="560.0" text="Delete All Locations" />
    </children>
 </AnchorPane>
-<!-- fgeg -->
+<!-- fgegrgrgg -->
