@@ -399,10 +399,169 @@ public class DatabaseHandler_Lecturers {
 		
 //-------------Sessions methods--------------------------------------------------------------
 		
-		
+//method to create the sessions table
+		public static boolean createSessionTable() {
+			
+
+			if(DatabaseHandler.conn != null)
+			{
+				
+				String tableName = "Sessions";
+				boolean exists = false;
+				try {
+					exists = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(!exists){
+				 
+					 String query = " CREATE TABLE Sessions (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(30),SubjectCode VARCHAR(10),Tag VARCHAR(20),StudentGroup VARCHAR(10),StuCount int,Duration int)"; 
+					 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							
+							preparedStmt.execute();
+							System.out.println("Created table " + tableName); 
+							return true;
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+							return false;
+						}
+					    
+					
+					}
+				
+				
+				else 
+				{
+					System.out.println("Sessions table already exists");
+				}
+			}
+			
+			return false;
+			
+		}
 		
 		
 
-	
-	
+		public static ResultSet getDropDownLecturers()
+		{
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " SELECT LecturerName FROM Lecturers "; 
+				    
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					return preparedStmt.executeQuery();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			
+			}
+			
+				return null;	
+			
+		}
+		
+		
+		
+		public static ResultSet getDropDownSubjects()
+		{
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " SELECT SubjectName FROM Subjects "; 
+				    
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					return preparedStmt.executeQuery();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			
+			}
+			
+				return null;	
+			
+		}
+		
+		
+		public static ResultSet getDropDownTags()
+		{
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " SELECT name FROM tags "; 
+				    
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					return preparedStmt.executeQuery();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			
+			}
+			
+				return null;	
+			
+		}
+		
+		
+		
+		public static ResultSet getDropDownGroups()
+		{
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " SELECT groupId,subGroupId FROM student "; 
+				    
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					return preparedStmt.executeQuery();
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+				
+					e.printStackTrace();
+					
+				} 
+			
+			}
+			
+				return null;	
+			
+		}
+		
+		
+		
+		
+		
 }
