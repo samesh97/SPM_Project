@@ -13,9 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class SessionsMainController implements Initializable{
@@ -61,7 +63,19 @@ public class SessionsMainController implements Initializable{
 		int StudentCount= Integer.parseInt(studentCount);
 		int Duration =Integer.parseInt(duration);
 		
-		
+		 try {
+			    boolean result= DatabaseHandler_Lecturers.addSession(LecturerName, SubjectName, TagName, GroupName, StudentCount, Duration);
+				if(result== true) {
+					showAlert("Successfully created the session");
+				}
+				else {
+					showAlert("Unsuccessful");
+				}
+				
+			    }
+			    catch(Exception e) {
+			    	showAlert("Please enter details correctly");
+			    }		
 		
 	}
 	
@@ -174,13 +188,17 @@ public class SessionsMainController implements Initializable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-
-		
-		
-		
+	
 		
 	}
 	
+	
+	public void showAlert(String message)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(message);
+		alert.show();
+	}
 	
 	
 	@Override

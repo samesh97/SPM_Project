@@ -450,7 +450,7 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
-
+//retrieve values from lecturers table to set to the lecturers combo box
 		public static ResultSet getDropDownLecturers()
 		{
 			if(DatabaseHandler.conn != null)
@@ -478,7 +478,7 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
-		
+//retrieve values from Subjects table to set to the subjects combo box		
 		public static ResultSet getDropDownSubjects()
 		{
 			if(DatabaseHandler.conn != null)
@@ -505,7 +505,8 @@ public class DatabaseHandler_Lecturers {
 			
 		}
 		
-		
+
+//retrieve values from tags table to set to the tags combo box
 		public static ResultSet getDropDownTags()
 		{
 			if(DatabaseHandler.conn != null)
@@ -533,7 +534,7 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
-		
+//retrieve values from student table to set to the studentGroup combo box		
 		public static ResultSet getDropDownGroups()
 		{
 			if(DatabaseHandler.conn != null)
@@ -561,7 +562,45 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
+//	add sessions to the database
+		
+		public static boolean addSession(String LecturerName ,String SubjectCode,String Tag,String StudentGroup,int StuCount,int Duration)
+		{
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " INSERT into Sessions(LecturerName,SubjectCode,Tag,StudentGroup,StuCount,Duration)" + " VALUES (?,?,?,?,?,?)";
+
+				 
+			    try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					
+					preparedStmt.setString(1, LecturerName);
+					preparedStmt.setString(2, SubjectCode);
+					preparedStmt.setString(3, Tag);
+					preparedStmt.setString(4, StudentGroup);
+					preparedStmt.setInt(5, StuCount);
+					preparedStmt.setInt(6, Duration);
+				
+					
+					preparedStmt.execute();
+					return true;
+				} 
+			    catch (SQLException e)
+			    {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+			    	 
+			}
+			return false;		
+		}
+		
+//delete a selected session
+
 		
 		
-		
+//last bracket	
 }
