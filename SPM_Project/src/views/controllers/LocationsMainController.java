@@ -273,6 +273,11 @@ public class LocationsMainController implements Initializable {
 			
 			//to refresh the data grid
 			setTableView();
+			
+			buildingIdText.setText("");
+			blockIdText.setText("");
+			roomIdText.setText("");
+			roomTypeText.setText("");
 		}
 	}
 	
