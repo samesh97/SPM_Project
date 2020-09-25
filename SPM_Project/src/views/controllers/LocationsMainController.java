@@ -97,26 +97,30 @@ public class LocationsMainController implements Initializable {
 			showAlert("Please fill the empty fields");
 		}
 		
-		try {
-		    boolean result= DatabaseHandler_Locations.addLocations(buildingId, blockId, roomId, roomType);
-			if(result== true) {
-				showAlert("A record is successfully added");
-			}
-			else {
-				showAlert("Unsuccessful");
-			}
-	
-		}catch(Exception e) {
-	    	showAlert("Please enter details correctly");
-	    }
+		else {
+			try {
+			    boolean result= DatabaseHandler_Locations.addLocations(buildingId, blockId, roomId, roomType);
+				if(result== true) {
+					showAlert("A record is successfully added");
+				}
+				else {
+					showAlert("Unsuccessful");
+				}
 		
-		buildingIdText.setText("");
-		blockIdText.setText("");
-		roomIdText.setText("");
-		roomTypeText.setText("");
+			}catch(Exception e) {
+		    	showAlert("Please enter details correctly");
+		    }
+			
+			buildingIdText.setText("");
+			blockIdText.setText("");
+			roomIdText.setText("");
+			roomTypeText.setText("");
+			
+			ResultSet res = DatabaseHandler_Locations.getAllLocations();
+			setTableView();
+		}
 		
-		ResultSet res = DatabaseHandler_Locations.getAllLocations();
-		setTableView();
+		
 	}
 
 	private Location lct;
