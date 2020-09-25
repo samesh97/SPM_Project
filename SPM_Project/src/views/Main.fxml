@@ -62,7 +62,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_connections" mnemonicParsing="false" prefHeight="300.0" prefWidth="233.0" text="Connections">
+            <Button fx:id="btn_connections" mnemonicParsing="false" onAction="#onConnectionsButtonClicked" prefHeight="300.0" prefWidth="233.0" text="Connections">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
