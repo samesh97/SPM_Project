@@ -486,6 +486,25 @@ public class QueriesOfWorkingDays
 		
 		return false;
 	}
+	public static ResultSet getAllSessions()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Sessions";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 	public static void dropTable(String name)
 	{
 		if(DatabaseHandler.conn != null)

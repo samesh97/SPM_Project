@@ -180,6 +180,7 @@ public class TimeTableMainController implements Initializable
 	    			
 	        		timetablegrid.addRow(i, label);
 	        		
+	        		
 	        	
 	        	}
 	        	
@@ -188,6 +189,43 @@ public class TimeTableMainController implements Initializable
 	        catch (SQLException e)
 	        {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+	        
+	        
+	        //load sessions randomly
+	        ResultSet resultSet = QueriesOfWorkingDays.getAllSessions();
+	        int x = 0;
+	        try
+	        {
+				while(resultSet.next())
+				{
+					x++;
+					
+					int SessionId = resultSet.getInt("SessionId");
+					String LecturerName = resultSet.getString("LecturerName");
+					String SubjectCode = resultSet.getString("SubjectCode");
+					String Tag = resultSet.getString("Tag");
+					String StudentGroup = resultSet.getString("StudentGroup");
+					int StuCount = resultSet.getInt("StuCount");
+					int Duration = resultSet.getInt("Duration");
+					
+					
+					String finalString = SubjectCode + " | " + Tag + " | " + StudentGroup;
+					Label label = new Label(finalString);
+					label.setAlignment(Pos.CENTER);
+	    			label.setMaxWidth(Double.MAX_VALUE);
+	    			label.setStyle("-fx-font-weight: bold");
+					
+	    			timetablegrid.add(label, 1, x);
+					
+					
+					
+				}
+			} 
+	        catch (SQLException e)
+	        {
 				e.printStackTrace();
 			}
 	}
