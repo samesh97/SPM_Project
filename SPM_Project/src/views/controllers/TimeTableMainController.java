@@ -98,25 +98,23 @@ public class TimeTableMainController implements Initializable
 	       
 	        
 	        ResultSet set = QueriesOfWorkingDays.getSlotsByProgram(0);
-	        try 
-	        {
-	        	
-				set.last();
-				int size = set.getRow();
-				RowConstraints row = new RowConstraints();
+	        int size = QueriesOfWorkingDays.getSlotsCountByProgram(0);
+	        
+	        
+	        RowConstraints row = new RowConstraints();
+	        //first row is for the days
+	        row.setPercentHeight(100);	  
+	        timetablegrid.getRowConstraints().add(row);
+
+			if(size > 0)
+			{
 				row.setPercentHeight(100 / size);	  
 				for(int i = 0; i < size; i++)
 				{
 					timetablegrid.getRowConstraints().add(row);
 				}
-				
-				set.first();
-			} 
-	        catch (SQLException e1)
-	        {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
+	      
 	        
 	        
 	        
@@ -173,6 +171,8 @@ public class TimeTableMainController implements Initializable
 	        		
 	        		
 	        		String text = "" + sHours + ":" + sMinutes + " - " + eHours + ":" + eMinutes;
+	        		
+	        		
 	        		Label label = new Label(text);
 	        		label.setAlignment(Pos.CENTER);
 	    			label.setMaxWidth(Double.MAX_VALUE);

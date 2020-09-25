@@ -83,6 +83,8 @@ public class QueriesOfWorkingDays
 				e.printStackTrace();
 			}
 			
+		
+			
 			
 			try
 			{
@@ -390,6 +392,31 @@ public class QueriesOfWorkingDays
 			}
 		}
 		return null;
+	}
+	public static int getSlotsCountByProgram(int type)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Slots WHERE Type=(?) ORDER BY EndTimeInHours ASC";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,type);
+				ResultSet set = preparedStmt.executeQuery();
+				
+				set.last();
+				int size = set.getRow();
+				return size;
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		
+		return 0;
 	}
 	public static ResultSet getWorkingDays(int type)
 	{
