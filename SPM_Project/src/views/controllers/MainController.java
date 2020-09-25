@@ -127,6 +127,12 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		highlightClickedButton(btn_statistics);
 		changeCenterContent("../StatisticsMain.fxml");
 	}
+	public void onConnectionsButtonClicked(ActionEvent event) 
+	{
+		System.out.println("Connections button clicked");
+		highlightClickedButton(btn_connections);
+		changeCenterContent("../ConnectionsMain.fxml");
+	}
 	public void onTimeTableButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_time_table);
