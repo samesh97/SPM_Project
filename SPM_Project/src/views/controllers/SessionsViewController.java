@@ -1,8 +1,15 @@
 package views.controllers;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import database.DatabaseHandler_Lecturers;
+import enums.Lecturer;
+import enums.Session;
+import enums.Subject;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +19,14 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -21,70 +34,27 @@ import javafx.stage.Stage;
 
 public class SessionsViewController implements Initializable{
 
-	
+@FXML
+private TextField search_Lec;
 @FXML
 private Button btn_CreateASession;
 @FXML
-private TilePane tilePane;
+private TableView<Session> table_ViewSession;
+ 
 @FXML
-private Label lbl1;
+private TableColumn<Session,String> column_Lec;
 @FXML
-private Label lbl2;
+private TableColumn<Session,String> column_Sub;
 @FXML
-private Label lbl3;
+private TableColumn<Session,String> column_Tag;
 @FXML
-private Label lbl4;
+private TableColumn<Session,String> column_Group;
 @FXML
-private Label lbl5;
+private TableColumn<Session,Integer> column_coun;
 @FXML
-private Label lbl6;
-@FXML
-private Label lbl7;
-@FXML
-private Label lbl8;
-@FXML
-private Label lbl9;
-@FXML
-private Label lbl10;
+private TableColumn<Session,Integer> column_dura;
 
 
-
-public void buildUI() {
-	
-	tilePane.getChildren().add(0, lbl1);
-	tilePane.getChildren().add(0, lbl2);
-	tilePane.getChildren().add(0, lbl3);
-	tilePane.getChildren().add(0, lbl4);
-	tilePane.getChildren().add(0, lbl5);
-	tilePane.getChildren().add(0, lbl6);
-	tilePane.getChildren().add(0, lbl7);
-	tilePane.getChildren().add(0, lbl8);
-	tilePane.getChildren().add(0, lbl9);
-	tilePane.getChildren().add(0, lbl10);
-	
-/*	buttons =new Button[51];
-	for(int i=1;i<51;i++) {
-		Button button=new Button(Integer.toString(i));
-		button.setPrefWidth(50);
-		button.setPrefHeight(50);
-		tilePane.getChildren().add(button);
-		buttons[i]=button;
-		
-		tilePane.setOrientation(Orientation.HORIZONTAL);
-		//tilePane.setOrientation(Orientation.VERTICAL);
-		
-		tilePane.setHgap(5);
-		tilePane.setVgap(5);
-		
-		tilePane.setPrefColumns(18);
-		//tilePane.setPrefRows(18);
-		
-		scene = new Scene(tilePane);
-		stage.setScene(scene);
-		
-	}
-	*/
-}
 
 public void onCreateASessionClicked(ActionEvent event) {
 	System.out.println("Create a session button clicked");
@@ -119,11 +89,177 @@ public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 }
 
 
+public void mapFields()
+{
+	column_Lec.setCellValueFactory(new PropertyValueFactory<Session,String>("Lecturer"));
+	column_Sub.setCellValueFactory(new PropertyValueFactory<Session,String>("Subject"));
+	column_Tag.setCellValueFactory(new PropertyValueFactory<Session,String>("Tag"));
+	column_Group.setCellValueFactory(new PropertyValueFactory<Session,String>("Group"));
+	column_coun.setCellValueFactory(new PropertyValueFactory<Session,Integer>("Count"));
+	column_dura.setCellValueFactory(new PropertyValueFactory<Session,Integer>("Duration"));
+	
+	
+}
+
+
+
+
+private void setTableView() 
+{
+	
+	ObservableList<Session> list = FXCollections.observableArrayList();
+	ResultSet set = DatabaseHandler_Lecturers.getAllSessions();
+	if(set != null)
+	{
+		try 
+		{
+			while(set.next())
+			{
+				Session sess = new Session();
+				sess.setLecturer(set.getString(2));
+				sess.setSubject(set.getString(3));
+				sess.setTag(set.getString(4));
+				sess.setGroup(set.getString(5));
+				sess.setCount(set.getInt(6));
+				sess.setDuration(set.getInt(7));
+				
+				
+				
+				
+				list.add(sess);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	table_ViewSession.setItems(null);
+	table_ViewSession.setItems(list);
+	
+}
+
+
+
+
+public void onFilterByLecturerClicked(ActionEvent event)
+{
+	String key = search_Lec.getText();
+	if(key == null || key.equals(""))
+	{
+		showAlert("Please enter a valid Lecturer");
+	}
+	else
+	{
+		ObservableList<Session> list = FXCollections.observableArrayList();
+		ResultSet set = DatabaseHandler_Lecturers.getAllSessionsFilterByLecturer(key);
+		if(set != null)
+		{
+			try 
+			{
+				while(set.next())
+				{
+					Session sess = new Session();
+					sess.setLecturer(set.getString(2));
+					sess.setSubject(set.getString(3));
+					sess.setTag(set.getString(4));
+					sess.setGroup(set.getString(5));
+					sess.setCount(set.getInt(6));
+					sess.setDuration(set.getInt(7));
+					
+					
+					
+					
+					list.add(sess);
+				}
+			} 
+			catch (SQLException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		table_ViewSession.setItems(null);
+		table_ViewSession.setItems(list);
+		
+	}
+}
+
+/*
+public void onViewAllEnteredSubjects(ActionEvent event) {
+	setTableView();
+}
+
+public String getSelectedRecord() {
+	Subject record = table_ViewSubjects.getSelectionModel().getSelectedItem();
+	if(record==null) {
+		System.out.println("No record is selected");
+		return null;
+	}
+	else {
+		System.out.println("A record is selected");
+		System.out.println("id is "+ record.getSubjectCode());
+		return record.getSubjectCode();
+	}
+	
+}
+
+public void onDeleteRecord(ActionEvent event) {
+	
+	String Subjectid = getSelectedRecord();
+	
+	if(Subjectid==null) {
+		System.out.println("No record is selected");
+		showAlert("Please select a record first");
+	}
+	else {
+		boolean result =DatabaseHandler_Lecturers.deleteSubjects(Subjectid);
+		
+		try {
+		if(result==true) {
+			showAlert("Successfully deleted");
+		}
+		else {
+			showAlert("unsuccessful deletion");
+		}
+		}
+		catch(Exception e) {
+			showAlert("error");
+		}
+			
+		//to refresh the data grid
+		setTableView();
+	}
+	
+	
+}
+*/
+
+
+
+public void onFilterBySubjectClicked() {
+	
+}
+
+public void onFilterByGroupClicked() {
+	
+}
+
+
+public void showAlert(String message)
+{
+	Alert alert = new Alert(AlertType.INFORMATION);
+	alert.setContentText(message);
+	alert.show();
+}
 
 
 @Override
 public void initialize(URL arg0, ResourceBundle arg1) {
 	// TODO Auto-generated method stub
+	mapFields();
+	setTableView();
 	
 }
 

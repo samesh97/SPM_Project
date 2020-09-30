@@ -464,8 +464,9 @@ public class DatabaseHandler_Lecturers {
 					e1.printStackTrace();
 				}
 				if(!exists){
-				 
-					 String query = " CREATE TABLE Sessions (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(30),SubjectCode VARCHAR(10),Tag VARCHAR(20),StudentGroup VARCHAR(10),StuCount int,Duration int)"; 
+					
+					
+					 String query = " CREATE TABLE Sessions (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,Duration int)"; 
 					 
 					    try
 					    {
@@ -646,7 +647,58 @@ public class DatabaseHandler_Lecturers {
 			return false;		
 		}
 		
-//delete a selected session
+//View sessions
+
+				public static ResultSet getAllSessions()
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							
+							e.printStackTrace();
+							
+						}    
+					 
+					}
+					return null;	
+				}
+				
+				
+//method to display only the searched result in the data grid Sessions
+				public static ResultSet getAllSessionsFilterByLecturer(String LecturerName)
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions WHERE LecturerName=(?)";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							preparedStmt.setString(1, LecturerName);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+						} 
+					}
+					return null;	
+				}
+				
 
 		
 		
