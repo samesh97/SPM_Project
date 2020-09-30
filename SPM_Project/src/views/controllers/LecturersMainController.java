@@ -4,11 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Lecturers;
-import enums.Building;
-import enums.Center;
-import enums.Department;
-import enums.Faculty;
-import enums.Level;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,6 +44,8 @@ public class LecturersMainController implements Initializable{
 	private ComboBox<String> add_Building;
 	@FXML
 	private ComboBox<String> add_Level;
+	@FXML
+	private TextField add_Rank;
 	
 	
 	public void onViewAllLecturersClicked(ActionEvent event) {
@@ -65,16 +62,17 @@ public class LecturersMainController implements Initializable{
 		String LecturerName = add_LecturerName.getText();
 		
 		String EmployeeID = add_EmployeeID.getText();
-	    String FacultyStr = add_Faculty.getValue();
-	    String DepartmentStr =  add_Department.getValue();
-	    String CenterStr = add_Center.getValue();
-	    String BuildingStr = add_Building.getValue();
-	    String LevelStr = add_Level.getValue();
+	    String Faculty = add_Faculty.getValue();
+	    String Department =  add_Department.getValue();
+	    String Center= add_Center.getValue();
+	    String Building = add_Building.getValue();
+	    String Level= add_Level.getValue();
+	    String Rank = add_Rank.getText();
 	   
-	    if(LecturerName.equals("") ||EmployeeID.equals("")|| FacultyStr.equals("")|| DepartmentStr.equals("")|| CenterStr.equals("")|| BuildingStr.equals("")|| LevelStr.equals(""))
-	  	{
+	    if(LecturerName.equals("") ||EmployeeID.equals("")|| Faculty.equals("")||Department.equals("")||Center.equals("")||Building.equals("")||Level.equals("")||Rank.equals(""))
+	  		{
 	  			showAlert("Please fill the empty fields");
-	  	}
+	  		}
 	    
 	    //there's an exception
 	    /*
@@ -108,32 +106,20 @@ public class LecturersMainController implements Initializable{
 	    }
 	    */
 	    
-	    else 
-	    {
-		    try
-		    {
-		    	int FacultyId = Faculty.getType(FacultyStr);
-		    	int DepartmentId = Department.getType(DepartmentStr);
-		    	int CenterId = Center.getType(CenterStr);
-		    	int BuildingId = Building.getType(BuildingStr);
-		    	int LevelId = Level.getType(LevelStr);
-		    	String Rank = LevelId + "." + EmployeeID;
-		    	
-			    boolean result= DatabaseHandler_Lecturers.addLecturers(LecturerName, EmployeeID, FacultyStr, DepartmentStr, CenterStr, BuildingStr, LevelStr, Rank,FacultyId,DepartmentId,CenterId,BuildingId,LevelId);
-				if(result)
-				{
-					showAlert("Successfully added");
-				}
-				else
-				{
-					showAlert("Unsuccessful");
-				}
-				
-		    }
-		    catch(Exception e)
-		    {
-		    	showAlert("Please enter details correctly");
-		    }
+	    else {
+	    try {
+		    boolean result= DatabaseHandler_Lecturers.addLecturers(LecturerName, EmployeeID, Faculty, Department, Center, Building, Level, Rank);
+			if(result== true) {
+				showAlert("Successfully added");
+			}
+			else {
+				showAlert("Unsuccessful");
+			}
+			
+	    }
+	    catch(Exception e) {
+	    	showAlert("Please enter details correctly");
+	    }
 	    }     
 	}
 	
@@ -158,7 +144,7 @@ public class LecturersMainController implements Initializable{
 		faculty_data.add("Business");
 		faculty_data.add("Humanities & Sciences");
 		faculty_data.add("School of Architecture");
-		faculty_data.add("Graduate Studies & Research");
+		faculty_data.add("Graduate Studies & Reearch ");
 		
 		add_Faculty.setItems(null);
 		add_Faculty.setItems(faculty_data);
@@ -172,7 +158,7 @@ public class LecturersMainController implements Initializable{
 			ObservableList<String> department_data = FXCollections.observableArrayList();
 			
 			department_data.add("none");
-			department_data.add("Computer Science & Software Engineering");
+			department_data.add("Computer Science& Software Engineering");
 			department_data.add("Cyber Security");
 			department_data.add("Information Technology");
 			department_data.add("Information Systems Engineering");
@@ -185,7 +171,7 @@ public class LecturersMainController implements Initializable{
 			department_data.add("Materials Engineering");
 			department_data.add("Mechanical Engineering");
 			department_data.add("Mechatronics Engineering");
-			department_data.add("Quantity Serveying");
+			department_data.add("Quanity Serveying");
 			
 			department_data.add("Business Analytics");
 			department_data.add("Accounting & Finance");
@@ -193,7 +179,13 @@ public class LecturersMainController implements Initializable{
 			department_data.add("Quality Management");
 			department_data.add("Logistics & Supply Chain Management");
 			department_data.add("Management Information Systems");
-		
+			
+			department_data.add("Business Analytics");
+			department_data.add("Accounting & Finance");
+			department_data.add("Human Capital Mangement");
+			department_data.add("Quality Management");
+			department_data.add("Logistics & Supply Chain Management");
+			department_data.add("Management Information Systems");
 			
 			department_data.add("Architecture");
 			
@@ -223,7 +215,7 @@ public class LecturersMainController implements Initializable{
 		building_data.add("Main Building");
 		building_data.add("New Building");
 		building_data.add("Engineering Building");
-		building_data.add("Business School");
+		building_data.add("Business school");
 		
 				
 		add_Building.setItems(null);

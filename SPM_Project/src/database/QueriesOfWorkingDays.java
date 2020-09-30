@@ -522,6 +522,5 @@ public class QueriesOfWorkingDays
 				e.printStackTrace();
 			}
 		}
-	
 	}
 }

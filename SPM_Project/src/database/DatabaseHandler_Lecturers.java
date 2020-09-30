@@ -247,7 +247,7 @@ public class DatabaseHandler_Lecturers {
 				}
 				if(!exists){
 				 
-					 String query = " CREATE TABLE Lecturers (LecturerName VARCHAR(200),EmployeeID VARCHAR(6) PRIMARY KEY,Faculty VARCHAR(200),Department VARCHAR(200),Center VARCHAR(200),Building VARCHAR(200),Level VARCHAR(200),ranking VARCHAR(200),FacultyId int,DeptId int,CenterId int,BuildingId int,LevelId int)"; 
+					 String query = " CREATE TABLE Lecturers (LecturerName VARCHAR(30),EmployeeID VARCHAR(6)PRIMARY KEY,Faculty VARCHAR(30),Department VARCHAR(30),Center VARCHAR(30),Building VARCHAR(30),Level VARCHAR(30),ranking VARCHAR(30))"; 
 					 
 					    try
 					    {
@@ -282,13 +282,13 @@ public class DatabaseHandler_Lecturers {
 		
 		
 		//method to add lecturers to the database
-		public static boolean addLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank,int FacultyId,int DeptId,int CenterId,int BuildingId,int LevelId)
+		public static boolean addLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank)
 		{
 		
 		
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " INSERT into Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking,FacultyId,DeptId,CenterId,BuildingId,LevelId)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = " INSERT into Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking)" + " VALUES (?,?,?,?,?,?,?,?)";
 
 			 
 		    try
@@ -302,11 +302,6 @@ public class DatabaseHandler_Lecturers {
 				preparedStmt.setString(6, Building);
 				preparedStmt.setString(7, Level);
 				preparedStmt.setString(8, Rank);
-				preparedStmt.setInt(9, FacultyId);
-				preparedStmt.setInt(10, DeptId);
-				preparedStmt.setInt(11, CenterId);
-				preparedStmt.setInt(12, BuildingId);
-				preparedStmt.setInt(13, LevelId);
 				
 				preparedStmt.execute();
 				return true;
