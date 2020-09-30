@@ -9,7 +9,7 @@ import com.mysql.jdbc.PreparedStatement;
 public class DatabaseHandler_Lecturers {
 
 	
-	//----------------------------------Subjects methods---------------------------------------------
+	//----------------------------------Subjects methods-------------------------------------------
 	
 	
 	//method to create the Subjects table in database

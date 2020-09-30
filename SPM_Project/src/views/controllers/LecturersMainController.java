@@ -74,6 +74,37 @@ public class LecturersMainController implements Initializable{
 	  			showAlert("Please fill the empty fields");
 	  		}
 	    
+	    //there's an exception
+	    /*
+	    String Level="";
+	    
+	    switch(l){
+	    	case "Professor":
+	    		Level = "1";
+	    		break;
+	    	case "Assistant Professor":
+	    		Level = "2";
+	    		break;
+	    	case "Senior Lecturer(HG)":
+	    		Level = "3";
+	    		break;
+	    	case "Senior Lecturer":
+	    		Level = "4";
+	    		break;
+	    	case "Lecturer":
+	    		Level = "5";
+	    		break;
+	    	case "Assistant Lecturer":
+	    		Level = "6";
+	    		break;
+	    	case "Instructors":
+	    		Level = "7";
+	    		break;
+	    	default :
+	    		System.out.println("error with the level");
+	    	
+	    }
+	    */
 	    
 	    else {
 	    try {
