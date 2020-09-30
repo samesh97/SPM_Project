@@ -700,7 +700,56 @@ public class DatabaseHandler_Lecturers {
 				}
 				
 
+//method to display results in data grid sessions
+				
+				public static ResultSet getAllSessionsFilterBySubject(String SubjectCode)
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions WHERE SubjectCode=(?)";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							preparedStmt.setString(1, SubjectCode);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+						} 
+					}
+					return null;	
+				}			
 		
-		
+//method to display results in data grid sessions
+				
+				public static ResultSet getAllSessionsFilterByGroup(String StudentGroup)
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions WHERE StudentGroup=(?)";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							preparedStmt.setString(1, StudentGroup);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+						} 
+					}
+					return null;	
+				}			
 //last bracket	
 }
