@@ -31,10 +31,7 @@ public class StudentsMainController implements Initializable
 	private TextField GroupNoText;
 	@FXML
 	private TextField SubNoText;
-	@FXML
-	private TextField groupIDText;
-	@FXML
-	private TextField subIDText;
+	
 	
 	@FXML
 	private Button addStudentButton;
@@ -47,16 +44,17 @@ public class StudentsMainController implements Initializable
 		String program = programText.getText();
 		String gNo = GroupNoText.getText();
 		String subNo = SubNoText.getText();
-		String gId = groupIDText.getText();
-		String subId = subIDText.getText();
+		String gId = yearSem + "." + program + "." + gNo;
+		String subId = yearSem + "." + program + "." + gNo + "." +subNo;
 		
-		if(yearSem == null || program.equals("")||gNo.equals("")||subNo.equals("")||subId.equals("")||gId.equals("")) {
+		if(yearSem == null || program.equals("")||gNo.equals("")||subNo.equals("")) {
 			
 			showAlert("Please enter details correctly");
 		}
 		else {
 			try {
 			    boolean result= DatabaseHandler_Students.addStudents(yearSem, program, gNo, subNo, gId, subId);
+//				boolean result= DatabaseHandler_Students.createStudentTable();
 				if(result== true) {
 					showAlert("Successfully added");
 				}
@@ -78,14 +76,14 @@ public class StudentsMainController implements Initializable
 	
 		ObservableList<String> yearSemester = FXCollections.observableArrayList();
 		
-		yearSemester.add("Year 1 Semester 1");
-		yearSemester.add("Year 1 Semester 2");
-		yearSemester.add("Year 2 Semester 1");
-		yearSemester.add("Year 2 Semester 2");
-		yearSemester.add("Year 3 Semester 1");
-		yearSemester.add("Year 3 Semester 2");
-		yearSemester.add("Year 4 Semester 1");
-		yearSemester.add("Year 4 Semester 2");
+		yearSemester.add("Y1.S1");
+		yearSemester.add("Y1.S2");
+		yearSemester.add("Y2.S1");
+		yearSemester.add("Y2.S2");
+		yearSemester.add("Y3.S1");
+		yearSemester.add("Y3.S2");
+		yearSemester.add("Y4.S1");
+		yearSemester.add("Y4.S2");
 		
 		yearSemText.setItems(null);
 		yearSemText.setItems(yearSemester);

@@ -10,19 +10,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
+<AnchorPane prefHeight="631.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.StudentsMainController">
    <children>
       <VBox layoutX="69.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Students">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="viewStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#viewStudentListClicked" prefHeight="31.0" prefWidth="3000.0" text="View All Students">
+            <Button fx:id="viewStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#viewStudentListClicked" prefHeight="40.0" prefWidth="3000.0" text="View All Students">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Insets bottom="10.0" left="100.0" right="130.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <HBox prefHeight="300.0" prefWidth="200.0">
+            <HBox prefHeight="73.0" prefWidth="600.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Year Semester">
                      <HBox.margin>
@@ -40,13 +40,16 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="yearSemText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="Select one" />
+                  <ComboBox fx:id="yearSemText" prefHeight="40.0" prefWidth="1000.0" promptText="Select one">
+                     <HBox.margin>
+                        <Insets left="47.0" right="8.0" />
+                     </HBox.margin></ComboBox>
                </children>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="300.0" prefWidth="200.0">
+            <HBox prefHeight="72.0" prefWidth="600.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Program">
                      <HBox.margin>
@@ -56,17 +59,20 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="programText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
+                  <TextField fx:id="programText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="1000.0">
                      <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
+                        <Insets left="44.0" right="8.0" />
                      </HBox.margin>
+                     <padding>
+                        <Insets left="22.0" />
+                     </padding>
                   </TextField>
                </children>
                <padding>
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="300.0" prefWidth="200.0">
+            <HBox prefHeight="75.0" prefWidth="600.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Group No">
                      <HBox.margin>
@@ -76,9 +82,9 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="GroupNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
+                  <TextField fx:id="GroupNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="1000.0">
                      <HBox.margin>
-                        <Insets bottom="20.0" top="10.0" />
+                        <Insets left="44.0" right="8.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -86,7 +92,7 @@
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="300.0" prefWidth="200.0">
+            <HBox prefHeight="74.0" prefWidth="600.0">
                <children>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Sub Group No">
                      <HBox.margin>
@@ -96,49 +102,9 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="SubNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
+                  <TextField fx:id="SubNoText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="1000.0">
                      <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="100.0" right="150.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="300.0" prefWidth="200.0">
-               <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Group ID">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="20.0" top="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="groupIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
-                     <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="100.0" right="150.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="300.0" prefWidth="200.0">
-               <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Sub Group ID">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="20.0" top="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="subIDText" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
-                     <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
+                        <Insets left="44.0" right="8.0" />
                      </HBox.margin>
                   </TextField>
                </children>
@@ -148,7 +114,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="addStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#AddNewStudentClicked" prefHeight="31.0" prefWidth="3000.0" text="ADD" textAlignment="CENTER">
+                  <Button fx:id="addStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#AddNewStudentClicked" prefHeight="40.0" prefWidth="3000.0" text="ADD" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets bottom="20.0" left="100.0" right="130.0" top="10.0" />
                      </HBox.margin>

@@ -23,7 +23,7 @@ public static boolean createStudentTable() {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE student (SID int NOT NULL AUTO_INCREMENT,yearSem VARCHAR(30),program VARCHAR(10),groupNo VARCHAR(10),subGroupNo VARCHAR(10),groupId VARCHAR(10),subGroupId VARCHAR(10),PRIMARY KEY (SID))";  
+				 String query = " CREATE TABLE student (SID int NOT NULL AUTO_INCREMENT,yearSem VARCHAR(30),program VARCHAR(10),groupNo VARCHAR(10),subGroupNo VARCHAR(10),groupId VARCHAR(40),subGroupId VARCHAR(40),PRIMARY KEY (SID))";  
 //				 String query = "drop table student";
 				    try
 				    {

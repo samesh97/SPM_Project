@@ -58,11 +58,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameTxt" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0">
-                     <HBox.margin>
-                        <Insets bottom="20.0" top="8.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ComboBox fx:id="nameDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="Select one" />
                </children>
                <padding>
                   <Insets left="100.0" right="150.0" />
