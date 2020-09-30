@@ -37,7 +37,7 @@
                         <Insets right="150.0" />
                      </padding>
                   </TextField>
-                  <Button fx:id="searchbtn" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" prefHeight="40.0" prefWidth="600.0" text="SEARCH">
+                  <Button fx:id="searchbtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="SEARCH">
                      <HBox.margin>
                         <Insets right="20.0" top="15.0" />
                      </HBox.margin>
@@ -69,7 +69,7 @@
             </TableView>
             <HBox prefHeight="59.0" prefWidth="601.0">
                <children>
-                  <Button minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="156.0" text="Add New Subject ">
+                  <Button fx:id="addNewBtn" minHeight="40.0" mnemonicParsing="false" onAction="#addNewSubjectClicked" prefHeight="40.0" prefWidth="156.0" text="Add New Subject ">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -100,5 +100,6 @@
             </HBox>
          </children>
       </VBox>
+      <Button fx:id="exbtn1" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" text="Button" />
    </children>
 </AnchorPane>

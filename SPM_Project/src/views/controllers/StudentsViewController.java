@@ -55,6 +55,10 @@ public class StudentsViewController implements Initializable {
 	
 	@FXML
 	private Button searchbtn;
+	@FXML
+	private Button exbtn1;
+	@FXML
+	private Button addNewBtn;
 
 	public void mapFields()
 	{
@@ -152,11 +156,19 @@ public class StudentsViewController implements Initializable {
 		changeCenterContent(pane,"../StudentsUpdate.fxml");
 		
 	}
+	public void addNewSubjectClicked(ActionEvent event) throws IOException
+	{
+		
+		Scene scene = addNewBtn.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../StudentsMain.fxml");
+		
+	}
 	public void allocateNotAvailbleClicked(ActionEvent event) throws IOException
 	{
 		
 		
-		Scene scene = searchbtn.getScene();
+		Scene scene = exbtn1.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../AddNotAvailableTime.fxml");
 		
