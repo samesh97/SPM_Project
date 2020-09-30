@@ -169,26 +169,6 @@
                   <Insets left="100.0" right="150.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Rank">
-                     <HBox.margin>
-                        <Insets left="20.0" top="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="update_Rank" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="2000.0">
-                     <HBox.margin>
-                        <Insets bottom="8.0" top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="100.0" right="150.0" />
-               </padding>
-            </HBox>
             <HBox layoutX="10.0" layoutY="187.0" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="btn_UpdateLecturer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onUpdateLecturerClicked" prefHeight="31.0" prefWidth="3000.0" text="UPDATE">

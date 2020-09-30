@@ -2,35 +2,32 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.controllers.ConnectionsMainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.ConnectionsMainController">
    <children>
       <Button fx:id="btnViewAllDetails" layoutX="54.0" layoutY="28.0" mnemonicParsing="false" onAction="#onViewAllDetailsButtonClicked" prefHeight="25.0" prefWidth="483.0" text="View All Details">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Text layoutX="54.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID" />
-      <TextField fx:id="roomIdTxt" layoutX="180.0" layoutY="80.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="57.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" />
-      <ComboBox fx:id="tagComboBox" layoutX="180.0" layoutY="123.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="54.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject Code" />
-      <Text layoutX="56.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecturer" />
-      <Text layoutX="53.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group ID" />
-      <TextField fx:id="groupIdTxt" layoutX="180.0" layoutY="246.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="50.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day of Session" />
-      <Text layoutX="53.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Start Time" />
-      <Text layoutX="54.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session End Time" />
-      <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="165.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="203.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="dayOfSessionComboBox" layoutX="180.0" layoutY="285.0" prefHeight="25.0" prefWidth="358.0" />
-      <TextField fx:id="sessionStartTimeTxt" layoutX="180.0" layoutY="328.0" prefHeight="25.0" prefWidth="358.0" />
-      <TextField fx:id="sessionEndTimeTxt" layoutX="180.0" layoutY="367.0" prefHeight="25.0" prefWidth="358.0" />
-      <Button fx:id="btnAddConnection" layoutX="54.0" layoutY="408.0" mnemonicParsing="false" onAction="#onAddConnectionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD" />
+      <Text layoutX="57.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" />
+      <ComboBox fx:id="tagComboBox" layoutX="180.0" layoutY="135.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="57.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject Code" />
+      <Text layoutX="55.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecturer" />
+      <Text layoutX="52.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group ID" />
+      <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="85.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="182.0" prefHeight="25.0" prefWidth="358.0" />
+      <Button fx:id="btnAddConnection" layoutX="54.0" layoutY="333.0" mnemonicParsing="false" onAction="#onAddConnectionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="GENERATE ROOM" />
+      <ComboBox fx:id="groupIdComboBox" layoutX="180.0" layoutY="233.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="53.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id" />
+      <TextField fx:id="roomIdGenerateText" layoutX="180.0" layoutY="383.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="56.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preffered Room" />
+      <ComboBox fx:id="prefferedRoomComboBox" layoutX="180.0" layoutY="282.0" prefHeight="25.0" prefWidth="358.0" />
+      <TextArea fx:id="availabilityTextArea" layoutX="54.0" layoutY="424.0" prefHeight="40.0" prefWidth="483.0" />
    </children>
 </AnchorPane>

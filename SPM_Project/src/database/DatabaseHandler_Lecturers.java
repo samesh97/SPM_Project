@@ -247,7 +247,7 @@ public class DatabaseHandler_Lecturers {
 				}
 				if(!exists){
 				 
-					 String query = " CREATE TABLE Lecturers (LecturerName VARCHAR(30),EmployeeID VARCHAR(6)PRIMARY KEY,Faculty VARCHAR(30),Department VARCHAR(30),Center VARCHAR(30),Building VARCHAR(30),Level VARCHAR(30),ranking VARCHAR(30))"; 
+					 String query = " CREATE TABLE Lecturers (LecturerName VARCHAR(200),EmployeeID VARCHAR(6) PRIMARY KEY,Faculty VARCHAR(200),Department VARCHAR(200),Center VARCHAR(200),Building VARCHAR(200),Level VARCHAR(200),ranking VARCHAR(200),FacultyId int,DeptId int,CenterId int,BuildingId int,LevelId int)"; 
 					 
 					    try
 					    {
@@ -282,13 +282,13 @@ public class DatabaseHandler_Lecturers {
 		
 		
 		//method to add lecturers to the database
-		public static boolean addLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank)
+		public static boolean addLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank,int FacultyId,int DeptId,int CenterId,int BuildingId,int LevelId)
 		{
 		
 		
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " INSERT into Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking)" + " VALUES (?,?,?,?,?,?,?,?)";
+			String query = " INSERT into Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking,FacultyId,DeptId,CenterId,BuildingId,LevelId)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			 
 		    try
@@ -302,6 +302,11 @@ public class DatabaseHandler_Lecturers {
 				preparedStmt.setString(6, Building);
 				preparedStmt.setString(7, Level);
 				preparedStmt.setString(8, Rank);
+				preparedStmt.setInt(9, FacultyId);
+				preparedStmt.setInt(10, DeptId);
+				preparedStmt.setInt(11, CenterId);
+				preparedStmt.setInt(12, BuildingId);
+				preparedStmt.setInt(13, LevelId);
 				
 				preparedStmt.execute();
 				return true;
@@ -397,6 +402,49 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
+//method to update a lecturer
+		public static boolean updateLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank,int FacultyId,int DeptId,int CenterId,int BuildingId,int LevelId)
+		{
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " UPDATE Lecturers SET LecturerName=(?),EmployeeID=(?),Faculty=(?),Department=(?),Center=(?),Building=(?),Level=(?),ranking=(?),FacultyId=(?),DeptId=(?),CenterId=(?),BuildingId=(?),LevelId=(?) WHERE EmployeeID=(?) ";
+				//Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking,FacultyId,DeptId,CenterId,BuildingId,LevelId)
+				 
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.setString(1, LecturerName);
+					preparedStmt.setString(2, EmployeeID);
+					preparedStmt.setString(3, Faculty);
+					preparedStmt.setString(4, Department);
+					preparedStmt.setString(5, Center);
+					preparedStmt.setString(6, Building);
+					preparedStmt.setString(7, Level);
+					preparedStmt.setString(8, Rank);
+					preparedStmt.setInt(9, FacultyId);
+					preparedStmt.setInt(10, DeptId);
+					preparedStmt.setInt(11, CenterId);
+					preparedStmt.setInt(12, BuildingId);
+					preparedStmt.setInt(13, LevelId);
+					
+					preparedStmt.setString(14, EmployeeID);
+					preparedStmt.execute();
+					return true;
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+				} 
+			    	 
+			}
+			return false;		
+		}
+		
 //-------------Sessions methods--------------------------------------------------------------
 		
 //method to create the sessions table
@@ -416,8 +464,9 @@ public class DatabaseHandler_Lecturers {
 					e1.printStackTrace();
 				}
 				if(!exists){
-				 
-					 String query = " CREATE TABLE Sessions (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(30),SubjectCode VARCHAR(10),Tag VARCHAR(20),StudentGroup VARCHAR(10),StuCount int,Duration int)"; 
+					
+					
+					 String query = " CREATE TABLE Sessions (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,Duration int)"; 
 					 
 					    try
 					    {
@@ -598,7 +647,58 @@ public class DatabaseHandler_Lecturers {
 			return false;		
 		}
 		
-//delete a selected session
+//View sessions
+
+				public static ResultSet getAllSessions()
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							
+							e.printStackTrace();
+							
+						}    
+					 
+					}
+					return null;	
+				}
+				
+				
+//method to display only the searched result in the data grid Sessions
+				public static ResultSet getAllSessionsFilterByLecturer(String LecturerName)
+				{
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " SELECT * FROM Sessions WHERE LecturerName=(?)";
+
+						 
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							preparedStmt.setString(1, LecturerName);
+							return preparedStmt.executeQuery();
+					
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+						} 
+					}
+					return null;	
+				}
+				
 
 		
 		

@@ -26,6 +26,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class LecturersViewController implements Initializable {
+	
+
+	static String id=null;
+
 
 	@FXML 
 	private Button btn_AddNewLecturer;
@@ -63,10 +67,7 @@ public class LecturersViewController implements Initializable {
 	private TableColumn<Subject,String>  column_Level;
 	@FXML
 	private TableColumn<Subject,String> column_Rank;
-	@FXML
-	private TableColumn  column_Update2;
-	@FXML
-	private TableColumn column_Delete2;
+	
 	
 	@FXML
 	private TextField search_Lecturer;
@@ -85,6 +86,7 @@ public class LecturersViewController implements Initializable {
 	public void onUpdateLecturerRecord(ActionEvent event){
 		System.out.println("Update the lecturer details");
 		String Lecturerid = getSelectedRecord();
+		id= Lecturerid;
 		
 		if(Lecturerid==null) {
 			System.out.println("No record is selected");
@@ -95,6 +97,7 @@ public class LecturersViewController implements Initializable {
 			Scene scene = btn_UpdateLecturerRecord.getScene();
 			AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 			changeCenterContent(pane,"../LecturersUpdate.fxml");
+			
 			
 		}
 		
@@ -189,7 +192,7 @@ public class LecturersViewController implements Initializable {
 	public void onSearchedLecturer(ActionEvent event) {
 		String searchId = search_Lecturer.getText();
 		if(searchId ==null||searchId.equals("")) {
-			showAlert("Enter a valid lecturer ID");
+			showAlert("Please enter a valid lecturer ID");
 		}
 		else 
 		{
