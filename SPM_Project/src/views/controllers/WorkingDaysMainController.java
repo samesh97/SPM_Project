@@ -53,8 +53,7 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	private TextField hoursTextFiled,minutesTextFiled;
 	@FXML
 	private AnchorPane workingDaysMainPane;
-	@FXML
-	private VBox contentVBox;
+	
 	
 	
 	@FXML
@@ -571,14 +570,14 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	}
 	private void disableOrEnableBackground(boolean b)
 	{
-		if(b)
-		{
-			contentVBox.setDisable(true);
-		}
-		else
-		{
-			contentVBox.setDisable(false);
-		}
+//		if(b)
+//		{
+//			contentVBox.setDisable(true);
+//		}
+//		else
+//		{
+//			contentVBox.setDisable(false);
+//		}
 	}
 	
 }
