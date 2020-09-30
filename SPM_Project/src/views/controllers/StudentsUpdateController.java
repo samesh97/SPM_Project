@@ -4,10 +4,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import database.DatabaseHandler_Lecturers;
 import database.DatabaseHandler_Students;
-import enums.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,14 +33,7 @@ public class StudentsUpdateController implements Initializable{
 	@FXML
 	private Button updateButton;
 
-	private Student selectedStudent;
-	
-public void StudentInit(Student student) {
-		
-	selectedStudent = student; 
-//	yearSemText.setText(selectedStudent.getYearSem());
 
-}
 public void onUpdateStudentsClicked(ActionEvent event) {
 	System.out.println("Update this record");
 	 
@@ -104,12 +94,6 @@ public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	}
 
 }
-
-
-
-
-
-
 
 public void loadDetails() {
 	

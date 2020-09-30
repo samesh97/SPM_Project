@@ -37,7 +37,7 @@
                         <Insets right="150.0" />
                      </padding>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="600.0" text="SEARCH">
+                  <Button fx:id="searchbtn" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" prefHeight="40.0" prefWidth="600.0" text="SEARCH">
                      <HBox.margin>
                         <Insets right="20.0" top="15.0" />
                      </HBox.margin>

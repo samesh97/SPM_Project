@@ -5,10 +5,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import database.DatabaseHandler_Students;
 import database.DatabaseHandler_Tags;
-import enums.Student;
 import enums.Tag;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

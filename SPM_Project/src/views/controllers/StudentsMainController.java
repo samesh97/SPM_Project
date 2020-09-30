@@ -3,7 +3,7 @@ package views.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import database.DatabaseHandler_Lecturers;
+
 import database.DatabaseHandler_Students;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +50,7 @@ public class StudentsMainController implements Initializable
 		String gId = groupIDText.getText();
 		String subId = subIDText.getText();
 		
-		if(yearSem.equals("") || program.equals("")||gNo.equals("")||subNo.equals("")||subId.equals("")||gId.equals("")  ) {
+		if(yearSem == null || program.equals("")||gNo.equals("")||subNo.equals("")||subId.equals("")||gId.equals("")) {
 			
 			showAlert("Please enter details correctly");
 		}
@@ -67,7 +67,7 @@ public class StudentsMainController implements Initializable
 				}catch(Exception e) {
 					showAlert("Please enter details correctly");
 				}
-		}
+	}
 		
 		
 		

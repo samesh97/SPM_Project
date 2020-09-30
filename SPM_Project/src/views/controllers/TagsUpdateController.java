@@ -4,10 +4,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import database.DatabaseHandler_Students;
 import database.DatabaseHandler_Tags;
-import enums.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
