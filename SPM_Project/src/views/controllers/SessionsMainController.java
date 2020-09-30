@@ -60,22 +60,34 @@ public class SessionsMainController implements Initializable{
 		String studentCount =add_studentCount.getText();
 		String duration=add_duration.getText();
 		
-		int StudentCount= Integer.parseInt(studentCount);
-		int Duration =Integer.parseInt(duration);
 		
-		 try {
-			    boolean result= DatabaseHandler_Lecturers.addSession(LecturerName, SubjectName, TagName, GroupName, StudentCount, Duration);
-				if(result== true) {
-					showAlert("Successfully created the session");
-				}
-				else {
-					showAlert("Unsuccessful");
-				}
-				
-			    }
-			    catch(Exception e) {
-			    	showAlert("Please enter details correctly");
-			    }		
+		
+	/*	if( LecturerName.equals("")|| SubjectName.equals("")||TagName.equals("")||GroupName.equals("") ||studentCount.equals("")||duration.equals("")) 
+		{
+			showAlert("Please fill the empty fields");
+		}
+	*/	
+		
+			
+			int StudentCount= Integer.parseInt(studentCount);
+			int Duration =Integer.parseInt(duration);
+			
+			 try {
+				    boolean result= DatabaseHandler_Lecturers.addSession(LecturerName, SubjectName, TagName, GroupName, StudentCount, Duration);
+					if(result== true) {
+						showAlert("Successfully created the session");
+					}
+					else {
+						showAlert("Unsuccessful");
+					}
+					
+				    }
+				    catch(Exception e) {
+				    	showAlert("Please enter details correctly");
+				    }		
+		
+		
+		
 		
 	}
 	

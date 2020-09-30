@@ -13,7 +13,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="56.0" prefWidth="600.0">
                <children>
                   <Label alignment="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Sessions" textAlignment="CENTER">
                      <HBox.margin>
@@ -37,7 +37,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="600.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="3000.0">
                      <children>
@@ -75,7 +75,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" />
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="286.0" prefWidth="600.0" />
          </children>
       </VBox>
    </children>

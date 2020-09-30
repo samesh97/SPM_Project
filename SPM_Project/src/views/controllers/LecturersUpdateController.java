@@ -1,8 +1,16 @@
 package views.controllers;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import database.DatabaseHandler_Lecturers;
+import enums.Building;
+import enums.Center;
+import enums.Department;
+import enums.Faculty;
+import enums.Level;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,14 +19,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
 public class LecturersUpdateController implements Initializable{
 
 @FXML
 private Button btn_UpdateLecturer;
+
+@FXML
+private TextField update_LecturerName;
+@FXML
+private TextField update_EmployeeID;
 
 @FXML
 private ComboBox<String> update_Faculty;
@@ -36,13 +52,58 @@ private ComboBox<String> update_Level;
 	public void onUpdateLecturerClicked(ActionEvent event){
 		System.out.println("Update the lecturer details");
 		
-			
+		
+	
+		String LecturerName = update_LecturerName.getText();
+		String EmployeeID = update_EmployeeID.getText();
+	   
+	    String FacultyStr= update_Faculty.getValue();
+	    String DepartmentStr = update_Department.getValue();
+	    String CenterStr= update_Center.getValue();
+	    String BuildingStr = update_Building.getValue();
+	    String LevelStr = update_Level.getValue();
+	   
+	    if(LecturerName.equals("") ||EmployeeID.equals("")|| FacultyStr.equals("")|| DepartmentStr.equals("")|| CenterStr.equals("")|| BuildingStr.equals("")|| LevelStr.equals(""))
+	  	{
+	  			showAlert("Please fill the empty fields");
+	  	}
+	    
+	    else {
+	    	  int FacultyId = Faculty.getType(FacultyStr);
+	      	int DepartmentId = Department.getType(DepartmentStr);
+	      	int CenterId = Center.getType(CenterStr);
+	      	int BuildingId = Building.getType(BuildingStr);
+	      	int LevelId = Level.getType(LevelStr);
+	      	String Rank = LevelId + "." + EmployeeID;
+	      	
+	  		
+	  		
+	  		 try {
+	  			    boolean result= DatabaseHandler_Lecturers.updateLecturers(LecturerName, EmployeeID, FacultyStr, DepartmentStr, CenterStr, BuildingStr, LevelStr,Rank,FacultyId,DepartmentId,CenterId,BuildingId,LevelId);
+	  				if(result== true) {
+	  					showAlert("Successfully updated");
+	  				}
+	  				else{
+	  					showAlert("Unsuccessful update");
+	  				}
+	  				
+	  			    }
+	  			    catch(Exception e) {
+	  			    	showAlert("Please enter details correctly");
+	  			    }
+	  				
+	    }
+	    
+	  
+	
 			Scene scene = btn_UpdateLecturer.getScene();
 			AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 			changeCenterContent(pane,"../LecturersView.fxml");
 		
 	}
 	
+	
+
 	public void setComboBoxes() {
 
 		//faculty combo box
@@ -63,13 +124,30 @@ private ComboBox<String> update_Level;
 		//department combo box
 		ObservableList<String> department_data = FXCollections.observableArrayList();
 				
-		department_data.add("Computer Science& Software Engineering");
-		department_data.add("Cyber Security");			
-		department_data.add("Information Technology");			
+		department_data.add("Computer Science & Software Engineering");
+		department_data.add("Cyber Security");
+		department_data.add("Information Technology");
 		department_data.add("Information Systems Engineering");
 		department_data.add("Interactive Media");
 		department_data.add("Data Science");
 		department_data.add("Computer Systems & Network Engineering");
+		
+		department_data.add("Civil Engineering");
+		department_data.add("Electrical & Electronic Engineering");
+		department_data.add("Materials Engineering");
+		department_data.add("Mechanical Engineering");
+		department_data.add("Mechatronics Engineering");
+		department_data.add("Quantity Serveying");
+		
+		department_data.add("Business Analytics");
+		department_data.add("Accounting & Finance");
+		department_data.add("Human Capital Mangement");
+		department_data.add("Quality Management");
+		department_data.add("Logistics & Supply Chain Management");
+		department_data.add("Management Information Systems");
+	
+		
+		department_data.add("Architecture");
 				
 				
 		update_Department.setItems(null);
@@ -119,6 +197,43 @@ private ComboBox<String> update_Level;
 	
 	}
 	
+	
+
+ public void loadDetails() {
+ 
+		
+		ResultSet set = DatabaseHandler_Lecturers.getAllLecturers(LecturersViewController.id);
+		if(set != null)
+		{
+			try 
+			{
+				while(set.next())
+				{
+					
+					
+					update_LecturerName.setText(set.getString(1));
+					update_EmployeeID.setText(set.getString(2));
+					update_Faculty.setValue(set.getString(3));
+					update_Department.setValue(set.getString(4));
+					update_Center.setValue(set.getString(5));
+					update_Building.setValue(set.getString(6));
+					update_Level.setValue(set.getString(7));		
+					
+	
+				}
+			} 
+			catch (SQLException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
+	
+	
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
@@ -142,12 +257,20 @@ private ComboBox<String> update_Level;
 		}
 		
 	}
+	
+
+	public void showAlert(String message)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(message);
+		alert.show();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		setComboBoxes();
-		
+		loadDetails();
 	}
 	
 	

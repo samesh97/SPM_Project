@@ -402,6 +402,49 @@ public class DatabaseHandler_Lecturers {
 		}
 		
 		
+//method to update a lecturer
+		public static boolean updateLecturers(String LecturerName,String EmployeeID,String Faculty,String Department,String Center,String Building,String Level,String Rank,int FacultyId,int DeptId,int CenterId,int BuildingId,int LevelId)
+		{
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String query = " UPDATE Lecturers SET LecturerName=(?),EmployeeID=(?),Faculty=(?),Department=(?),Center=(?),Building=(?),Level=(?),ranking=(?),FacultyId=(?),DeptId=(?),CenterId=(?),BuildingId=(?),LevelId=(?) WHERE EmployeeID=(?) ";
+				//Lecturers(LecturerName,EmployeeID,Faculty,Department,Center,Building,Level,ranking,FacultyId,DeptId,CenterId,BuildingId,LevelId)
+				 
+				try
+			    {
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.setString(1, LecturerName);
+					preparedStmt.setString(2, EmployeeID);
+					preparedStmt.setString(3, Faculty);
+					preparedStmt.setString(4, Department);
+					preparedStmt.setString(5, Center);
+					preparedStmt.setString(6, Building);
+					preparedStmt.setString(7, Level);
+					preparedStmt.setString(8, Rank);
+					preparedStmt.setInt(9, FacultyId);
+					preparedStmt.setInt(10, DeptId);
+					preparedStmt.setInt(11, CenterId);
+					preparedStmt.setInt(12, BuildingId);
+					preparedStmt.setInt(13, LevelId);
+					
+					preparedStmt.setString(14, EmployeeID);
+					preparedStmt.execute();
+					return true;
+					
+			
+				} 
+			    catch (SQLException e)
+			    {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+				} 
+			    	 
+			}
+			return false;		
+		}
+		
 //-------------Sessions methods--------------------------------------------------------------
 		
 //method to create the sessions table

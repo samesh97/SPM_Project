@@ -90,7 +90,7 @@ public class SubjectsViewController implements Initializable  {
 		
 		if(Subjectid==null) {
 			System.out.println("No record is selected");
-			
+			showAlert("Please select a record first"); 
 		}
 		
 		else {
@@ -289,7 +289,7 @@ public class SubjectsViewController implements Initializable  {
 		String key = search_Subject.getText();
 		if(key == null || key.equals(""))
 		{
-			showAlert("Please enter a subject code");
+			showAlert("Please enter a valid subject code");
 		}
 		else
 		{

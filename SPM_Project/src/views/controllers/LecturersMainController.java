@@ -71,42 +71,14 @@ public class LecturersMainController implements Initializable{
 	    String BuildingStr = add_Building.getValue();
 	    String LevelStr = add_Level.getValue();
 	   
-	    if(LecturerName.equals("") ||EmployeeID.equals("")|| FacultyStr.equals("")|| DepartmentStr.equals("")|| CenterStr.equals("")|| BuildingStr.equals("")|| LevelStr.equals(""))
+	    if(LecturerName.equals("") ||EmployeeID.equals("")|| FacultyStr.equals(null)|| DepartmentStr.equals(null)|| CenterStr.equals(null)|| BuildingStr.equals(null)|| LevelStr.equals(null))
 	  	{
 	  			showAlert("Please fill the empty fields");
 	  	}
 	    
 	    //there's an exception
-	    /*
-	    String Level="";
 	    
-	    switch(l){
-	    	case "Professor":
-	    		Level = "1";
-	    		break;
-	    	case "Assistant Professor":
-	    		Level = "2";
-	    		break;
-	    	case "Senior Lecturer(HG)":
-	    		Level = "3";
-	    		break;
-	    	case "Senior Lecturer":
-	    		Level = "4";
-	    		break;
-	    	case "Lecturer":
-	    		Level = "5";
-	    		break;
-	    	case "Assistant Lecturer":
-	    		Level = "6";
-	    		break;
-	    	case "Instructors":
-	    		Level = "7";
-	    		break;
-	    	default :
-	    		System.out.println("error with the level");
-	    	
-	    }
-	    */
+	   
 	    
 	    else 
 	    {
@@ -163,15 +135,13 @@ public class LecturersMainController implements Initializable{
 		add_Faculty.setItems(null);
 		add_Faculty.setItems(faculty_data);
 		
-		//if(add_Faculty.getPromptText()=="Computing") {
-			//System.out.println("choose departments of Computing Faculty");
-		//}
+
 		
 		//department combo box
 	
 			ObservableList<String> department_data = FXCollections.observableArrayList();
 			
-			department_data.add("none");
+			
 			department_data.add("Computer Science & Software Engineering");
 			department_data.add("Cyber Security");
 			department_data.add("Information Technology");
