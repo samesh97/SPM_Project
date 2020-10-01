@@ -3,6 +3,7 @@ package views.controllers;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Connections;
@@ -66,6 +67,9 @@ public class ConnectionsMainController implements Initializable{
 	private TableColumn<Connection, String> groupId;
 	@FXML
 	private TableColumn<Connection, String> location;
+	
+	private ArrayList<Integer> sessionIds = new ArrayList<>();
+	private ArrayList<Integer> locationIds = new ArrayList<>();
 	
 	
 	public void onViewAllDetailsButtonClicked() {
@@ -289,12 +293,16 @@ public class ConnectionsMainController implements Initializable{
 		//Session combo box
 		ObservableList<String> session_id = FXCollections.observableArrayList();
 				
-		try {
-			ResultSet rs= DatabaseHandler_Connections.getSessionId();
+		try
+		{
+			ResultSet rs= DatabaseHandler_Connections.getAllSessions();
 							
-			while(rs.next()){
-						
-				session_id.add(rs.getString("SessionId"));
+			while(rs.next())
+			{
+				String text = rs.getString("LecturerName") + "\n" + rs.getString("SubjectCode") + "\n" + rs.getString("Tag") + "\n" + rs.getString("StudentGroup");
+				int sesId = rs.getInt("SessionId");
+				sessionIds.add(sesId);
+				session_id.add(text);
 						
 			}
 							
@@ -310,11 +318,14 @@ public class ConnectionsMainController implements Initializable{
 		ObservableList<String> location = FXCollections.observableArrayList();
 		
 		try {
-			ResultSet rs= DatabaseHandler_Connections.getLocationId();
+			ResultSet rs= DatabaseHandler_Connections.getAllLocations();
 							
-			while(rs.next()){
-						
-				location.add(rs.getString("LID"));
+			while(rs.next())
+			{
+				String text = rs.getString("roomId");
+				int locId = rs.getInt("LID");
+				location.add(text);
+				locationIds.add(locId);
 						
 			}
 							
@@ -333,8 +344,12 @@ public class ConnectionsMainController implements Initializable{
 	public void onAddSessionButtonClicked(){
 		System.out.println("Add Session button clicked");
 		
-		String sessionId = sessionComboBox.getValue();
-		String locationId = locationComboBox.getValue();
+		
+		int pos = sessionComboBox.getSelectionModel().getSelectedIndex();
+		int pos2 = locationComboBox.getSelectionModel().getSelectedIndex();
+		
+		int sessionId = sessionIds.get(pos);
+		int locationId = locationIds.get(pos2);
 		
 		
 		try {

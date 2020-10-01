@@ -71,7 +71,7 @@ public class DatabaseHandler_Connections {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE session_location (SLID int NOT NULL AUTO_INCREMENT, sessionId VARCHAR(20), locationId VARCHAR(20), PRIMARY KEY (SLID))";  
+				 String query = " CREATE TABLE session_location (SLID int NOT NULL AUTO_INCREMENT, sessionId int, locationId int, PRIMARY KEY (SLID))";  
 				 
 				    try
 				    {
@@ -244,11 +244,11 @@ public class DatabaseHandler_Connections {
 	
 	
 	//Get session id from Sessions table
-	public static ResultSet getSessionId()
+	public static ResultSet getAllSessions()
 	{
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " SELECT SessionId FROM Sessions "; 
+			String query = " SELECT * FROM Sessions "; 
 			    
 			try
 		    {
@@ -272,11 +272,11 @@ public class DatabaseHandler_Connections {
 
 	
 	//Get location id from location table
-	public static ResultSet getLocationId()
+	public static ResultSet getAllLocations()
 	{
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " SELECT LID FROM location "; 
+			String query = " SELECT * FROM location "; 
 				    
 			try
 			{
@@ -347,7 +347,7 @@ public class DatabaseHandler_Connections {
 	}
 	
 	
-	public static boolean addConnectionsLocations(String sessionId, String locationId)
+	public static boolean addConnectionsLocations(int sessionId, int locationId)
 	{
 		
 		
@@ -360,8 +360,8 @@ public class DatabaseHandler_Connections {
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 				
-				preparedStmt.setString(1, sessionId);
-				preparedStmt.setString(2, locationId);
+				preparedStmt.setInt(1, sessionId);
+				preparedStmt.setInt(2, locationId);
 				
 			
 				preparedStmt.execute();
