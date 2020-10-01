@@ -750,6 +750,67 @@ public class DatabaseHandler_Lecturers {
 						} 
 					}
 					return null;	
+				}	
+				
+				
+//method to delete all sessions
+				public static boolean deleteAllSessions()
+				{
+					
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " DELETE FROM Sessions ";
+
+						 
+						try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							
+							return preparedStmt.execute();
+							
+					
+						} 
+					    catch (SQLException e)
+					    {
+						
+							e.printStackTrace();
+							
+						} 
+					    	 
+					}
+					return false;		
 				}			
+				
+				
+//method to delete all Session_location table data
+				
+				public static boolean deleteSessionLocation()
+				{
+					
+					if(DatabaseHandler.conn != null)
+					{
+						String query = " DELETE FROM session_location ";
+
+						 
+						try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							
+							return preparedStmt.execute();
+							
+					
+						} 
+					    catch (SQLException e)
+					    {
+						
+							e.printStackTrace();
+							
+						} 
+					    	 
+					}
+					return false;		
+				}			
+				
+				
 //last bracket	
 }

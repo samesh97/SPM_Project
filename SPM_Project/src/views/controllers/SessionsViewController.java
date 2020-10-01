@@ -69,6 +69,25 @@ public void onCreateASessionClicked(ActionEvent event) {
 }
 
 
+public void onDeleteAllClicked(ActionEvent event) {
+	
+	
+		    boolean result= DatabaseHandler_Lecturers.deleteAllSessions();
+		    boolean result2 = DatabaseHandler_Lecturers.deleteSessionLocation();
+		    
+		 				
+
+	 //to refresh the data grid
+		setTableView();
+	
+}
+
+public void onViewAllSessionsClicked(ActionEvent event) {
+			setTableView();
+	
+}
+
+
 public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 {
 	
