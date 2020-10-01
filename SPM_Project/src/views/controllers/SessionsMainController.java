@@ -61,14 +61,18 @@ public class SessionsMainController implements Initializable{
 		String duration=add_duration.getText();
 		
 		
-		
+	
 	/*	if( LecturerName.equals("")|| SubjectName.equals("")||TagName.equals("")||GroupName.equals("") ||studentCount.equals("")||duration.equals("")) 
 		{
+			System.out.println("empty");
 			showAlert("Please fill the empty fields");
 		}
-	*/	
+	*/
 		
+		
+		//else {
 			
+
 			int StudentCount= Integer.parseInt(studentCount);
 			int Duration =Integer.parseInt(duration);
 			
@@ -86,10 +90,12 @@ public class SessionsMainController implements Initializable{
 				    	showAlert("Please enter details correctly");
 				    }		
 		
+			
+		}
 		
 		
 		
-	}
+	//}
 	
 	
 	
