@@ -46,6 +46,10 @@ public class ConnectionsMainController implements Initializable{
 	private ComboBox<String> lecturerComboBox;
 	@FXML
 	private ComboBox<String> prefferedRoomComboBox;
+	@FXML
+	private ComboBox<String> sessionComboBox;
+	@FXML
+	private ComboBox<String> locationComboBox;
 	
 	@FXML
 	private TextField roomIdGenerateText;
@@ -71,22 +75,49 @@ public class ConnectionsMainController implements Initializable{
 		changeCenterContent(pane, "../ConnectionsView.fxml");
 	}
 	
-	public void onGenerateRoomButtonClicked() {
-		System.out.println("Generate Room button clicked");
-		
-		String tag = tagComboBox.getValue();
-		
-		if(tag == "lecture" || tag == "Lecture") {
-			try {
-				ResultSet result = DatabaseHandler_Connections.getRoomAccordingToTag(tag);
-			}
-			catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-	}
-	
+//	public void onGenerateRoomButtonClicked() {
+//		System.out.println("Generate Room button clicked");
+//		
+//		String tag = tagComboBox.getValue();
+//		
+//		if(tag == "lecture" || tag == "Lecture") {
+//			try {
+//				ResultSet result = DatabaseHandler_Connections.getRoomAccordingToTag(tag);
+//				String room = result.getString("roomId");
+//				roomIdGenerateText.setText(room);
+//			}
+//			catch (Exception e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			}
+//		}
+//		else if(tag == "Tutorial") {
+//			try {
+//				ResultSet result = DatabaseHandler_Connections.getRoomAccordingToTag(tag);
+//				String room = result.getString("roomId");
+//				roomIdGenerateText.setText(room);
+//			}
+//			catch (Exception e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			}
+//		}
+//		else if(tag == "Lab" || tag == "Laboratory") {
+//			try {
+//				ResultSet result = DatabaseHandler_Connections.getRoomAccordingToTag(tag);
+//				String room = result.getString("roomId");
+//				roomIdGenerateText.setText(room);
+//			}
+//			catch (Exception e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			}
+//		}
+//		else {
+//			showAlert("No location");
+//		}
+//	}
+//	
 	
 	public void onAddButtonClicked(){
 		System.out.println("Add button clicked");
@@ -95,7 +126,7 @@ public class ConnectionsMainController implements Initializable{
 		String tag = tagComboBox.getValue();
 		String lecturer = lecturerComboBox.getValue();
 		String groupId = groupIdComboBox.getValue();
-		String location = roomIdGenerateText.getText();
+		String location = prefferedRoomComboBox.getValue();
 		
 		
 		try {
@@ -252,12 +283,80 @@ public class ConnectionsMainController implements Initializable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	
+		//Session combo box
+		ObservableList<String> session_id = FXCollections.observableArrayList();
+				
+		try {
+			ResultSet rs= DatabaseHandler_Connections.getSessionId();
+							
+			while(rs.next()){
+						
+				session_id.add(rs.getString("SessionId"));
+						
+			}
+							
+			sessionComboBox.setItems(null);
+			sessionComboBox.setItems(session_id);
+							
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		//Location combo box
+		ObservableList<String> location = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs= DatabaseHandler_Connections.getLocationId();
+							
+			while(rs.next()){
+						
+				location.add(rs.getString("LID"));
+						
+			}
+							
+			locationComboBox.setItems(null);
+			locationComboBox.setItems(location);
+							
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+						
 	}
 
+	
+	//Add session
+	public void onAddSessionButtonClicked(){
+		System.out.println("Add Session button clicked");
+		
+		String sessionId = sessionComboBox.getValue();
+		String locationId = locationComboBox.getValue();
+		
+		
+		try {
+			boolean result= DatabaseHandler_Connections.addConnectionsLocations(sessionId, locationId);
+			if(result== true) {
+				showAlert("A record is successfully added");
+			}
+			else {
+				showAlert("Unsuccessful");
+			}
+		
+		}catch(Exception e) {
+		    showAlert("Please enter details correctly");
+		}
+			
+	}
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		DatabaseHandler_Connections.createConnectionTable();
+		DatabaseHandler_Connections.createSessionLocationTable();
 		setComboBoxes();
 		
 	}
