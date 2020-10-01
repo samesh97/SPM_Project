@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import database.QueriesOfWorkingDays;
+import enums.Day;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -38,13 +39,13 @@ public class TimeTableMainController implements Initializable
 			column.setPercentWidth(100 / 7);
 			
 			
-			
 			for (int i = 0; i < 8; i++)
 			{
 		         
 			        timetablegrid.getColumnConstraints().add(column);
 			    
 		     }
+			
 			Label label0 = new Label();
 			label0.setAlignment(Pos.CENTER);
 			label0.setMaxWidth(Double.MAX_VALUE);
@@ -86,7 +87,7 @@ public class TimeTableMainController implements Initializable
 			label7.setMaxWidth(Double.MAX_VALUE);
 			label7.setStyle("-fx-font-weight: bold");
 
-			 timetablegrid.add(label0, 0, 0, 1, 1);
+			timetablegrid.add(label0, 0, 0, 1, 1);
 	        timetablegrid.add(label1, 1, 0, 1, 1);
 	        timetablegrid.add(label2, 2, 0, 1, 1);
 	        timetablegrid.add(label3, 3, 0, 1, 1);
@@ -212,13 +213,13 @@ public class TimeTableMainController implements Initializable
 					int Duration = resultSet.getInt("Duration");
 					
 					
-					String finalString = SubjectCode + " | " + Tag + " | " + StudentGroup;
+					String finalString = SubjectCode + "\n" + Tag + "\n" + StudentGroup;
 					Label label = new Label(finalString);
 					label.setAlignment(Pos.CENTER);
 	    			label.setMaxWidth(Double.MAX_VALUE);
 	    			label.setStyle("-fx-font-weight: bold");
 					
-	    			timetablegrid.add(label, 1, x);
+	    			timetablegrid.add(label, Day.SUNDAY, x);
 					
 					
 					
