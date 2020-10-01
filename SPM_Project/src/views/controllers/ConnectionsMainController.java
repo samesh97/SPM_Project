@@ -347,13 +347,13 @@ public class ConnectionsMainController implements Initializable{
 		
 		int pos = sessionComboBox.getSelectionModel().getSelectedIndex();
 		int pos2 = locationComboBox.getSelectionModel().getSelectedIndex();
-		
+		String locationName = locationComboBox.getValue();
 		int sessionId = sessionIds.get(pos);
 		int locationId = locationIds.get(pos2);
 		
 		
 		try {
-			boolean result= DatabaseHandler_Connections.addConnectionsLocations(sessionId, locationId);
+			boolean result= DatabaseHandler_Connections.addConnectionsLocations(sessionId, locationId,locationName);
 			if(result== true) {
 				showAlert("A record is successfully added");
 			}

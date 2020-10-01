@@ -71,7 +71,7 @@ public class DatabaseHandler_Connections {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE session_location (SLID int NOT NULL AUTO_INCREMENT, sessionId int, locationId int, PRIMARY KEY (SLID))";  
+				 String query = " CREATE TABLE session_location (SLID int NOT NULL AUTO_INCREMENT, sessionId int, locationId int,locationName VARCHAR(200), PRIMARY KEY (SLID))";  
 				 
 				    try
 				    {
@@ -347,13 +347,13 @@ public class DatabaseHandler_Connections {
 	}
 	
 	
-	public static boolean addConnectionsLocations(int sessionId, int locationId)
+	public static boolean addConnectionsLocations(int sessionId, int locationId,String locationName)
 	{
 		
 		
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " INSERT into session_location(sessionId,locationId)" + " VALUES (?,?)";
+			String query = " INSERT into session_location(sessionId,locationId,locationName)" + " VALUES (?,?,?)";
 	
 			 
 		    try
@@ -362,6 +362,7 @@ public class DatabaseHandler_Connections {
 				
 				preparedStmt.setInt(1, sessionId);
 				preparedStmt.setInt(2, locationId);
+				preparedStmt.setString(3, locationName);
 				
 			
 				preparedStmt.execute();
