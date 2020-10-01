@@ -68,7 +68,7 @@ public class LocationsMainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+		DatabaseHandler_Locations.createLocationTable();
 		mapFields();
 		setTableView();
 		
@@ -184,6 +184,12 @@ public class LocationsMainController implements Initializable {
 		for ( int i = 0; i<tblLocationsView.getItems().size(); i++) {
 			tblLocationsView.getItems().clear();
 		}
+		
+//		DatabaseHandler_Locations.deleteAllLocations();
+		showAlert("All the records are deleted!");
+//		
+//		//to refresh the data grid
+//		setTableView();
 		
 	}
 	
