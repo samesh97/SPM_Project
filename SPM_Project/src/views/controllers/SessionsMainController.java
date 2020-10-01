@@ -62,15 +62,16 @@ public class SessionsMainController implements Initializable{
 		
 		
 	
-	/*	if( LecturerName.equals("")|| SubjectName.equals("")||TagName.equals("")||GroupName.equals("") ||studentCount.equals("")||duration.equals("")) 
+		if( LecturerName.equals(""))
+				//|| SubjectName.equals("")||TagName.equals("")||GroupName.equals("") ||studentCount.equals("")||duration.equals("")) 
 		{
 			System.out.println("empty");
 			showAlert("Please fill the empty fields");
 		}
-	*/
+	
 		
 		
-		//else {
+		 {
 			
 
 			int StudentCount= Integer.parseInt(studentCount);
@@ -95,7 +96,7 @@ public class SessionsMainController implements Initializable{
 		
 		
 		
-	//}
+	}
 	
 	
 	
