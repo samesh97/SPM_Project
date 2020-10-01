@@ -145,6 +145,32 @@ public static boolean createLocationTable() {
 		return false;
 	}
 	
+	public static boolean deleteAllLocations() {
+		if(DatabaseHandler.conn != null)
+		{
+			String query = "DELETE * FROM location";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				
+				preparedStmt.execute();
+				return true;
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+				
+			}    
+		 
+		}
+		return false;
+	}
+	
 	
 	//Update a selected record from database
 	public static boolean updateLocation(String id, String buildingId, String blockId, String roomId, String roomType)
