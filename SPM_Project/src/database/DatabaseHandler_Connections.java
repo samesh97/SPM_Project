@@ -21,7 +21,7 @@ public class DatabaseHandler_Connections {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE connection (CID int NOT NULL AUTO_INCREMENT,roomId VARCHAR(20),tag VARCHAR(20),subjectCode VARCHAR(20),lecturer VARCHAR(20), groupId VARCHAR(20), dayOfSession VARCHAR(20), startTime VARCHAR(20), endTime VARCHAR(20), PRIMARY KEY (CID))";  
+				 String query = " CREATE TABLE connection (CID int NOT NULL AUTO_INCREMENT,subjectCode VARCHAR(20),tag VARCHAR(20),lecturer VARCHAR(20), groupId VARCHAR(20), location VARCHAR(20), PRIMARY KEY (CID))";  
 				 
 				    try
 				    {
@@ -145,7 +145,7 @@ public class DatabaseHandler_Connections {
 	{
 		if(DatabaseHandler.conn != null)
 		{
-			String query = " SELECT groupId FROM student "; 
+			String query = " SELECT groupId,subGroupId FROM student "; 
 			    
 			try
 		    {
@@ -194,5 +194,103 @@ public class DatabaseHandler_Connections {
 			return null;	
 		
 	}
+	
+	
+	
+	public static ResultSet generateRoom()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			//if(tag == )
+		
+		}
+		
+			return null;	
+		
+	}
+	
+
+	public static boolean addConnections(String subjectCode,String tag,String lecturer,String groupId, String location)
+	{
+		
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT into connection(subjectCode,tag,lecturer,groupId,location)" + " VALUES (?,?,?,?,?)";
+	
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				
+				preparedStmt.setString(1, subjectCode);
+				preparedStmt.setString(2, tag);
+				preparedStmt.setString(3, lecturer);
+				preparedStmt.setString(4, groupId);
+				preparedStmt.setString(5, location);
+				
+			
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		    	 
+		}
+		return false;		
+	}
+	
+
+	public static ResultSet getAllConnections()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM connection";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				return preparedStmt.executeQuery();
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}    
+		 
+		}
+		return null;	
+	}
+	
+	
+	public static ResultSet getRoomAccordingToTag(String tag) {
+		if(DatabaseHandler.conn != null) {
+			String query = " SELECT roomId FROM location WHERE roomType='Lecture' ";
+			
+			try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				return preparedStmt.executeQuery();
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}    
+			
+		}
+		return null;
+		
+	}
+
 
 }
