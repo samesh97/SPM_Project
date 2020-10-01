@@ -71,6 +71,13 @@ public void onUpdateStudentsClicked(ActionEvent event) {
 	changeCenterContent(pane,"../StudentsView.fxml");
 
 }
+public void viewStudentListClicked(ActionEvent event)
+{
+	System.out.println("Hello From Student");
+	Scene scene = updateButton.getScene();
+	AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+	changeCenterContent(pane,"../StudentsView.fxml");
+}
 public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 {
 	

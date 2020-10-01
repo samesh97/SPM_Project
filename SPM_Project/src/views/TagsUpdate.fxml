@@ -21,7 +21,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="viewTagsButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="3000.0" text="View All Tags">
+            <Button fx:id="viewTagsButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#viewAllTagsClicked" prefHeight="31.0" prefWidth="3000.0" text="View All Tags">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

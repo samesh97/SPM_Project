@@ -22,7 +22,7 @@ public static boolean createParallelSessionTable() {
 		}
 		if(!exists){
 		 
-			 String query = " CREATE TABLE parallelSession(PID int NOT NULL AUTO_INCREMENT,slotID int,day int,duration VARCHAR(30),PRIMARY KEY (PID))";  
+			 String query = " CREATE TABLE parallelSession(PID int NOT NULL AUTO_INCREMENT,slotID int,day int,duration VARCHAR(30),categoryID int,PRIMARY KEY (PID))";  
 //			 String query = "drop table allocatedSessions";
 			    try
 			    {
@@ -70,7 +70,7 @@ public static boolean createParallelSessionTable() {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE parallelSessionList(SID int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,SlotID int)";  
+				 String query = " CREATE TABLE parallelSessionList(SID int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,SlotID,catID int)";  
 //				 String query = "drop table allocatedSessions";
 				    try
 				    {
@@ -107,6 +107,29 @@ public static ResultSet getAllSessions()
 {
 	if(DatabaseHandler.conn != null)
 	{
+		String query = " SELECT * FROM parallelSessionList";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}    
+	 
+	}
+	return null;	
+}
+public static ResultSet getAllSessionsList()
+{
+	if(DatabaseHandler.conn != null)
+	{
 		String query = " SELECT * FROM parallelSession";
 
 		 
@@ -127,13 +150,13 @@ public static ResultSet getAllSessions()
 	return null;	
 }
 
-public static boolean addParallelSessione(int slotID,String duration,int day)
+public static boolean addParallelSessione(int slotID,String duration,int day,int category)
 {
 	createParallelSessionTable();
 	
 	if(DatabaseHandler.conn != null)
 	{
-		String query = " INSERT into parallelSession(slotID,day,duration)" + " VALUES (?,?,?)";
+		String query = " INSERT into parallelSession(slotID,day,duration,categoryID)" + " VALUES (?,?,?,?)";
 
 		 
 	    try
@@ -142,6 +165,7 @@ public static boolean addParallelSessione(int slotID,String duration,int day)
 			preparedStmt.setInt(1, slotID);
 			preparedStmt.setInt(2, day);
 			preparedStmt.setString(3, duration);
+			preparedStmt.setInt(4, category);
 			
 	
 			preparedStmt.execute();
@@ -157,12 +181,12 @@ public static boolean addParallelSessione(int slotID,String duration,int day)
 	}
 	return false;		
 }
-public static boolean addSession(String LecturerName ,String SubjectCode,String Tag,String StudentGroup,String StuCount,int SlotID)
+public static boolean addSession(String LecturerName ,String SubjectCode,String Tag,String StudentGroup,String StuCount,int SlotID,int catID)
 {
 	
 	if(DatabaseHandler.conn != null)
 	{
-		String query = " INSERT into parallelSessionList(LecturerName,SubjectCode,Tag,StudentGroup,StuCount,SlotID)" + " VALUES (?,?,?,?,?,?)";
+		String query = " INSERT into parallelSessionList(LecturerName,SubjectCode,Tag,StudentGroup,StuCount,SlotID,catID)" + " VALUES (?,?,?,?,?,?,?)";
 
 		 
 	    try
@@ -175,6 +199,7 @@ public static boolean addSession(String LecturerName ,String SubjectCode,String 
 			preparedStmt.setString(4, StudentGroup);
 			preparedStmt.setString(5, StuCount);
 			preparedStmt.setInt(6, SlotID);
+			preparedStmt.setInt(7, catID);
 		
 			
 			preparedStmt.execute();

@@ -40,7 +40,7 @@
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="startingTimeDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="choose lecturer(s)">
+                  <ComboBox fx:id="startingTimeDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="choose one">
                      <HBox.margin>
                         <Insets bottom="12.0" top="5.0" />
                      </HBox.margin>
@@ -60,7 +60,27 @@
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="dayDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="choose lecturer(s)">
+                  <ComboBox fx:id="dayDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="choose one">
+                     <HBox.margin>
+                        <Insets bottom="12.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <padding>
+                  <Insets left="100.0" right="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="175.0" text="Category">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="catDrp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="2000.0" promptText="choose one">
                      <HBox.margin>
                         <Insets bottom="12.0" top="5.0" />
                      </HBox.margin>

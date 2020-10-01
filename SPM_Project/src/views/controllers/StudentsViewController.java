@@ -6,8 +6,11 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import database.DatabaseHandler_Lecturers;
 import database.DatabaseHandler_Students;
 import enums.Student;
+import enums.Subject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -59,7 +63,49 @@ public class StudentsViewController implements Initializable {
 	private Button exbtn1,exbtn3;
 	@FXML
 	private Button addNewBtn;
+	@FXML private TextField search_Subject;
 
+	public void onSearched(ActionEvent event)
+	{
+		String key = search_Subject.getText();
+		if(key == null || key.equals(""))
+		{
+			showAlert("Please enter a valid Program");
+		}
+		else
+		{
+			ObservableList<Student> list = FXCollections.observableArrayList();
+			ResultSet set = DatabaseHandler_Students.searchStudent(key);
+			if(set != null)
+			{
+				try 
+				{
+					while(set.next())
+					{
+						
+						Student std = new Student();
+						std.setId(set.getString(1));
+						std.setYearSem(set.getString(2));
+						std.setProgram(set.getString(3));
+						std.setGroupNo(set.getString(4));
+						std.setSubGroupNo(set.getString(5));
+						std.setGroupId(set.getString(6));
+						std.setSubGroupId(set.getString(7));
+		
+		
+						list.add(std);
+					}
+				} 
+				catch (SQLException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			table_ViewStudent.setItems(null);
+			table_ViewStudent.setItems(list);
+		}
+	}
 	public void mapFields()
 	{
 		colum_id.setCellValueFactory(new PropertyValueFactory<Student,String>("id"));
@@ -123,6 +169,11 @@ public class StudentsViewController implements Initializable {
 	public void deleteRecord() {
 		String studentID = getSelectedRecord();
 		id= studentID;
+		if(studentID==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first");
+		}
+		else {
 		try {
 		    boolean result= DatabaseHandler_Students.deleteStudents(id);
 			if(result== true) {
@@ -137,7 +188,7 @@ public class StudentsViewController implements Initializable {
 	}catch(Exception e) {
     	showAlert("Error!");
     }
-		
+		}
 	}
 	public void showAlert(String message)
 	{
@@ -150,11 +201,14 @@ public class StudentsViewController implements Initializable {
 	{
 		String studentID = getSelectedRecord();
 		id= studentID;
-		
+		if(studentID==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first");
+		}else {
 		Scene scene = updateButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 		changeCenterContent(pane,"../StudentsUpdate.fxml");
-		
+		}
 	}
 	public void addNewSubjectClicked(ActionEvent event) throws IOException
 	{

@@ -1,25 +1,32 @@
 package views.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import database.DatabaseHandler_Tags;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
-public class TagsMainController
+public class TagsMainController implements Initializable
 {
 	@FXML
 	private TextField tagText;
 	@FXML
 	private TextField NameText;
 	@FXML
-	private TextField yearSemText;
+	private ComboBox<String> yearSemText;
 	@FXML
 	private TextField DiscriptionText;
 	
@@ -33,7 +40,7 @@ public class TagsMainController
 		
 		String tag = tagText.getText();
 		String name = NameText.getText();
-		String yearSem = yearSemText.getText();
+		String yearSem = yearSemText.getValue();
 		String dis = DiscriptionText.getText();
 		
 		
@@ -50,6 +57,22 @@ public class TagsMainController
     	showAlert("Please enter details correctly");
     }
 	
+	}
+	public void setComboBoxes() {
+		
+		ObservableList<String> yearSemester = FXCollections.observableArrayList();
+		
+		yearSemester.add("Y1.S1");
+		yearSemester.add("Y1.S2");
+		yearSemester.add("Y2.S1");
+		yearSemester.add("Y2.S2");
+		yearSemester.add("Y3.S1");
+		yearSemester.add("Y3.S2");
+		yearSemester.add("Y4.S1");
+		yearSemester.add("Y4.S2");
+		
+		yearSemText.setItems(null);
+		yearSemText.setItems(yearSemester);
 	}
 
 	
@@ -90,5 +113,10 @@ public class TagsMainController
 		}
 		
 		
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		setComboBoxes();
 	}
 }

@@ -55,6 +55,29 @@ public static boolean createTagsTable() {
 		return false;		
 		
 	}
+public static ResultSet searchTags(String tag)
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM tags WHERE tag=(?)";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, tag);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	}
+	return null;	
+}
 public static boolean addTags(String tag,String name,String yearSem,String dis )
 {
 	createTagsTable();

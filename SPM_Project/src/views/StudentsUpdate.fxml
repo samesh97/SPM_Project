@@ -21,7 +21,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="viewStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="31.0" prefWidth="3000.0" text="View All Students">
+            <Button fx:id="viewStudentButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#viewStudentListClicked" prefHeight="31.0" prefWidth="3000.0" text="View All Students">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

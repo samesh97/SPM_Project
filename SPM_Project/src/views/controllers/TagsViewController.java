@@ -5,7 +5,10 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import database.DatabaseHandler_Students;
 import database.DatabaseHandler_Tags;
+import enums.Student;
 import enums.Tag;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -45,9 +49,49 @@ private TableColumn<Tag,String> column_id ;
 	
 	@FXML
 	private TableView<Tag> table_ViewTags;
+	@FXML private TextField search_Subject;
 	
 	private String tag;
 	
+	public void onSearched(ActionEvent event)
+	{
+		String key = search_Subject.getText();
+		if(key == null || key.equals(""))
+		{
+			showAlert("Please enter a valid Tag");
+		}
+		else
+		{
+			ObservableList<Tag> list = FXCollections.observableArrayList();
+			ResultSet set = DatabaseHandler_Tags.searchTags(key);
+			if(set != null)
+			{
+				try 
+				{
+					while(set.next())
+					{
+						Tag std = new Tag();
+						std.setId(set.getString(1));
+						std.setTag(set.getString(2));
+						std.setName(set.getString(3));
+						std.setYearSem(set.getString(4));
+						std.setDiscription(set.getString(5));
+					
+		
+		
+						list.add(std);
+					}
+				} 
+				catch (SQLException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			table_ViewTags.setItems(null);
+			table_ViewTags.setItems(list);
+		}
+	}
 	public void mapFields()
 	{
 		column_id.setCellValueFactory(new PropertyValueFactory<Tag,String>("id"));
@@ -58,7 +102,7 @@ private TableColumn<Tag,String> column_id ;
 	
 		
 	}
-	
+
 	private void setTableView() 
 	{
 		
@@ -114,7 +158,11 @@ private TableColumn<Tag,String> column_id ;
 	
 	}
 	public void deleteRecord() {
-		
+		if(tag==null) {
+			System.out.println("No record is selected");
+			showAlert("Please select a record first");
+		}
+		else {
 		try {
 		    boolean result= DatabaseHandler_Tags.deleteTags(tag);
 			if(result== true) {
@@ -129,6 +177,7 @@ private TableColumn<Tag,String> column_id ;
 	}catch(Exception e) {
     	showAlert("Error!");
     }
+		}
 }
 public void showAlert(String message)
 {
@@ -143,11 +192,15 @@ public void updateTagsClicked(ActionEvent event) throws IOException
 {
 	String TagsID = getSelectedRecord();
 	id= TagsID;
-	
+	if(id==null) {
+		System.out.println("No record is selected");
+		showAlert("Please select a record first");
+	}
+	else {
 	Scene scene = updateButton.getScene();
 	AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
 	changeCenterContent(pane,"../TagsUpdate.fxml");
-	
+	}
 }
 public String getSelectedRecord() {
 	Tag record = table_ViewTags.getSelectionModel().getSelectedItem();

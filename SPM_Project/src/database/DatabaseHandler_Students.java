@@ -55,6 +55,29 @@ public static boolean createStudentTable() {
 		return false;		
 		
 	}
+public static ResultSet searchStudent(String program)
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM student WHERE program=(?)";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			preparedStmt.setString(1, program);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} 
+	}
+	return null;	
+}
 public static boolean addStudents(String yearSem,String program,String groupNo,String subGroupNo,String groupId,String subGroupId )
 {
 	createStudentTable();

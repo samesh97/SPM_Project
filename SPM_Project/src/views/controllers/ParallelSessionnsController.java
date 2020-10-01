@@ -36,17 +36,33 @@ public class ParallelSessionnsController implements Initializable{
 	@FXML 
 	private Button btn_CreateSession;
 	static int dayID;
+	@FXML
+	private ComboBox<String> catDrp;
 	
+	static int category;
 	
 	public void createSessionClicked() {
 		
 		String startingTime = startingTimeDrp.getValue();
 		String day = dayDrp.getValue();
 		String duration = add_duration.getText();
+		String cat = catDrp.getValue();
 		
+		if(cat.equals("Other")) {
+			category = 1;
+		}
+		else if(cat.equals("Category 1")) {
+			category = 2;
+		}
+		else if(cat.equals("Category 2")) {
+			category = 2;
+		}
 		if(startingTime == null ||duration.equals("") || day == null) {
 			
 			showAlert("Please enter details correctly");
+		}
+		else if(checkCatogery()) {
+			showAlert("Invalid Session");
 		}
 		else {
 			int slotID = getSlotID(startingTime);
@@ -54,9 +70,10 @@ public class ParallelSessionnsController implements Initializable{
 			initDate(day);
 		
 			try {
-			    boolean result= DatabaseHandler_Parallel_Sessions.addParallelSessione(slotID, duration, dayID);
+			    boolean result= DatabaseHandler_Parallel_Sessions.addParallelSessione(slotID, duration, dayID,category);
 //				boolean result= DatabaseHandler_Students.createStudentTable();
 				if(result== true) {
+					
 					System.out.println("Vuew all Subjects clicked");
 					Scene scene = btn_CreateSession.getScene();
 					AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
@@ -75,6 +92,36 @@ public class ParallelSessionnsController implements Initializable{
 		
 		
 	}
+	public Boolean checkCatogery() {
+		return false;
+		
+//		ResultSet set = DatabaseHandler_Parallel_Sessions.getAllSessionsList();
+//		if(set != null)
+//		{
+//			try 
+//			{
+//				while(set.next())
+//				{
+//					
+//					if(ParallelSessionnsController.category != set.getInt(1)|| getSlotID(startingTimeDrp.getValue()) == set.getInt(2)|| dayID == set.getInt(3)) {
+//						return true;
+//					}
+//
+//	
+//				}
+//			} 
+//			catch (SQLException e) 
+//			{
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//	
+//		
+//		return true;
+		
+	}
+	
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
@@ -206,6 +253,19 @@ public class ParallelSessionnsController implements Initializable{
 			dayDrp.setItems(day);
 			
 		}
+	 
+	 public void setCategoryComboBox(){
+			
+			ObservableList<String> cat = FXCollections.observableArrayList();
+			cat.add("Category 1");
+			cat.add("Category 2");
+			cat.add("Other");
+			
+			
+			catDrp.setItems(null);
+			catDrp.setItems(cat);
+			
+		}
 
 	
 	
@@ -214,5 +274,6 @@ public class ParallelSessionnsController implements Initializable{
 	{
 		setComboBox() ;
 		setdaysComboBox();
+		setCategoryComboBox();
 	}
 }

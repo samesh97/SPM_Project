@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import database.DatabaseHandler_Lecturers;
 import database.DatabaseHandler_Parallel_Sessions;
 import database.DatabaseHandler_Students;
+import enums.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -61,7 +62,7 @@ public class AddParallelSessionsController implements Initializable{
 		String TagName =add_tag.getValue();
 		String GroupName=add_group.getValue();
 		String studentCount =add_studentCount.getText();
-		
+		int catID = ParallelSessionnsController.category;
 		
 		
 		
@@ -70,10 +71,11 @@ public class AddParallelSessionsController implements Initializable{
 			
 			showAlert("Please enter details correctly");
 		}
+		
 		else {
 			int SlotID = getSlotID();
 			try {
-			    boolean result= DatabaseHandler_Parallel_Sessions.addSession(LecturerName, SubjectName, TagName, GroupName, studentCount, SlotID);
+			    boolean result= DatabaseHandler_Parallel_Sessions.addSession(LecturerName, SubjectName, TagName, GroupName, studentCount, SlotID,catID);
 //				boolean result= DatabaseHandler_Students.createStudentTable();
 				if(result== true) {
 					resetField() ;
@@ -91,6 +93,8 @@ public class AddParallelSessionsController implements Initializable{
 		
 		
 	}
+	//check categories 
+
 	//rest field
 	public void resetField() {
 		add_lecturer.setValue(null);
@@ -176,22 +180,35 @@ public class AddParallelSessionsController implements Initializable{
 		//Subject name combo box
 		ObservableList<String> subject_data = FXCollections.observableArrayList();
 		
-		try {
-		ResultSet rs= DatabaseHandler_Lecturers.getDropDownSubjects();
-		
-		while(rs.next()){
-	
-		subject_data.add(rs.getString("SubjectName"));
+		if(ParallelSessionnsController.category == 2) {
+			subject_data.add("Deep Learning");
+			subject_data.add("Image processing");
+			add_subject.setItems(null);
+			add_subject.setItems(subject_data);
 		}
-		
-		add_subject.setItems(null);
-		add_subject.setItems(subject_data);
-		
+		else if(ParallelSessionnsController.category == 3) {
+			subject_data.add("Machine Learning ");
+			subject_data.add("Parallel Computing");
+			add_subject.setItems(null);
+			add_subject.setItems(subject_data);
 		}
-		catch(Exception e) {
-			e.printStackTrace();
+		else {
+				try {
+				ResultSet rs= DatabaseHandler_Lecturers.getDropDownSubjects();
+				
+				while(rs.next()){
+			
+				subject_data.add(rs.getString("SubjectName"));
+				}
+				
+				add_subject.setItems(null);
+				add_subject.setItems(subject_data);
+				
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
 		}
-		
 		
 		//Tag name combo box
 		ObservableList<String> tag_data = FXCollections.observableArrayList();

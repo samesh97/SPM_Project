@@ -70,6 +70,13 @@ public class TagsUpdateController implements Initializable{
 		changeCenterContent(pane,"../TagsView.fxml");
 
 	}
+	public void viewAllTagsClicked(ActionEvent event)
+	{
+		
+		Scene scene = viewTagsButton.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../TagsView.fxml");
+	}
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
