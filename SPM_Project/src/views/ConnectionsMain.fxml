@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -22,13 +20,14 @@
       <Text layoutX="51.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group ID" />
       <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="73.0" prefHeight="25.0" prefWidth="358.0" />
       <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="141.0" prefHeight="25.0" prefWidth="358.0" />
-      <Button fx:id="btnGenerateRoom" layoutX="54.0" layoutY="259.0" mnemonicParsing="false" onAction="#onGenerateRoomButtonClicked" prefHeight="25.0" prefWidth="483.0" text="GENERATE ROOM" />
       <ComboBox fx:id="groupIdComboBox" layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="52.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id" />
-      <TextField fx:id="roomIdGenerateText" layoutX="180.0" layoutY="299.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="52.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Session" />
       <Text layoutX="55.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preffered Room" />
       <ComboBox fx:id="prefferedRoomComboBox" layoutX="180.0" layoutY="213.0" prefHeight="25.0" prefWidth="358.0" />
-      <TextArea fx:id="availabilityTextArea" layoutX="54.0" layoutY="338.0" prefHeight="40.0" prefWidth="483.0" />
-      <Button fx:id="btnAdd" layoutX="54.0" layoutY="403.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD " />
+      <Button fx:id="btnAdd" layoutX="54.0" layoutY="250.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD " />
+      <Text layoutX="52.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
+      <ComboBox fx:id="sessionComboBox" layoutX="180.0" layoutY="320.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="locationComboBox" layoutX="180.0" layoutY="366.0" prefHeight="25.0" prefWidth="358.0" />
+      <Button fx:id="btnAddSession" layoutX="52.0" layoutY="407.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
    </children>
 </AnchorPane>
