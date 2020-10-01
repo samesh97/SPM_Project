@@ -109,6 +109,31 @@ public class QueriesOfWorkingDays
 				e.printStackTrace();
 			}
 			
+			
+			try
+			{
+				String tableName = "Timetables";
+				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				if(!isCreated)
+				{
+					String query = " CREATE TABLE Timetables (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,Duration int,venue VARCHAR(200),cellV int,cellH int)"; 
+					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+					preparedStmt.execute();
+					
+					System.out.println("Created Table " + tableName);
+					
+				}
+				else
+				{
+					System.out.println("Table " + tableName + " Already Exists");
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			
 			listener.onFinished(true);
 			
 			
