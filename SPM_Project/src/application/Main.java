@@ -4,6 +4,10 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import database.DatabaseHandler;
+import database.DatabaseHandler_NotAvailbleTime;
+import database.DatabaseHandler_Students;
+import database.DatabaseHandler_Tags;
+import database.DatabaseHandler_consecutiveSessions;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +30,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage)
 	{
+		
 		try
 		{
 //			BorderPane root = new BorderPane();
@@ -58,6 +63,8 @@ public class Main extends Application{
 			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
 		
 			 primaryStage.show();
+			 
+			 
 	
 			
 		}
@@ -65,6 +72,7 @@ public class Main extends Application{
 		{
 			e.printStackTrace();
 		}
+		
 	}
 	public static void main(String[] args)
 	{

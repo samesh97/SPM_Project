@@ -6,6 +6,10 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import database.DatabaseHandler;
+import database.DatabaseHandler_NotAvailbleTime;
+import database.DatabaseHandler_Students;
+import database.DatabaseHandler_Tags;
+import database.DatabaseHandler_consecutiveSessions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,6 +69,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
+		 
 		//start default when load the FXML
 		highlightClickedButton(btn_students);
 		changeCenterContent("../StudentsMain.fxml");
@@ -82,6 +87,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	         }
 	     };
 	     new Thread(r).start();
+	  
 	}
 	
 	public void onStudentButtonClicked(ActionEvent event)
