@@ -21,7 +21,7 @@ public class DatabaseHandler_Connections {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE connection (CID int NOT NULL AUTO_INCREMENT,subjectCode VARCHAR(20),tag VARCHAR(20),lecturer VARCHAR(20), groupId VARCHAR(20), location VARCHAR(20), PRIMARY KEY (CID))";  
+				 String query = " CREATE TABLE connection (CID int NOT NULL AUTO_INCREMENT,subjectCode VARCHAR(20),tag VARCHAR(20),lecturer VARCHAR(50), groupId VARCHAR(20), location VARCHAR(20), PRIMARY KEY (CID))";  
 				 
 				    try
 				    {
@@ -55,7 +55,54 @@ public class DatabaseHandler_Connections {
 	}
 	
 	
-	
+	//Create session_location table 
+	public static boolean createSessionLocationTable() {
+		 
+		if(DatabaseHandler.conn != null)
+		{
+			String tableName = "session_location";
+			boolean exists = false;
+			try {
+				exists = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if(!exists){
+			 
+				 String query = " CREATE TABLE session_location (SLID int NOT NULL AUTO_INCREMENT, sessionId VARCHAR(20), locationId VARCHAR(20), PRIMARY KEY (SLID))";  
+				 
+				    try
+				    {
+						PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+						
+						preparedStmt.execute();
+						System.out.println("Created table " + tableName); 
+						return true;
+					} 
+				    catch (SQLException e)
+				    {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						
+						return false;
+					}
+				    
+				   
+				}
+			
+			
+			else 
+			{
+				System.out.println("session_location table already exists");
+			}
+		}
+		
+		
+		return false;		
+		
+	}
 	
 	
 	
@@ -196,6 +243,61 @@ public class DatabaseHandler_Connections {
 	}
 	
 	
+	//Get session id from Sessions table
+	public static ResultSet getSessionId()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT SessionId FROM Sessions "; 
+			    
+			try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				return preparedStmt.executeQuery();
+				
+		
+			} 
+		    catch (SQLException e)
+		    {
+			
+				e.printStackTrace();
+				
+			} 
+		
+		}
+		
+			return null;	
+		
+	}
+
+	
+	//Get location id from location table
+	public static ResultSet getLocationId()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT LID FROM location "; 
+				    
+			try
+			{
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				return preparedStmt.executeQuery();
+					
+			
+			} 
+			catch (SQLException e)
+			{
+				
+				e.printStackTrace();
+					
+			} 
+			
+		}
+			
+			return null;	
+			
+		}
+	
 	
 	public static ResultSet generateRoom()
 	{
@@ -243,6 +345,39 @@ public class DatabaseHandler_Connections {
 		}
 		return false;		
 	}
+	
+	
+	public static boolean addConnectionsLocations(String sessionId, String locationId)
+	{
+		
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT into session_location(sessionId,locationId)" + " VALUES (?,?)";
+	
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				
+				preparedStmt.setString(1, sessionId);
+				preparedStmt.setString(2, locationId);
+				
+			
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		    	 
+		}
+		return false;		
+	}
+	
 	
 
 	public static ResultSet getAllConnections()
