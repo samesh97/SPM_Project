@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Connections;
-import database.DatabaseHandler_Lecturers;
-import database.DatabaseHandler_Tags;
-import enums.Tag;
+import enums.Connection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,9 +14,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class ConnectionsMainController implements Initializable{
@@ -26,18 +29,12 @@ public class ConnectionsMainController implements Initializable{
 	@FXML
 	private AnchorPane controllerPane;
 	@FXML
-	private Button btnViewAllDetails;
+	private Button btnViewAllDetails; 
 	@FXML
-	private Button btnAddConnection;
+	private Button btnGenerateRoom;
+	@FXML
+	private Button btnAdd;
 	
-	@FXML
-	private TextField roomIdTxt;
-	@FXML
-	private TextField groupIdTxt;
-	@FXML
-	private TextField sessionStartTimeTxt;
-	@FXML
-	private TextField sessionEndTimeTxt;
 	
 	@FXML
 	private ComboBox<String> tagComboBox;
@@ -50,7 +47,23 @@ public class ConnectionsMainController implements Initializable{
 	@FXML
 	private ComboBox<String> prefferedRoomComboBox;
 	
-
+	@FXML
+	private TextField roomIdGenerateText;
+	
+	@FXML
+	private TableView<Connection> tblConnectionsView;
+	@FXML
+	private TableColumn<Connection, String> subjectCode;
+	@FXML
+	private TableColumn<Connection, String> tag;
+	@FXML
+	private TableColumn<Connection, String> lecturer;
+	@FXML
+	private TableColumn<Connection, String> groupId;
+	@FXML
+	private TableColumn<Connection, String> location;
+	
+	
 	public void onViewAllDetailsButtonClicked() {
 		System.out.println("View all details button clicked");
 		Scene scene = btnViewAllDetails.getScene();
@@ -58,9 +71,60 @@ public class ConnectionsMainController implements Initializable{
 		changeCenterContent(pane, "../ConnectionsView.fxml");
 	}
 	
-	public void onAddConnectionButtonClicked() {
-		System.out.println("Add connections button clicked");
+	public void onGenerateRoomButtonClicked() {
+		System.out.println("Generate Room button clicked");
+		
+		String tag = tagComboBox.getValue();
+		
+		if(tag == "lecture" || tag == "Lecture") {
+			try {
+				ResultSet result = DatabaseHandler_Connections.getRoomAccordingToTag(tag);
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	
+	public void onAddButtonClicked(){
+		System.out.println("Add button clicked");
+		
+		String subjectCode = subjectCodeComboBox.getValue();
+		String tag = tagComboBox.getValue();
+		String lecturer = lecturerComboBox.getValue();
+		String groupId = groupIdComboBox.getValue();
+		String location = roomIdGenerateText.getText();
+		
+		
+		try {
+			boolean result= DatabaseHandler_Connections.addConnections(subjectCode, tag, lecturer, groupId, location);
+			if(result== true) {
+				showAlert("A record is successfully added");
+			}
+			else {
+				showAlert("Unsuccessful");
+			}
+		
+		}catch(Exception e) {
+		    showAlert("Please enter details correctly");
+		}
+			
+			
+		
+		
+	}
+	
+	
+	public void showAlert(String message)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(message);
+		alert.show();
+	}
+	
+	
 	
 	
 	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
@@ -157,7 +221,7 @@ public class ConnectionsMainController implements Initializable{
 			while(rs.next()){
 				
 				group_id.add(rs.getString("groupId"));
-				
+				group_id.add(rs.getString("subGroupId"));
 			}
 					
 			groupIdComboBox.setItems(null);
