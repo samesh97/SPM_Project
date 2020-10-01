@@ -60,6 +60,7 @@ public static boolean createLocationTable() {
 	}
 
 
+
 	public static boolean addLocations(String buildingId,String blockId,String roomId,String roomType)
 	{
 		createLocationTable();
