@@ -459,6 +459,55 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	}
 	public void onWorkingDaysUpdateButtonClicked(ActionEvent event)
 	{
+		
+		 int item = combo_number_of_working_days.getSelectionModel().getSelectedItem();
+		 int count = 0;
+		 if(MondayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(TuesdayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(WednesdayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(ThursdayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(FridayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(SaturdayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 if(SundayCombo.isSelected())
+		 {
+			 count++;
+		 }
+		 
+		 
+		 if(count > item)
+		 {
+			 showAlert("Please increase the number of working days");
+			 return;
+		 }
+		 if(count < item)
+		 {
+			 showAlert("Please decrease the number of working days");
+			 return;
+		 }
+		
+		
+		
+		
+		
+		
 		showProgressDialog(workingDaysMainPane);
 		Runnable r = new Runnable() 
 		 {
