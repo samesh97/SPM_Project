@@ -31,7 +31,7 @@ public class DatabaseHandler_Lecturers {
 			if(!exists){
 			 //   s = DatabaseHandler.conn.createStatement();
 			 //   s.execute(" CREATE TABLE Subjects (SubjectCode VARCHAR(6),SubjectName VARCHAR(30),OfferedYear int,OfferedSem int,LectureHrs int,TutorialHrs int,LabHrs int,EvaluationHrs int)");
-				 String query = " CREATE TABLE Subjects (SubjectCode VARCHAR(6) PRIMARY KEY,SubjectName VARCHAR(30),OfferedYear int,OfferedSem int,LectureHrs int,TutorialHrs int,LabHrs int,EvaluationHrs int)";  
+				 String query = " CREATE TABLE Subjects (SubjectCode VARCHAR(6) PRIMARY KEY,SubjectName VARCHAR(100),OfferedYear int,OfferedSem int,LectureHrs int,TutorialHrs int,LabHrs int,EvaluationHrs int)";  
 				 
 				    try
 				    {
