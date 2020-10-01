@@ -159,6 +159,29 @@ public static boolean deleteStudents(String id) {
 	}
 	return false;
 }
+public static ResultSet getAllSlots()
+{
+	if(DatabaseHandler.conn != null)
+	{
+		String query = " SELECT * FROM Slots";
+
+		 
+	    try
+	    {
+			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+			return preparedStmt.executeQuery();
+	
+		} 
+	    catch (SQLException e)
+	    {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}    
+	 
+	}
+	return null;	
+}
 public static boolean updateStudents(int id,String yearSem,String program,String groupNo,String subGroupNo,String groupId,String subGroupId)
 {
 	

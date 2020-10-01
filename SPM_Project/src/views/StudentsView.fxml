@@ -27,6 +27,7 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Label>
+                  <Button fx:id="exbtn3" mnemonicParsing="false" onAction="#parallelSessionClicked" text="Button" />
                </children>
             </HBox>
             <HBox prefHeight="102.0" prefWidth="413.0">

@@ -56,7 +56,7 @@ public class StudentsViewController implements Initializable {
 	@FXML
 	private Button searchbtn;
 	@FXML
-	private Button exbtn1;
+	private Button exbtn1,exbtn3;
 	@FXML
 	private Button addNewBtn;
 
@@ -164,6 +164,7 @@ public class StudentsViewController implements Initializable {
 		changeCenterContent(pane,"../StudentsMain.fxml");
 		
 	}
+	//-------------Test Buttons------------------------
 	public void AddConsecutiveSessoinClicked(ActionEvent event) throws IOException
 	{
 		
@@ -183,6 +184,17 @@ public class StudentsViewController implements Initializable {
 		changeCenterContent(pane,"../AddNotAvailableTime.fxml");
 		
 	}
+	public void parallelSessionClicked(ActionEvent event) throws IOException
+	{
+		
+		
+		Scene scene = exbtn1.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../ParallelSessions.fxml");
+		
+	}
+	
+	//---------------------------------------------------------------
 	public String getSelectedRecord() {
 		Student record = table_ViewStudent.getSelectionModel().getSelectedItem();
 		if(record==null) {
