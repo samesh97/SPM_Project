@@ -619,6 +619,10 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	}
 	private void disableOrEnableBackground(boolean b)
 	{
+		if(b)
+			workingDaysMainPane.setDisable(true);
+		else
+			workingDaysMainPane.setDisable(false);
 //		if(b)
 //		{
 //			contentVBox.setDisable(true);
