@@ -23,7 +23,7 @@ public static boolean createAllocatedSessionsTable() {
 			}
 			if(!exists){
 			 
-				 String query = " CREATE TABLE allocatedSessions(SID int NOT NULL AUTO_INCREMENT,type VARCHAR(30),name VARCHAR(30),startingTime VARCHAR(10),duration VARCHAR(10),day VARCHAR(40),PRIMARY KEY (SID))";  
+				 String query = " CREATE TABLE allocatedSessions(SID int NOT NULL AUTO_INCREMENT,type VARCHAR(30),name VARCHAR(30),startingTime VARCHAR(10),duration VARCHAR(10),day int,PRIMARY KEY (SID))";  
 //				 String query = "drop table allocatedSessions";
 				    try
 				    {
@@ -55,7 +55,7 @@ public static boolean createAllocatedSessionsTable() {
 		return false;		
 		
 	}
-public static boolean addNotAllocatedTime(String type,String name,String startingTime,String duration,String day)
+public static boolean addNotAllocatedTime(String type,String name,String startingTime,String duration,int day)
 {
 	createAllocatedSessionsTable();
 	
@@ -71,7 +71,7 @@ public static boolean addNotAllocatedTime(String type,String name,String startin
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, startingTime);
 			preparedStmt.setString(4, duration);
-			preparedStmt.setString(5, day);
+			preparedStmt.setInt(5, day);
 	
 			preparedStmt.execute();
 			return true;

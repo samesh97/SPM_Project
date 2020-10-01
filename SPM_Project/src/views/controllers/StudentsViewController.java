@@ -164,6 +164,16 @@ public class StudentsViewController implements Initializable {
 		changeCenterContent(pane,"../StudentsMain.fxml");
 		
 	}
+	public void AddConsecutiveSessoinClicked(ActionEvent event) throws IOException
+	{
+		
+		
+		Scene scene = exbtn1.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane,"../ConsecutiveSessions.fxml");
+		
+	}
+	
 	public void allocateNotAvailbleClicked(ActionEvent event) throws IOException
 	{
 		

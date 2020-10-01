@@ -17,6 +17,8 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Button fx:id="exbtn2" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" text="Button" />
+                  <Button fx:id="exbtn1" mnemonicParsing="false" onAction="#AddConsecutiveSessoinClicked" text="Button" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Student Details" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
@@ -100,6 +102,5 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="exbtn1" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" text="Button" />
    </children>
 </AnchorPane>
