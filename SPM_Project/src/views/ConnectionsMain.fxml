@@ -31,3 +31,4 @@
       <Button fx:id="btnAddSession" layoutX="52.0" layoutY="407.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
    </children>
 </AnchorPane>
+
