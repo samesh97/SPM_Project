@@ -25,6 +25,8 @@ public class ConnectionsViewController implements Initializable {
 	@FXML
 	private AnchorPane controllerPane;
 	@FXML
+	private Button btnAddNewRecord;
+	@FXML
 	private Button btnUpdateRecord;
 	
 	@FXML
@@ -40,8 +42,15 @@ public class ConnectionsViewController implements Initializable {
 	@FXML
 	private TableColumn<Connection, String> location;
 	
+	public void onViewAllDetailsButtonClicked() {
+		setTableView();
+	}
+	
 	public void onAddNewRecordButtonClicked(){
 		System.out.println("Add new record button clicked");
+		Scene scene = btnAddNewRecord.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane, "../ConnectionsMain.fxml");
 	}
 
 	public void onUpdateRecordButtonClicked(){
@@ -80,11 +89,11 @@ public class ConnectionsViewController implements Initializable {
 	}
 	
 	public void mapFields() {
-		subjectCode.setCellValueFactory(new PropertyValueFactory<>("subjectCode"));
-		tag.setCellValueFactory(new PropertyValueFactory<>("tag"));
-		lecturer.setCellValueFactory(new PropertyValueFactory<>("lecturer"));
-		groupId.setCellValueFactory(new PropertyValueFactory<>("groupId"));
-		location.setCellValueFactory(new PropertyValueFactory<>("location"));
+		subjectCode.setCellValueFactory(new PropertyValueFactory<Connection, String>("subjectCode"));
+		tag.setCellValueFactory(new PropertyValueFactory<Connection, String>("tag"));
+		lecturer.setCellValueFactory(new PropertyValueFactory<Connection, String>("lecturer"));
+		groupId.setCellValueFactory(new PropertyValueFactory<Connection, String>("groupId"));
+		location.setCellValueFactory(new PropertyValueFactory<Connection, String>("location"));
 	}
 	
 	
