@@ -809,7 +809,8 @@ public class DatabaseHandler_Lecturers {
 					    	 
 					}
 					return false;		
-				}			
+				}
+				
 				
 				
 //last bracket	

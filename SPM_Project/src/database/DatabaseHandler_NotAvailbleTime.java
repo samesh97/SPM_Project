@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -55,36 +56,59 @@ public static boolean createAllocatedSessionsTable() {
 		return false;		
 		
 	}
-public static boolean addNotAllocatedTime(String type,String name,String startingTime,String duration,int day)
-{
-	createAllocatedSessionsTable();
-	
-	if(DatabaseHandler.conn != null)
+	public static boolean addNotAllocatedTime(String type,String name,String startingTime,String duration,int day)
 	{
-		String query = " INSERT into allocatedSessions(type,name,startingTime,duration,day)" + " VALUES (?,?,?,?,?)";
-
-		 
-	    try
-	    {
-			PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
-			preparedStmt.setString(1, type);
-			preparedStmt.setString(2, name);
-			preparedStmt.setString(3, startingTime);
-			preparedStmt.setString(4, duration);
-			preparedStmt.setInt(5, day);
+		createAllocatedSessionsTable();
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT into allocatedSessions(type,name,startingTime,duration,day)" + " VALUES (?,?,?,?,?)";
 	
-			preparedStmt.execute();
-			return true;
-		} 
-	    catch (SQLException e)
-	    {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, type);
+				preparedStmt.setString(2, name);
+				preparedStmt.setString(3, startingTime);
+				preparedStmt.setString(4, duration);
+				preparedStmt.setInt(5, day);
+		
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		    	 
 		}
-	    	 
+		return false;		
 	}
-	return false;		
-}
+	public static ResultSet findByLecturerName(String name)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM allocatedSessions WHERE name=(?)";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, name);
+				return preparedStmt.executeQuery();
+		
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			} 
+		}
+		return null;	
+	}
 
 }

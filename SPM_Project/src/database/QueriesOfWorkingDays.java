@@ -116,7 +116,7 @@ public class QueriesOfWorkingDays
 				boolean isCreated = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
 				if(!isCreated)
 				{
-					String query = " CREATE TABLE Timetables (SessionId int PRIMARY KEY AUTO_INCREMENT,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,Duration int,venue VARCHAR(200),cellV int,cellH int)"; 
+					String query = " CREATE TABLE Timetables (SessionId int PRIMARY KEY AUTO_INCREMENT,programType int,LecturerName VARCHAR(100),SubjectCode VARCHAR(50),Tag VARCHAR(20),StudentGroup VARCHAR(50),StuCount int,Duration int,venue VARCHAR(200),cellV int,cellH int)"; 
 					PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
 					preparedStmt.execute();
 					
@@ -528,6 +528,121 @@ public class QueriesOfWorkingDays
 				e.printStackTrace();
 			}
 		}
+		return null;
+	}
+	public static boolean addTimeTableRow(int programType,String LecturerName,String SubjectCode,String Tag,String StudentGroup,int StuCount,int Duration,String venue,int cellH,int cellV)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			//insert
+			String query = " INSERT into Timetables(programType,LecturerName,SubjectCode,Tag,StudentGroup,StuCount,Duration,venue,cellV,cellH)" + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1,programType);
+				preparedStmt.setString(2, LecturerName);
+				preparedStmt.setString(3, SubjectCode);
+				preparedStmt.setString(4, Tag);
+				preparedStmt.setString(5, StudentGroup);
+				preparedStmt.setInt(6,StuCount);
+				preparedStmt.setInt(7,Duration);
+				preparedStmt.setString(8, venue);
+				preparedStmt.setInt(9,cellH);
+				preparedStmt.setInt(10,cellV);
+				
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return false;
+	}
+	public static void DeleteAllTimeTables()
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = "DELETE FROM Timetables";
+
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.execute();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+	}
+	public static String getLocationName(int sessionId)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM session_location WHERE sessionId = (?)";
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setInt(1, sessionId);
+				ResultSet set = preparedStmt.executeQuery();
+				while(set.next())
+				{
+					String name = set.getString("locationName");
+					return name;
+				}
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		return "";
+	}
+	public static ResultSet getStudentGroupTimeTable(String group)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Timetables WHERE StudentGroup = (?)";
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, group);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	public static ResultSet getLecturerTimeTable(String group)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Timetables WHERE LecturerName = (?)";
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, group);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		
 		return null;
 	}
 	public static void dropTable(String name)
