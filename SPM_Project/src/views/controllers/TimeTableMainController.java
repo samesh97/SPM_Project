@@ -218,6 +218,34 @@ public class TimeTableMainController implements Initializable
 		else if(type.equals("Lo"))
 		{
 			
+			ResultSet set = QueriesOfWorkingDays.getVenueTimeTable(name);
+			try
+			{
+				while(set.next())
+				{
+					String LecturerName = set.getString("LecturerName");
+					String StudentGroup = set.getString("StudentGroup");
+					String SubjectCode = set.getString("SubjectCode");
+					String Tag = set.getString("Tag");
+					
+					int cellH = set.getInt("cellH");
+					int cellV = set.getInt("cellV");
+					
+					
+					Label label = new Label(LecturerName + "\n" +StudentGroup + "\n" + SubjectCode + "\n" + Tag + "\n");
+	        		label.setAlignment(Pos.CENTER);
+	    			label.setMaxWidth(Double.MAX_VALUE);
+	    			label.setStyle("-fx-font-weight: bold");
+	    			
+	    			
+	    			timetablegrid.add(label, cellH, cellV);
+				}
+			}
+			catch (SQLException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if(type.equals("Gr"))
 		{

@@ -625,7 +625,7 @@ public class QueriesOfWorkingDays
 		
 		return null;
 	}
-	public static ResultSet getLecturerTimeTable(String group)
+	public static ResultSet getLecturerTimeTable(String lecName)
 	{
 		if(DatabaseHandler.conn != null)
 		{
@@ -634,7 +634,27 @@ public class QueriesOfWorkingDays
 		    try
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
-				preparedStmt.setString(1, group);
+				preparedStmt.setString(1, lecName);
+				return preparedStmt.executeQuery();
+			} 
+		    catch (SQLException e)
+		    {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	public static ResultSet getVenueTimeTable(String venue)
+	{
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " SELECT * FROM Timetables WHERE venue = (?)";
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				preparedStmt.setString(1, venue);
 				return preparedStmt.executeQuery();
 			} 
 		    catch (SQLException e)
