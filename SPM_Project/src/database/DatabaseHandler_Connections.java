@@ -106,7 +106,7 @@ public class DatabaseHandler_Connections {
 	
 	
 	//Create consecutive_session_location table
-public static boolean createConsecutiveSessionLocationTable() {
+	public static boolean createConsecutiveSessionLocationTable() {
 		 
 		
 		if(DatabaseHandler.conn != null)
@@ -156,7 +156,57 @@ public static boolean createConsecutiveSessionLocationTable() {
 	}
 
 
-	
+		//Create consecutive_session_location table
+		public static boolean createRoomAvailabilityTable() {
+			 
+			
+			if(DatabaseHandler.conn != null)
+			{
+				String tableName = "room_availability";
+				boolean exists = false;
+				try {
+					exists = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(!exists){
+				 
+					 String query = " CREATE TABLE room_availability(RAID int NOT NULL AUTO_INCREMENT,roomId VARCHAR(30),day VARCHAR(30),timeSlot VARCHAR(50), PRIMARY KEY (RAID))";  
+//					 String query = "drop table Consecutive";
+					    try
+					    {
+							PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+							
+							preparedStmt.execute();
+							 System.out.println("Created table " + tableName); 
+							return true;
+						} 
+					    catch (SQLException e)
+					    {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							
+							return false;
+						}
+					    
+					   
+					}
+				
+				
+				else 
+				{
+					System.out.println("room_availability table already exists");
+				}
+			}
+			
+			
+			return false;		
+			
+		}
+
+		
 	//Get tag details from tags table
 	public static ResultSet getTagDetails()
 	{
@@ -432,6 +482,37 @@ public static boolean createConsecutiveSessionLocationTable() {
 		return false;		
 	}
 	
+	//Add not availability
+	public static boolean addNotAvailability(String roomId,String day,String timeSlot)
+	{
+		
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT into room_availability(roomId,day,timeSlot)" + " VALUES (?,?,?)";
+	
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				
+				preparedStmt.setString(1, roomId);
+				preparedStmt.setString(2, day);
+				preparedStmt.setString(3, timeSlot);
+	
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		    	 
+		}
+		return false;		
+	}
 	
 	public static boolean addConnectionsLocations(int sessionId, int locationId,String locationName)
 	{
