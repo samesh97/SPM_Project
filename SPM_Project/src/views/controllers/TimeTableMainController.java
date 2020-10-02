@@ -293,7 +293,16 @@ public class TimeTableMainController implements Initializable
 			column.setPercentWidth(100 / 7);
 			
 			 size = QueriesOfWorkingDays.getSlotsCountByProgram(programType) + 1;
-			 setAllCells(8,size);
+			 
+			 if(programType == Program.WEEK_DAY)
+			 {
+				 setAllCells(0,6);
+			 }
+			 else
+			 {
+				 setAllCells(7,8);
+			 }
+			 
 			
 			for (int i = 0; i < 8; i++)
 			{
@@ -429,19 +438,36 @@ public class TimeTableMainController implements Initializable
 	}
 
 
-	private void setAllCells(int cellH, int cellV)
+	private void setAllCells(int hStart,int hEnd)
 	{
 		allCells.clear();
-		for(int i = 0; i < cellH; i++)
+		
+		
+		for(int i = hStart; i <= hEnd; i++)
 		{
-			for(int j = 0; j < cellV; j++)
+			for(int j = 0; j < size; j++)
 			{
 				Cell cell = new Cell();
 				cell.setCellH(i);
 				cell.setCellV(j);
+				
 				allCells.add(cell);
+				System.out.println(cell.getCellH() + " --- " + cell.getCellV() + "--- " + allCells.size());
+				
+				
 			}
 		}
+		
+//		for(int i = 0; i < cellH; i++)
+//		{
+//			for(int j = 0; j < cellV; j++)
+//			{
+//				Cell cell = new Cell();
+//				cell.setCellH(i);
+//				cell.setCellV(j);
+//				allCells.add(cell);
+//			}
+//		}
 //		
 //		for(Cell cell : allCells)
 //		{
@@ -497,15 +523,7 @@ public class TimeTableMainController implements Initializable
 							venue,
 							cell.getCellH(),
 							cell.getCellV());
-						
-						if(ress)
-						{
-							System.out.println("Added");
-						}
-						else
-						{
-							System.out.println("Not Added");
-						}
+					
 		
 					}
 					else
@@ -525,19 +543,6 @@ public class TimeTableMainController implements Initializable
 								cell.getCellH(),
 								cell.getCellV());
 							
-							if(ress)
-							{
-								System.out.println("Added");
-							}
-							else
-							{
-								System.out.println("Not Added");
-							}
-						
-						
-						
-		    		
-						
 		    			
 					}
 
@@ -593,29 +598,70 @@ public class TimeTableMainController implements Initializable
 //	}
 	public Cell getACellWithoutTheseDays(ArrayList<Integer> list)
 	{
-		for(int i = 0; i < allCells.size(); i++)
+		
+		ArrayList<Cell> newList = new ArrayList<>(allCells);
+		for(int i = 0; i < newList.size(); i++)
 		{
-			Cell cell = allCells.get(i);
-			int count = 0;
+			Cell cell = newList.get(i);
 			for(int j = 0; j < list.size(); j++)
 			{
 				int day = list.get(j);
-				if(cell.getCellH() != day)
+				if(cell.getCellH() == day)
 				{
-					count++;
-				}
-				
-				if(j == list.size() - 1)
-				{
-					if(count == list.size())
-					{
-						allCells.remove(i);
-						return cell;
-					}
+					newList.remove(i);
 				}
 			}
-			
 		}
+		
+		int randomNum = ThreadLocalRandom.current().nextInt(0, newList.size());
+		
+		for(int i = 0; i < newList.size(); i++)
+		{
+			if(i == randomNum)
+			{
+				Cell cell = newList.get(i);
+				//remove cell
+				
+				for(int x = 0; x < allCells.size(); x++)
+				{
+					Cell cell2 = allCells.get(x);
+					if(cell.getCellH() == cell2.getCellH() && cell.getCellV() == cell2.getCellV())
+					{
+						allCells.remove(x);
+					}
+				}
+				
+				return cell;
+			}
+		}
+		
+		
+		
+		
+		
+//		for(int i = 0; i < allCells.size(); i++)
+//		{
+//			Cell cell = allCells.get(i);
+//			int count = 0;
+//			for(int j = 0; j < list.size(); j++)
+//			{
+//				int day = list.get(j);
+//				if(cell.getCellH() != day)
+//				{
+//					count++;
+//				}
+//				
+//				if(j == list.size() - 1)
+//				{
+//					if(count == list.size())
+//					{
+//						allCells.remove(i);
+//						return cell;
+//					}
+//				}
+//			}
+//			
+//		}
 		return null;
 	}
 

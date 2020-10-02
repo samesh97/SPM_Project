@@ -535,7 +535,7 @@ public class QueriesOfWorkingDays
 		if(DatabaseHandler.conn != null)
 		{
 			//insert
-			String query = " INSERT into Timetables(programType,LecturerName,SubjectCode,Tag,StudentGroup,StuCount,Duration,venue,cellV,cellH)" + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String query = " INSERT into Timetables(programType,LecturerName,SubjectCode,Tag,StudentGroup,StuCount,Duration,venue,cellH,cellV)" + " VALUES (?,?,?,?,?,?,?,?,?,?)";
 		    try
 		    {
 				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
