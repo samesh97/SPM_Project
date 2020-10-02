@@ -105,6 +105,57 @@ public class DatabaseHandler_Connections {
 	}
 	
 	
+	//Create consecutive_session_location table
+public static boolean createConsecutiveSessionLocationTable() {
+		 
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String tableName = "consecutive_session_location";
+			boolean exists = false;
+			try {
+				exists = DatabaseHandler.conn.getMetaData().getTables(null, null, tableName, null).next();
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if(!exists){
+			 
+				 String query = " CREATE TABLE consecutive_session_location(CSLID int NOT NULL AUTO_INCREMENT,lecturer VARCHAR(50),instructor VARCHAR(50),subjectCode VARCHAR(20),groupId VARCHAR(20),sessionType VARCHAR(30),location VARCHAR(40), PRIMARY KEY (CSLID))";  
+//				 String query = "drop table Consecutive";
+				    try
+				    {
+						PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+						
+						preparedStmt.execute();
+						 System.out.println("Created table " + tableName); 
+						return true;
+					} 
+				    catch (SQLException e)
+				    {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						
+						return false;
+					}
+				    
+				   
+				}
+			
+			
+			else 
+			{
+				System.out.println("consecutive_session_location table already exists");
+			}
+		}
+		
+		
+		return false;		
+		
+	}
+
+
 	
 	//Get tag details from tags table
 	public static ResultSet getTagDetails()
@@ -330,6 +381,41 @@ public class DatabaseHandler_Connections {
 				preparedStmt.setString(3, lecturer);
 				preparedStmt.setString(4, groupId);
 				preparedStmt.setString(5, location);
+				
+			
+				preparedStmt.execute();
+				return true;
+			} 
+		    catch (SQLException e)
+		    {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		    	 
+		}
+		return false;		
+	}
+	
+	public static boolean addConsecutiveSessionLocation(String lecturer,String instructor,String subjectCode,String groupId,String sessionType, String location)
+	{
+		
+		
+		if(DatabaseHandler.conn != null)
+		{
+			String query = " INSERT into consecutive_session_location(lecturer, instructor, subjectCode,groupId,sessionType,location)" + " VALUES (?,?,?,?,?,?)";
+	
+			 
+		    try
+		    {
+				PreparedStatement preparedStmt = (PreparedStatement) DatabaseHandler.conn.clientPrepareStatement(query);
+				
+				preparedStmt.setString(1, lecturer);
+				preparedStmt.setString(2, instructor);
+				preparedStmt.setString(3, subjectCode);
+				preparedStmt.setString(4, groupId);
+				preparedStmt.setString(5, sessionType);
+				preparedStmt.setString(6, location);
 				
 			
 				preparedStmt.execute();
