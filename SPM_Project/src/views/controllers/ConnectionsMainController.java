@@ -37,6 +37,8 @@ public class ConnectionsMainController implements Initializable{
 	private Button btnAdd;
 	@FXML
 	private Button btnAddConsecutiveSessionLocation;
+	@FXML
+	private Button btnAddRoomAvailability;
 	
 	
 	@FXML
@@ -163,6 +165,13 @@ public class ConnectionsMainController implements Initializable{
 		changeCenterContent(pane, "../ConnectionConsecutiveSession.fxml");
 	}
 	
+	public void onAddRoomAvailabilityButtonClicked(){
+		System.out.println("Add room availability button clicked");
+		Scene scene = btnAddRoomAvailability.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane, "../NotAvailableLocationTime.fxml");
+	}
+	
 	public void showAlert(String message)
 	{
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -199,7 +208,7 @@ public class ConnectionsMainController implements Initializable{
 	
 	public void setComboBoxes()
 	{
-		//offered year combo box
+		//tag combo box
 		ObservableList<String> tag_data = FXCollections.observableArrayList();
 		
 		try {
@@ -384,6 +393,7 @@ public class ConnectionsMainController implements Initializable{
 		DatabaseHandler_Connections.createConnectionTable();
 		DatabaseHandler_Connections.createSessionLocationTable();
 		DatabaseHandler_Connections.createConsecutiveSessionLocationTable();
+		DatabaseHandler_Connections.createRoomAvailabilityTable();
 		setComboBoxes();
 		
 	}
