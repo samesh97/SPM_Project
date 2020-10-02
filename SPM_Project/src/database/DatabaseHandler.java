@@ -11,12 +11,12 @@ import listeners.OnTaskCompleteListener;
 public class DatabaseHandler
 {
 	//DB4Free
-//	private static final String USER_NAME = "error_404";
-//	private static final String PASSWORD = "error_404";
+	private static final String USER_NAME = "error_404";
+	private static final String PASSWORD = "error_404";
 	
 	//FREE SQL HOSTING
-	private static final String USER_NAME = "sql12368186";
-	private static final String PASSWORD = "CYPPc3tUHC";
+//	private static final String USER_NAME = "sql12368186";
+//	private static final String PASSWORD = "CYPPc3tUHC";
 	
 	
 	public static Connection conn = null;
@@ -30,10 +30,10 @@ public class DatabaseHandler
 			Class.forName("com.mysql.jdbc.Driver");
 			
 			//DB4Free
-//			conn = (Connection) DriverManager.getConnection("jdbc:mysql://db4free.net:3306/spm_timetable_db",USER_NAME,PASSWORD);
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://db4free.net:3306/spm_timetable_db",USER_NAME,PASSWORD);
 			
 			//FREE SQL HOSTING
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12368186",USER_NAME,PASSWORD);
+//			conn = (Connection) DriverManager.getConnection("jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12368186",USER_NAME,PASSWORD);
 			
 			listener.onFinished(true);
 			System.out.println("Successfully Connected to the Database");

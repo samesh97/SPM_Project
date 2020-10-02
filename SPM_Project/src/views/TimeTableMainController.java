@@ -212,16 +212,16 @@ public class TimeTableMainController implements Initializable
 			{
 				while(set.next())
 				{
-					String StudentGroup = set.getString("StudentGroup");
 					String SubjectCode = set.getString("SubjectCode");
 					String Tag = set.getString("Tag");
+					String StudentGroup = set.getString("StudentGroup");
 					String venue = set.getString("venue");
 					
 					int cellH = set.getInt("cellH");
 					int cellV = set.getInt("cellV");
 					
 					
-					Label label = new Label(StudentGroup + "\n" + SubjectCode + "\n" + Tag + "\n" + venue);
+					Label label = new Label(SubjectCode + "\n" + "(" + Tag + ")" + "\n" + StudentGroup + "\n" + venue);
 	        		label.setAlignment(Pos.CENTER);
 	    			label.setMaxWidth(Double.MAX_VALUE);
 	    			label.setStyle("-fx-font-weight: bold");
@@ -244,16 +244,17 @@ public class TimeTableMainController implements Initializable
 			{
 				while(set.next())
 				{
-					String LecturerName = set.getString("LecturerName");
-					String StudentGroup = set.getString("StudentGroup");
 					String SubjectCode = set.getString("SubjectCode");
 					String Tag = set.getString("Tag");
+					String LecturerName = set.getString("LecturerName");
+					String StudentGroup = set.getString("StudentGroup");
+					
 					
 					int cellH = set.getInt("cellH");
 					int cellV = set.getInt("cellV");
 					
 					
-					Label label = new Label(LecturerName + "\n" +StudentGroup + "\n" + SubjectCode + "\n" + Tag + "\n");
+					Label label = new Label(SubjectCode + "\n" +"(" + Tag + ")" + "\n" + LecturerName + "\n" + StudentGroup);
 	        		label.setAlignment(Pos.CENTER);
 	    			label.setMaxWidth(Double.MAX_VALUE);
 	    			label.setStyle("-fx-font-weight: bold");
@@ -275,16 +276,17 @@ public class TimeTableMainController implements Initializable
 			{
 				while(set.next())
 				{
-					String LecturerName = set.getString("LecturerName");
+				
 					String SubjectCode = set.getString("SubjectCode");
 					String Tag = set.getString("Tag");
+					String LecturerName = set.getString("LecturerName");
 					String venue = set.getString("venue");
 					
 					int cellH = set.getInt("cellH");
 					int cellV = set.getInt("cellV");
 					
 					
-					Label label = new Label(LecturerName + "\n" + SubjectCode + "\n" + Tag + "\n" + venue);
+					Label label = new Label(SubjectCode + "\n" + Tag + "\n" + LecturerName + "\n" + venue);
 	        		label.setAlignment(Pos.CENTER);
 	    			label.setMaxWidth(Double.MAX_VALUE);
 	    			label.setStyle("-fx-font-weight: bold");
@@ -317,11 +319,11 @@ public class TimeTableMainController implements Initializable
 			 
 			 if(programType == Program.WEEK_DAY)
 			 {
-				 setAllCells(0,6);
+				 setAllCells(1,5);
 			 }
 			 else
 			 {
-				 setAllCells(7,8);
+				 setAllCells(6,8);
 			 }
 			 
 			
