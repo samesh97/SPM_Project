@@ -8,27 +8,28 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.ConnectionsMainController">
    <children>
-      <Button fx:id="btnViewAllDetails" layoutX="54.0" layoutY="28.0" mnemonicParsing="false" onAction="#onViewAllDetailsButtonClicked" prefHeight="25.0" prefWidth="483.0" text="View All Details">
+      <Button fx:id="btnViewAllDetails" layoutX="54.0" layoutY="23.0" mnemonicParsing="false" onAction="#onViewAllDetailsButtonClicked" prefHeight="25.0" prefWidth="483.0" text="View All Details">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Text layoutX="56.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" />
-      <ComboBox fx:id="tagComboBox" layoutX="180.0" layoutY="106.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="54.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject Code" />
-      <Text layoutX="54.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecturer" />
-      <Text layoutX="51.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group ID" />
-      <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="73.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="141.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="groupIdComboBox" layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="52.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Session" />
-      <Text layoutX="55.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preffered Room" />
-      <ComboBox fx:id="prefferedRoomComboBox" layoutX="180.0" layoutY="213.0" prefHeight="25.0" prefWidth="358.0" />
-      <Button fx:id="btnAdd" layoutX="54.0" layoutY="250.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD " />
-      <Text layoutX="52.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
-      <ComboBox fx:id="sessionComboBox" layoutX="180.0" layoutY="299.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="locationComboBox" layoutX="180.0" layoutY="335.0" prefHeight="25.0" prefWidth="358.0" />
-      <Button fx:id="btnAddSession" layoutX="54.0" layoutY="372.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
-      <Button fx:id="btnAddConsecutiveSessionLocation" layoutX="56.0" layoutY="421.0" mnemonicParsing="false" onAction="#onAddConsecutiveSessionLocationButtonClicked" prefHeight="25.0" prefWidth="477.0" text="Add Location for Consecutive Session" />
+      <Text layoutX="57.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" />
+      <ComboBox fx:id="tagComboBox" layoutX="180.0" layoutY="93.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="54.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject Code" />
+      <Text layoutX="53.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecturer" />
+      <Text layoutX="50.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group ID" />
+      <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="60.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="129.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="groupIdComboBox" layoutX="180.0" layoutY="162.0" prefHeight="25.0" prefWidth="358.0" />
+      <Text layoutX="52.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Session" />
+      <Text layoutX="54.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preffered Room" />
+      <ComboBox fx:id="prefferedRoomComboBox" layoutX="180.0" layoutY="197.0" prefHeight="25.0" prefWidth="358.0" />
+      <Button fx:id="btnAdd" layoutX="54.0" layoutY="238.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD " />
+      <Text layoutX="53.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
+      <ComboBox fx:id="sessionComboBox" layoutX="180.0" layoutY="278.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="locationComboBox" layoutX="180.0" layoutY="312.0" prefHeight="25.0" prefWidth="358.0" />
+      <Button fx:id="btnAddSession" layoutX="53.0" layoutY="350.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
+      <Button fx:id="btnAddConsecutiveSessionLocation" layoutX="56.0" layoutY="387.0" mnemonicParsing="false" onAction="#onAddConsecutiveSessionLocationButtonClicked" prefHeight="25.0" prefWidth="477.0" text="Add Location for Consecutive Session" />
+      <Button fx:id="btnAddRoomAvailability" layoutX="57.0" layoutY="425.0" mnemonicParsing="false" onAction="#onAddRoomAvailabilityButtonClicked" prefHeight="25.0" prefWidth="477.0" text="Add Room Availability" />
    </children>
 </AnchorPane>
