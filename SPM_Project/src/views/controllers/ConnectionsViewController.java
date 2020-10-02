@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Connections;
 import enums.Connection;
+import enums.Location;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +30,18 @@ public class ConnectionsViewController implements Initializable {
 	private Button btnAddNewRecord;
 	@FXML
 	private Button btnUpdateRecord;
+	
+	@FXML
+	private ComboBox<String> tagUpdateComboBox;
+	@FXML
+	private ComboBox<String> subjectCodeUpdateComboBox;
+	@FXML
+	private ComboBox<String> lecturerUpdateComboBox;
+	@FXML
+	private ComboBox<String> groupIdUpdateComboBox;
+	@FXML
+	private ComboBox<String> locationUpdateComboBox;
+	
 	
 	@FXML
 	private TableView<Connection> tblConnectionsView;
@@ -109,11 +123,11 @@ public class ConnectionsViewController implements Initializable {
 				while(Connections_set.next())
 				{
 					Connection con = new Connection();
-					con.setSubjectCode(Connections_set.getString(1));
-					con.setTag(Connections_set.getString(2));
-					con.setLecturer(Connections_set.getString(3));
-					con.setGroupId(Connections_set.getString(4));
-					con.setLocation(Connections_set.getString(5));
+					con.setSubjectCode(Connections_set.getString(2));
+					con.setTag(Connections_set.getString(3));
+					con.setLecturer(Connections_set.getString(4));
+					con.setGroupId(Connections_set.getString(5));
+					con.setLocation(Connections_set.getString(6));
 					
 					
 					
@@ -130,6 +144,22 @@ public class ConnectionsViewController implements Initializable {
 		tblConnectionsView.setItems(connectionsList);
 		
 	}
+	
+	
+	private Connection connection;
+	
+	public void onTableItemSelect() {
+		connection = tblConnectionsView.getSelectionModel().getSelectedItem();
+		
+		if(connection != null) {
+			tagUpdateComboBox.setValue(connection.getTag());
+			subjectCodeUpdateComboBox.setValue(connection.getSubjectCode());
+			lecturerUpdateComboBox.setValue(connection.getLecturer());
+			groupIdUpdateComboBox.setValue(connection.getGroupId());
+			locationUpdateComboBox.setValue(connection.getLocation());
+		}
+	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
