@@ -35,6 +35,8 @@ public class ConnectionsMainController implements Initializable{
 	private Button btnGenerateRoom;
 	@FXML
 	private Button btnAdd;
+	@FXML
+	private Button btnAddConsecutiveSessionLocation;
 	
 	
 	@FXML
@@ -132,25 +134,34 @@ public class ConnectionsMainController implements Initializable{
 		String groupId = groupIdComboBox.getValue();
 		String location = prefferedRoomComboBox.getValue();
 		
-		
-		try {
-			boolean result= DatabaseHandler_Connections.addConnections(subjectCode, tag, lecturer, groupId, location);
-			if(result== true) {
-				showAlert("A record is successfully added");
-			}
-			else {
-				showAlert("Unsuccessful");
-			}
-		
-		}catch(Exception e) {
-		    showAlert("Please enter details correctly");
+		if(subjectCode == null || tag == null || lecturer == null || groupId == null || location == null) {
+			showAlert("Please fill the empty feilds!");
 		}
+		else {
+			try {
+				boolean result= DatabaseHandler_Connections.addConnections(subjectCode, tag, lecturer, groupId, location);
+				if(result== true) {
+					showAlert("A record is successfully added");
+				}
+				else {
+					showAlert("Unsuccessful");
+				}
 			
-			
-		
+			}catch(Exception e) {
+			    showAlert("Please enter details correctly");
+			}
+		}
+
 		
 	}
 	
+	
+	public void onAddConsecutiveSessionLocationButtonClicked(){
+		System.out.println("Add consecutive session location button clicked");
+		Scene scene = btnAddConsecutiveSessionLocation.getScene();
+		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
+		changeCenterContent(pane, "../ConnectionConsecutiveSession.fxml");
+	}
 	
 	public void showAlert(String message)
 	{
@@ -372,6 +383,7 @@ public class ConnectionsMainController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		DatabaseHandler_Connections.createConnectionTable();
 		DatabaseHandler_Connections.createSessionLocationTable();
+		DatabaseHandler_Connections.createConsecutiveSessionLocationTable();
 		setComboBoxes();
 		
 	}
