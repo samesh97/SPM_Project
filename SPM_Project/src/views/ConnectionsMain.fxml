@@ -21,14 +21,14 @@
       <ComboBox fx:id="subjectCodeComboBox" layoutX="180.0" layoutY="73.0" prefHeight="25.0" prefWidth="358.0" />
       <ComboBox fx:id="lecturerComboBox" layoutX="180.0" layoutY="141.0" prefHeight="25.0" prefWidth="358.0" />
       <ComboBox fx:id="groupIdComboBox" layoutX="180.0" layoutY="176.0" prefHeight="25.0" prefWidth="358.0" />
-      <Text layoutX="52.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Session" />
+      <Text layoutX="52.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Session" />
       <Text layoutX="55.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preffered Room" />
       <ComboBox fx:id="prefferedRoomComboBox" layoutX="180.0" layoutY="213.0" prefHeight="25.0" prefWidth="358.0" />
       <Button fx:id="btnAdd" layoutX="54.0" layoutY="250.0" mnemonicParsing="false" onAction="#onAddButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD " />
-      <Text layoutX="52.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
-      <ComboBox fx:id="sessionComboBox" layoutX="180.0" layoutY="320.0" prefHeight="25.0" prefWidth="358.0" />
-      <ComboBox fx:id="locationComboBox" layoutX="180.0" layoutY="366.0" prefHeight="25.0" prefWidth="358.0" />
-      <Button fx:id="btnAddSession" layoutX="52.0" layoutY="407.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
+      <Text layoutX="52.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" />
+      <ComboBox fx:id="sessionComboBox" layoutX="180.0" layoutY="299.0" prefHeight="25.0" prefWidth="358.0" />
+      <ComboBox fx:id="locationComboBox" layoutX="180.0" layoutY="335.0" prefHeight="25.0" prefWidth="358.0" />
+      <Button fx:id="btnAddSession" layoutX="54.0" layoutY="372.0" mnemonicParsing="false" onAction="#onAddSessionButtonClicked" prefHeight="25.0" prefWidth="483.0" text="ADD SESSION" />
+      <Button fx:id="btnAddConsecutiveSessionLocation" layoutX="56.0" layoutY="421.0" mnemonicParsing="false" onAction="#onAddConsecutiveSessionLocationButtonClicked" prefHeight="25.0" prefWidth="477.0" text="Add Location for Consecutive Session" />
    </children>
 </AnchorPane>
-
