@@ -5,11 +5,11 @@ import javafx.scene.control.Button;
 
 public class Connection {
 
-	private SimpleStringProperty subjectCode;
-	private SimpleStringProperty tag;
-	private SimpleStringProperty lecturer;
-	private SimpleStringProperty groupId;
-	private SimpleStringProperty location;
+	private String subjectCode;
+	private String tag;
+	private String lecturer;
+	private String groupId;
+	private String location;
 	private Button btnUpdate;
 	private Button btnDelete;
 	
@@ -19,51 +19,51 @@ public class Connection {
 	
 	public Connection(String subjectCode, String tag, String lecturer, String groupId, String location) {
 		super();
-		this.subjectCode = new SimpleStringProperty(subjectCode);
-		this.tag = new SimpleStringProperty(tag);
-		this.lecturer = new SimpleStringProperty(lecturer);
-		this.groupId = new SimpleStringProperty(groupId);
-		this.location = new SimpleStringProperty(location);
+		this.subjectCode = subjectCode;
+		this.tag = tag;
+		this.lecturer = lecturer;
+		this.groupId = groupId;
+		this.location = location;
 	}
 
-	public SimpleStringProperty getSubjectCode() {
+	public String getSubjectCode() {
 		return subjectCode;
 	}
 
 	public void setSubjectCode(String subjectCode) {
-		this.subjectCode = new SimpleStringProperty(subjectCode);
+		this.subjectCode = subjectCode;
 	}
 
-	public SimpleStringProperty getTag() {
+	public String getTag() {
 		return tag;
 	}
 
 	public void setTag(String tag) {
-		this.tag = new SimpleStringProperty(tag);
+		this.tag = tag;
 	}
 
-	public SimpleStringProperty getLecturer() {
+	public String getLecturer() {
 		return lecturer;
 	}
 
 	public void setLecturer(String lecturer) {
-		this.lecturer = new SimpleStringProperty(lecturer);
+		this.lecturer = lecturer;
 	}
 
-	public SimpleStringProperty getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 
 	public void setGroupId(String groupId) {
-		this.groupId = new SimpleStringProperty(groupId);
+		this.groupId = groupId;
 	}
 
-	public SimpleStringProperty getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
 	public void setLocation(String location) {
-		this.location = new SimpleStringProperty(location);
+		this.location = location;
 	}
 	
 	
