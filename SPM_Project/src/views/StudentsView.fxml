@@ -11,14 +11,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="507.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StudentsViewController">
+<AnchorPane prefHeight="745.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StudentsViewController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="exbtn2" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" text="Button" />
-                  <Button fx:id="exbtn1" mnemonicParsing="false" onAction="#AddConsecutiveSessoinClicked" text="Button" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="3000.0" text="Student Details" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
@@ -27,7 +25,6 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="exbtn3" mnemonicParsing="false" onAction="#parallelSessionClicked" text="Button" />
                </children>
             </HBox>
             <HBox prefHeight="102.0" prefWidth="413.0">
@@ -100,6 +97,22 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </HBox>
+            <HBox prefHeight="59.0" prefWidth="601.0">
+               <children>
+                  <Button fx:id="exbtn2" minHeight="40.0" mnemonicParsing="false" onAction="#allocateNotAvailbleClicked" prefHeight="40.0" prefWidth="200.0" text="Add Not Available Sessions">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="70.0" right="10.0" top="15.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="exbtn1" minHeight="40.0" mnemonicParsing="false" onAction="#AddConsecutiveSessoinClicked" prefHeight="40.0" prefWidth="200.0" text="Add Consecutive Sessions">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="10.0" top="15.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="exbtn3" minHeight="40.0" mnemonicParsing="false" onAction="#parallelSessionClicked" prefHeight="40.0" prefWidth="200.0" text="Add Parallel Sessions">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="10.0" top="15.0" />
+                     </HBox.margin></Button>
+               </children>
             </HBox>
          </children>
       </VBox>
