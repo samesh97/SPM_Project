@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 public class AddParallelSessionsController implements Initializable{
 
 	@FXML
-	private Button btn_ViewAllSessions;
+	private Button cancelBtn;
 	@FXML
 	private Button btn_CreateSession;
 	
@@ -44,12 +44,12 @@ public class AddParallelSessionsController implements Initializable{
 	@FXML
 	private TextField add_duration;
 	
-	public void onViewAllSessionsClicked(ActionEvent event) {
+	public void cancelButtonClicked(ActionEvent event) {
 		
 		System.out.println("View All Sessions clicked");
-		Scene scene =  btn_ViewAllSessions.getScene();
+		Scene scene =  cancelBtn.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../SessionsView.fxml");
+		changeCenterContent(pane,"../ParallelSessions.fxml");
 	}
 	
 	

@@ -39,7 +39,7 @@ public class ParallelSessionnsController implements Initializable{
 	@FXML
 	private ComboBox<String> catDrp;
 	
-	static int category;
+	static int category = -1;
 	
 	public void createSessionClicked() {
 		
@@ -50,18 +50,21 @@ public class ParallelSessionnsController implements Initializable{
 		
 		if(cat.equals("Other")) {
 			category = 1;
+			System.out.println("cat 0");
 		}
 		else if(cat.equals("Category 1")) {
 			category = 2;
+			System.out.println("cat 1");
 		}
 		else if(cat.equals("Category 2")) {
 			category = 2;
+			System.out.println("cat 2");
 		}
 		if(startingTime == null ||duration.equals("") || day == null) {
 			
 			showAlert("Please enter details correctly");
 		}
-		else if(checkCatogery()) {
+		else if(checkCatogery(category,getSlotID(startingTimeDrp.getValue()),dayID)) {
 			showAlert("Invalid Session");
 		}
 		else {
@@ -92,8 +95,8 @@ public class ParallelSessionnsController implements Initializable{
 		
 		
 	}
-	public Boolean checkCatogery() {
-		return false;
+	public Boolean checkCatogery(int cat,int time,int day) {
+		
 		
 //		ResultSet set = DatabaseHandler_Parallel_Sessions.getAllSessionsList();
 //		if(set != null)
@@ -103,8 +106,9 @@ public class ParallelSessionnsController implements Initializable{
 //				while(set.next())
 //				{
 //					
-//					if(ParallelSessionnsController.category != set.getInt(1)|| getSlotID(startingTimeDrp.getValue()) == set.getInt(2)|| dayID == set.getInt(3)) {
-//						return true;
+//					if(cat != set.getInt(1)|| time == set.getInt(2)|| day == set.getInt(3)) {
+//						
+//						System.out.println(cat + set.getInt(1) +","+time+set.getInt(2)+","+day+set.getInt(3));
 //					}
 //
 //	
@@ -117,8 +121,8 @@ public class ParallelSessionnsController implements Initializable{
 //			}
 //		}
 //	
-//		
-//		return true;
+		
+		return false;
 		
 	}
 	

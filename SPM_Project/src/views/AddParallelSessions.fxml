@@ -136,7 +136,7 @@
                         <Insets bottom="20.0" left="100.0" right="130.0" top="15.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btn_CreateSession1" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="CANCEL">
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelButtonClicked" prefHeight="31.0" prefWidth="200.0" text="CANCEL">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
