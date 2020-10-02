@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -80,7 +80,7 @@ public class ConnectionsMainController implements Initializable{
 		System.out.println("View all details button clicked");
 		Scene scene = btnViewAllDetails.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../ConnectionsView.fxml");
+		changeCenterContents(pane, "ConnectionsView.fxml");
 	}
 	
 //	public void onGenerateRoomButtonClicked() {
@@ -162,14 +162,14 @@ public class ConnectionsMainController implements Initializable{
 		System.out.println("Add consecutive session location button clicked");
 		Scene scene = btnAddConsecutiveSessionLocation.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../ConnectionConsecutiveSession.fxml");
+		changeCenterContents(pane, "ConnectionConsecutiveSession.fxml");
 	}
 	
 	public void onAddRoomAvailabilityButtonClicked(){
 		System.out.println("Add room availability button clicked");
 		Scene scene = btnAddRoomAvailability.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../NotAvailableLocationTime.fxml");
+		changeCenterContents(pane, "NotAvailableLocationTime.fxml");
 	}
 	
 	public void showAlert(String message)
@@ -182,7 +182,7 @@ public class ConnectionsMainController implements Initializable{
 	
 	
 	
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

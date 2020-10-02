@@ -1,14 +1,10 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import database.DatabaseHandler_Lecturers;
-import database.DatabaseHandler_Parallel_Sessions;
-import database.DatabaseHandler_Students;
-import enums.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,10 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
-public class AddParallelSessionsController implements Initializable{
+public class SessionsMainController implements Initializable{
 
 	@FXML
-	private Button cancelBtn;
+	private Button btn_ViewAllSessions;
 	@FXML
 	private Button btn_CreateSession;
 	
@@ -44,12 +40,12 @@ public class AddParallelSessionsController implements Initializable{
 	@FXML
 	private TextField add_duration;
 	
-	public void cancelButtonClicked(ActionEvent event) {
+	public void onViewAllSessionsClicked(ActionEvent event) {
 		
 		System.out.println("View All Sessions clicked");
-		Scene scene =  cancelBtn.getScene();
+		Scene scene =  btn_ViewAllSessions.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../ParallelSessions.fxml");
+		changeCenterContents(pane,"SessionsView.fxml");
 	}
 	
 	
@@ -62,75 +58,49 @@ public class AddParallelSessionsController implements Initializable{
 		String TagName =add_tag.getValue();
 		String GroupName=add_group.getValue();
 		String studentCount =add_studentCount.getText();
-		int catID = ParallelSessionnsController.category;
-		
+		String duration=add_duration.getText();
 		
 		
 	
-		if(LecturerName == null ||studentCount.equals("") || SubjectName == null|| TagName == null|| GroupName == null) {
-			
-			showAlert("Please enter details correctly");
-		}
-		
-		else {
-			int SlotID = getSlotID();
-			try {
-			    boolean result= DatabaseHandler_Parallel_Sessions.addSession(LecturerName, SubjectName, TagName, GroupName, studentCount, SlotID,catID);
-//				boolean result= DatabaseHandler_Students.createStudentTable();
-				if(result== true) {
-					resetField() ;
-					showAlert("Successfully added");
-				}
-				else {
-					showAlert("Unsuccessful");
-				}
-		
-				}catch(Exception e) {
-					showAlert("Please enter details correctly");
-				}
-	}
-		
-		
-		
-	}
-	//check categories 
-
-	//rest field
-	public void resetField() {
-		add_lecturer.setValue(null);
-		add_subject.setValue(null);
-		add_tag.setValue(null);
-		add_group.setValue(null);
-		add_studentCount.setText("");
-	}
-	//get slot id
-	public int getSlotID() {
-		int id = 0;
-		ResultSet set = DatabaseHandler_Parallel_Sessions.getAllSessions();
-		if(set != null)
+		if( LecturerName.equals(""))
+				//|| SubjectName.equals("")||TagName.equals("")||GroupName.equals("") ||studentCount.equals("")||duration.equals("")) 
 		{
-			try 
-			{
-				while(set.next())
-				{
-					id = set.getInt(2); 
-					
-				}
-				return id;
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("empty");
+			showAlert("Please fill the empty fields");
 		}
-		return -1;
+	
+		
+		
+		 {
+			
+
+			int StudentCount= Integer.parseInt(studentCount);
+			int Duration =Integer.parseInt(duration);
+			
+			 try {
+				    boolean result= DatabaseHandler_Lecturers.addSession(LecturerName, SubjectName, TagName, GroupName, StudentCount, Duration);
+					if(result== true) {
+						showAlert("Successfully created the session");
+					}
+					else {
+						showAlert("Unsuccessful");
+					}
+					
+				    }
+				    catch(Exception e) {
+				    	showAlert("Please enter details correctly");
+				    }		
+		
+			
+		}
+		
+		
 		
 	}
 	
 	
 	
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try
@@ -180,35 +150,22 @@ public class AddParallelSessionsController implements Initializable{
 		//Subject name combo box
 		ObservableList<String> subject_data = FXCollections.observableArrayList();
 		
-		if(ParallelSessionnsController.category == 2) {
-			subject_data.add("Deep Learning");
-			subject_data.add("Image processing");
-			add_subject.setItems(null);
-			add_subject.setItems(subject_data);
+		try {
+		ResultSet rs= DatabaseHandler_Lecturers.getDropDownSubjects();
+		
+		while(rs.next()){
+	
+		subject_data.add(rs.getString("SubjectName"));
 		}
-		else if(ParallelSessionnsController.category == 3) {
-			subject_data.add("Machine Learning ");
-			subject_data.add("Parallel Computing");
-			add_subject.setItems(null);
-			add_subject.setItems(subject_data);
+		
+		add_subject.setItems(null);
+		add_subject.setItems(subject_data);
+		
 		}
-		else {
-				try {
-				ResultSet rs= DatabaseHandler_Lecturers.getDropDownSubjects();
-				
-				while(rs.next()){
-			
-				subject_data.add(rs.getString("SubjectName"));
-				}
-				
-				add_subject.setItems(null);
-				add_subject.setItems(subject_data);
-				
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-				}
+		catch(Exception e) {
+			e.printStackTrace();
 		}
+		
 		
 		//Tag name combo box
 		ObservableList<String> tag_data = FXCollections.observableArrayList();
@@ -266,8 +223,9 @@ public class AddParallelSessionsController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
-		DatabaseHandler_Parallel_Sessions.createParallelSessionListTable();
+		DatabaseHandler_Lecturers.createSessionTable();
 		setComboBoxes();
 		
 	}
+	
 }

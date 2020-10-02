@@ -41,7 +41,7 @@ public class Main extends Application{
 			
 			
 			//load main fxml file
-			 FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/Main.fxml"));
+			 FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/Main.fxml"));
 			 AnchorPane root = (AnchorPane) loader.load();
 			 Scene scene = new Scene(root);
 			 primaryStage.setScene(scene);
@@ -60,7 +60,7 @@ public class Main extends Application{
 			 primaryStage.setTitle("SLIIT Time Table Management");
 			 primaryStage.setWidth(width / widthSpace);
 			 primaryStage.setHeight(height / heightSpace);
-			 primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../media/SLIIT_Logo_Crest.png")));
+			 primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/media/SLIIT_Logo_Crest.png")));
 		
 			 primaryStage.show();
 			 

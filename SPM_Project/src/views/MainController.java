@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.io.File;
 import java.net.URL;
@@ -72,7 +72,7 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		 
 		//start default when load the FXML
 		highlightClickedButton(btn_students);
-		changeCenterContent("../StudentsMain.fxml");
+		changeCenterContent("StudentsMain.fxml");
 		
 		
 		 showProgressDialog(mainAnchorPane);
@@ -93,56 +93,56 @@ public class MainController implements Initializable,OnTaskCompleteListener
 	public void onStudentButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_students);
-		changeCenterContent("../StudentsMain.fxml");
+		changeCenterContent("StudentsMain.fxml");
 	}
 	public void onSessionsButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_sessions);
-		changeCenterContent("../SessionsMain.fxml");
+		changeCenterContent("SessionsMain.fxml");
 	}
 	public void onTagButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_tags);
-		changeCenterContent("../TagsMain.fxml");
+		changeCenterContent("TagsMain.fxml");
 	}
 	public void onSubjectsButtonClicked(ActionEvent event) 
 	{
 		highlightClickedButton(btn_subjects);
-		changeCenterContent("../SubjectsMain.fxml");
+		changeCenterContent("SubjectsMain.fxml");
 	}
 	
 	
 	public void onLecturersButtonClicked(ActionEvent event) 
 	{
 		highlightClickedButton(btn_lecturers);
-		changeCenterContent("../LecturersMain.fxml");
+		changeCenterContent("LecturersMain.fxml");
 	}
 	public void onWorkingDaysButtonClicked(ActionEvent event) 
 	{
 		highlightClickedButton(btn_working_days);
-		changeCenterContent("../WorkingDaysMain.fxml");
+		changeCenterContent("WorkingDaysMain.fxml");
 	}
 	public void onLocationsButtonClicked(ActionEvent event) 
 	{
 		highlightClickedButton(btn_locations);
-		changeCenterContent("../LocationsMain.fxml");
+		changeCenterContent("LocationsMain.fxml");
 	}
 	public void onStatisticsButtonClicked(ActionEvent event) 
 	{
 		System.out.println("Statistics button clicked");
 		highlightClickedButton(btn_statistics);
-		changeCenterContent("../StatisticsMain.fxml");
+		changeCenterContent("StatisticsMain.fxml");
 	}
 	public void onConnectionsButtonClicked(ActionEvent event) 
 	{
 		System.out.println("Connections button clicked");
 		highlightClickedButton(btn_connections);
-		changeCenterContent("../ConnectionsMain.fxml");
+		changeCenterContent("ConnectionsMain.fxml");
 	}
 	public void onTimeTableButtonClicked(ActionEvent event)
 	{
 		highlightClickedButton(btn_time_table);
-		changeCenterContent("../TimeTableMain.fxml");
+		changeCenterContent("TimeTableMain.fxml");
 	}
 	
 	public void changeCenterContent(String fxmlFileName)
@@ -208,16 +208,16 @@ public class MainController implements Initializable,OnTaskCompleteListener
 		disableOrEnableBackground(false);
 		if(isSuccess)
 		{
-			File file = new File("src/media/success.png");
-		    Image image = new Image(file.toURI().toString());
+			Image image = new Image(getClass().getResourceAsStream("success.png"));
+//			File file = new File("src/views/success.png");
+//		    Image image = new Image(file.toURI().toString());
 			successFailedIcon.setImage(image);
 			successFailedText.setText("Connected");
 		
 		}
 		else
 		{
-			File file = new File("src/media/failed.png");
-		    Image image = new Image(file.toURI().toString());
+			Image image = new Image(getClass().getResourceAsStream("failed.png"));
 			successFailedText.setText("No Internet");
 		}
 		

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.LocationsMainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.LocationsMainController">
    <children>
       <TableView fx:id="tblLocationsView" layoutX="17.0" layoutY="19.0" onMouseClicked="#onTableItemSelect" prefHeight="269.0" prefWidth="567.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="19.0">
         <columns>

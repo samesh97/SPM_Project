@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -80,7 +80,7 @@ public class ParallelSessionnsController implements Initializable{
 					System.out.println("Vuew all Subjects clicked");
 					Scene scene = btn_CreateSession.getScene();
 					AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-					changeCenterContent(pane,"../AddParallelSessions.fxml");
+					changeCenterContents(pane,"AddParallelSessions.fxml");
 				}
 				else {
 					showAlert("Unsuccessful");
@@ -126,7 +126,7 @@ public class ParallelSessionnsController implements Initializable{
 		
 	}
 	
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

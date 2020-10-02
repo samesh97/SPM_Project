@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +56,7 @@ public class LecturersMainController implements Initializable{
 		
 		Scene scene = btn_ViewAllLecturersAdd.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../LecturersView.fxml");
+		changeCenterContents(pane,"LecturersView.fxml");
 	}
 	
 	public void onLecturerAddClicked(ActionEvent event) {
@@ -320,7 +320,7 @@ public class LecturersMainController implements Initializable{
 	}
 	
 	*/
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

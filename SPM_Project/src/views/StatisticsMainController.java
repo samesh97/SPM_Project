@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,24 +25,24 @@ public class StatisticsMainController implements Initializable{
 		System.out.println("Hello from Lecturers Statistics Button");
 		Scene scene = btnLeturersStat.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../StatisticsLecturer.fxml");
+		changeCenterContents(pane, "StatisticsLecturer.fxml");
 	}
 
 	public void onStudentsStatisticsButtonClicked(ActionEvent event) {
 		System.out.println("Hello from Students Statistics Button");
 		Scene scene = btnStudentsStat.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../StatisticsStudent.fxml");
+		changeCenterContents(pane, "StatisticsStudent.fxml");
 	}
 	
 	public void onSubjectsStatisticsButtonClicked(ActionEvent event) {
 		System.out.println("Hello from Subjects Statistics Button");
 		Scene scene = btnSubjectsStat.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../StatisticsSubject.fxml");
+		changeCenterContents(pane, "StatisticsSubject.fxml");
 	}
 
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

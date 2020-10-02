@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -64,21 +64,21 @@ public class ConnectionsViewController implements Initializable {
 		System.out.println("Add new record button clicked");
 		Scene scene = btnAddNewRecord.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../ConnectionsMain.fxml");
+		changeCenterContents(pane, "ConnectionsMain.fxml");
 	}
 
 	public void onUpdateRecordButtonClicked(){
 		System.out.println("Update record button clicked");
 		Scene scene = btnUpdateRecord.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane, "../ConnectionsUpdate.fxml");
+		changeCenterContents(pane, "ConnectionsUpdate.fxml");
 	}
 	
 	public void onDeleteRecordButtonClicked(){
 		System.out.println("Delete record button clicked");
 	}
 	
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

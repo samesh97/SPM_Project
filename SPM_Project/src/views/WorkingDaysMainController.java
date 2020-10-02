@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.DriverManager;
@@ -162,9 +162,9 @@ public class WorkingDaysMainController implements Initializable,OnTaskCompleteLi
 	{
 		Scene scene = addTimeSlotButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../WorkingDaysTimeSlots.fxml");
+		changeCenterContents(pane,"WorkingDaysTimeSlots.fxml");
 	}
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

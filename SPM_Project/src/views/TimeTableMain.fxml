@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="500.0" minWidth="600.0" prefHeight="545.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.TimeTableMainController">
+<AnchorPane fx:id="root" minHeight="500.0" minWidth="600.0" prefHeight="545.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.TimeTableMainController">
    <children>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
-         <content>
-            <GridPane fx:id="timetablegrid" prefHeight="2000.0" prefWidth="2000.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="combo_working_days_type" prefHeight="41.0" prefWidth="1000.0" promptText="Choose Weekday / Weekend">
+                     <HBox.margin>
+                        <Insets right="80.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#onGenerateButtonWasClicked" prefHeight="41.0" prefWidth="1000.0" text="GENERATE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="80.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#onPrintButtonWasClicked" prefHeight="41.0" prefWidth="1000.0" text="PRINT">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="20.0" top="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="search_Group" prefHeight="41.0" prefWidth="1000.0" promptText="Select Student Group">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="search_Lecturer" prefHeight="41.0" prefWidth="1000.0" promptText="Select Lecturer">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="search_location" prefHeight="41.0" prefWidth="1000.0" promptText="Select Location" />
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="110.0">
+               <children>
+                  <ScrollPane>
+                     <content>
+                        <GridPane fx:id="timetablegrid" prefHeight="800.0" prefWidth="1350.0">
     
       </GridPane>
-         </content>
-      </ScrollPane>
-      <ComboBox fx:id="combo_working_days_type" layoutX="23.0" layoutY="14.0" prefHeight="41.0" prefWidth="150.0" promptText="Choose Weekday / Weekend" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-      <ComboBox fx:id="search_Lecturer" layoutX="155.0" layoutY="5.0" prefHeight="41.0" prefWidth="150.0" promptText="Select Lecturer" AnchorPane.leftAnchor="160.0" />
-      <ComboBox fx:id="search_Group" layoutX="310.0" layoutY="5.0" prefHeight="41.0" prefWidth="150.0" promptText="Select Student Group" AnchorPane.leftAnchor="315.0" />
-      <ComboBox fx:id="search_location" layoutX="473.0" layoutY="5.0" prefHeight="41.0" prefWidth="150.0" promptText="Select Location" AnchorPane.leftAnchor="473.0" />
-      <Button defaultButton="true" layoutX="631.0" layoutY="5.0" mnemonicParsing="false" onAction="#onGenerateButtonWasClicked" prefHeight="41.0" prefWidth="150.0" text="Generate" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

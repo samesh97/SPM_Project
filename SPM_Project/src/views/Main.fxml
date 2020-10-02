@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.MainController">
+<AnchorPane fx:id="mainAnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.MainController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="3.0" prefHeight="120.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../application/application.css" text="  S L I I T" textAlignment="JUSTIFY" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
          <font>

@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,9 +46,9 @@ public class WorkingDaysTimeSlotsController implements Initializable
 	{
 		Scene scene = backbutton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../WorkingDaysMain.fxml");
+		changeCenterContents(pane,"WorkingDaysMain.fxml");
 	}
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

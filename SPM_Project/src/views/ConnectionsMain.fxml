@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.ConnectionsMainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ConnectionsMainController">
    <children>
       <Button fx:id="btnViewAllDetails" layoutX="54.0" layoutY="23.0" mnemonicParsing="false" onAction="#onViewAllDetailsButtonClicked" prefHeight="25.0" prefWidth="483.0" text="View All Details">
          <font>

@@ -1,61 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="workingDaysMainPane" prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.controllers.WorkingDaysMainController">
+<AnchorPane fx:id="workingDaysMainPane" prefHeight="665.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.WorkingDaysMainController">
    <children>
-      <Label alignment="CENTER" layoutX="179.0" layoutY="24.0" prefHeight="38.0" prefWidth="478.0" text="Working Days &amp; Hours " AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="24.0">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label layoutX="75.0" layoutY="90.0" prefHeight="44.0" prefWidth="210.0" text="Type Of Working days" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="90.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="combo_working_days_type" layoutX="285.0" layoutY="90.0" prefHeight="41.0" prefWidth="416.0" promptText="Choose Weekday / Weekend" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="90.0" />
-      <Label layoutX="75.0" layoutY="151.0" prefHeight="44.0" prefWidth="210.0" text="Number Of Working Days" AnchorPane.leftAnchor="75.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="combo_number_of_working_days" layoutX="284.0" layoutY="151.0" prefHeight="41.0" prefWidth="416.0" promptText="Choose a number (1-7)" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="151.0" />
-      <Button layoutX="500.0" layoutY="210.0" mnemonicParsing="false" onAction="#deleteNumberOfWorkingDays" prefHeight="38.0" prefWidth="200.0" text="Delete" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="210.0" />
-      <Button fx:id="numberOfWorkingDaysAddBtn" layoutX="284.0" layoutY="210.0" mnemonicParsing="false" onAction="#addNumberOfWorkingDays" prefHeight="38.0" prefWidth="200.0" text="Add" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="210.0" />
-      <Label layoutX="75.0" layoutY="273.0" prefHeight="44.0" prefWidth="210.0" text="Working Days" AnchorPane.leftAnchor="75.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="MondayCombo" layoutX="284.0" layoutY="285.0" mnemonicParsing="false" text="Monday" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="285.0" />
-      <CheckBox fx:id="TuesdayCombo" layoutX="378.0" layoutY="285.0" mnemonicParsing="false" text="Tuesday" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="285.0" />
-      <CheckBox fx:id="WednesdayCombo" layoutX="482.0" layoutY="285.0" mnemonicParsing="false" text="Wednesday" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="285.0" />
-      <CheckBox fx:id="ThursdayCombo" layoutX="603.0" layoutY="285.0" mnemonicParsing="false" text="Thursday" AnchorPane.leftAnchor="603.0" AnchorPane.topAnchor="285.0" />
-      <CheckBox fx:id="FridayCombo" layoutX="284.0" layoutY="329.0" mnemonicParsing="false" text="Friday" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="329.0" />
-      <CheckBox fx:id="SaturdayCombo" layoutX="378.0" layoutY="329.0" mnemonicParsing="false" text="Saturday" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="329.0" />
-      <CheckBox fx:id="SundayCombo" layoutX="482.0" layoutY="329.0" mnemonicParsing="false" text="Sunday" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="329.0" />
-      <Button layoutX="284.0" layoutY="384.0" mnemonicParsing="false" onAction="#onWorkingDaysUpdateButtonClicked" prefHeight="38.0" prefWidth="200.0" text="Update" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="384.0" />
-      <Button layoutX="500.0" layoutY="384.0" mnemonicParsing="false" onAction="#onWorkingDaysDeleteButtonClicked" prefHeight="38.0" prefWidth="200.0" text="Delete" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="384.0" />
-      <Label layoutX="75.0" layoutY="446.0" prefHeight="44.0" prefWidth="210.0" text="Working Time Duration" AnchorPane.leftAnchor="75.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="hoursTextFiled" layoutX="284.0" layoutY="449.0" prefHeight="38.0" prefWidth="200.0" text="enter hours" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="449.0" />
-      <TextField fx:id="minutesTextFiled" layoutX="508.0" layoutY="449.0" prefHeight="38.0" prefWidth="200.0" text="enter minutes" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="449.0" />
-      <Button fx:id="workingTimeDurationAddBtn" layoutX="284.0" layoutY="507.0" mnemonicParsing="false" onAction="#addWorkingTimeDuration" prefHeight="38.0" prefWidth="200.0" text="Add" AnchorPane.leftAnchor="284.0" AnchorPane.topAnchor="507.0" />
-      <Button layoutX="500.0" layoutY="507.0" mnemonicParsing="false" onAction="#deleteWorkingTimeDuration" prefHeight="38.0" prefWidth="200.0" text="Delete" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="507.0" />
-      <Button fx:id="addTimeSlotButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="284.0" layoutY="580.0" maxHeight="46.0" maxWidth="600.0" mnemonicParsing="false" onAction="#onAddTimeSlotButtonClicked" prefHeight="46.0" prefWidth="415.0" text="Add Time Slot" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="580.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="1000.0" text="Working Days &amp; Hours " textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="236.0" text="Type Of Working days">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="combo_working_days_type" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="1000.0" promptText="Choose Weekday / Weekend">
+                     <HBox.margin>
+                        <Insets right="100.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="236.0" text="Number Of Working Days">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="combo_number_of_working_days" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="1000.0" promptText="Choose a number (1-7)">
+                     <HBox.margin>
+                        <Insets right="100.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="numberOfWorkingDaysAddBtn" mnemonicParsing="false" onAction="#addNumberOfWorkingDays" prefHeight="35.0" prefWidth="1000.0" text="Add">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="285.0" right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteNumberOfWorkingDays" prefHeight="35.0" prefWidth="1000.0" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="1000.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="1000.0">
+                           <children>
+                              <Label prefHeight="44.0" prefWidth="210.0" text="Working Days">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <CheckBox fx:id="MondayCombo" mnemonicParsing="false" text="Monday">
+                                 <HBox.margin>
+                                    <Insets left="26.0" />
+                                 </HBox.margin></CheckBox>
+                              <CheckBox fx:id="TuesdayCombo" mnemonicParsing="false" text="Tuesday">
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="WednesdayCombo" mnemonicParsing="false" text="Wednesday">
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="ThursdayCombo" mnemonicParsing="false" text="Thursday">
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets right="100.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="1000.0">
+                           <children>
+                              <CheckBox fx:id="FridayCombo" mnemonicParsing="false" text="Friday">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="SaturdayCombo" mnemonicParsing="false" text="Saturday">
+                                 <HBox.margin>
+                                    <Insets left="52.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="SundayCombo" mnemonicParsing="false" text="Sunday">
+                                 <HBox.margin>
+                                    <Insets left="37.0" />
+                                 </HBox.margin>
+                              </CheckBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="285.0" right="100.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onWorkingDaysUpdateButtonClicked" prefHeight="35.0" prefWidth="1000.0" text="Update">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="285.0" right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onWorkingDaysDeleteButtonClicked" prefHeight="35.0" prefWidth="1000.0" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="236.0" text="Working Time Duration">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="hoursTextFiled" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="1000.0" promptText="enter hours" text="enter hours">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="minutesTextFiled" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="1000.0" promptText="enter minutes" text="enter minutes">
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="workingTimeDurationAddBtn" mnemonicParsing="false" onAction="#addWorkingTimeDuration" prefHeight="35.0" prefWidth="1000.0" text="Add">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="285.0" right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteWorkingTimeDuration" prefHeight="35.0" prefWidth="1000.0" text="Delete">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="addTimeSlotButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onAddTimeSlotButtonClicked" prefHeight="40.0" prefWidth="3000.0" text="Add Time Slot">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="50.0" right="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

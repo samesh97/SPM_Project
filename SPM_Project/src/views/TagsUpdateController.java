@@ -1,4 +1,4 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -67,7 +67,7 @@ public class TagsUpdateController implements Initializable{
 		
 		Scene scene = updateTagButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../TagsView.fxml");
+		changeCenterContents(pane,"TagsView.fxml");
 
 	}
 	public void viewAllTagsClicked(ActionEvent event)
@@ -75,9 +75,9 @@ public class TagsUpdateController implements Initializable{
 		
 		Scene scene = viewTagsButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../TagsView.fxml");
+		changeCenterContents(pane,"TagsView.fxml");
 	}
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try

@@ -1,10 +1,9 @@
-package views.controllers;
+package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-import database.DatabaseHandler_Students;
+import database.DatabaseHandler_Tags;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,60 +19,47 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 
-public class StudentsMainController implements Initializable
+public class TagsMainController implements Initializable
 {
-	
+	@FXML
+	private TextField tagText;
+	@FXML
+	private TextField NameText;
 	@FXML
 	private ComboBox<String> yearSemText;
 	@FXML
-	private TextField programText;
-	@FXML
-	private TextField GroupNoText;
-	@FXML
-	private TextField SubNoText;
+	private TextField DiscriptionText;
 	
 	
 	@FXML
-	private Button addStudentButton;
+	private Button addTagButton;
 	@FXML
-	private Button viewStudentButton;
+	private Button viewTagsButton;
 	
-	public void AddNewStudentClicked(ActionEvent event) {
+	public void AddNewTagClicked(ActionEvent event) {
 		
+		String tag = tagText.getText();
+		String name = NameText.getText();
 		String yearSem = yearSemText.getValue();
-		String program = programText.getText();
-		String gNo = GroupNoText.getText();
-		String subNo = SubNoText.getText();
-		String gId = yearSem + "." + program + "." + gNo;
-		String subId = yearSem + "." + program + "." + gNo + "." +subNo;
-		
-		if(yearSem == null || program.equals("")||gNo.equals("")||subNo.equals("")) {
-			
-			showAlert("Please enter details correctly");
-		}
-		else {
-			try {
-			    boolean result= DatabaseHandler_Students.addStudents(yearSem, program, gNo, subNo, gId, subId);
-//				boolean result= DatabaseHandler_Students.createStudentTable();
-				if(result== true) {
-					showAlert("Successfully added");
-				}
-				else {
-					showAlert("Unsuccessful");
-				}
-		
-				}catch(Exception e) {
-					showAlert("Please enter details correctly");
-				}
-	}
+		String dis = DiscriptionText.getText();
 		
 		
-		
+		try {
+		    boolean result= DatabaseHandler_Tags.addTags(tag, name, yearSem, dis);
+			if(result== true) {
+				showAlert("Successfully added");
+			}
+			else {
+				showAlert("Unsuccessful");
+			}
+	
+	}catch(Exception e) {
+    	showAlert("Please enter details correctly");
+    }
 	
 	}
-	
 	public void setComboBoxes() {
-	
+		
 		ObservableList<String> yearSemester = FXCollections.observableArrayList();
 		
 		yearSemester.add("Y1.S1");
@@ -95,20 +81,16 @@ public class StudentsMainController implements Initializable
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setContentText(message);
 		alert.show();
-		
 	}
 	
-	
-	
-	
-	public void viewStudentListClicked(ActionEvent event)
+	public void viewAllTagsClicked(ActionEvent event)
 	{
-		System.out.println("Hello From Student");
-		Scene scene = viewStudentButton.getScene();
+		
+		Scene scene = viewTagsButton.getScene();
 		AnchorPane pane = (AnchorPane) scene.lookup("#controllerPane");
-		changeCenterContent(pane,"../StudentsView.fxml");
+		changeCenterContents(pane,"TagsView.fxml");
 	}
-	public void changeCenterContent(AnchorPane controllerPane,String fxmlFileName)
+	public void changeCenterContents(AnchorPane controllerPane,String fxmlFileName)
 	{
 		
 		try
@@ -132,7 +114,6 @@ public class StudentsMainController implements Initializable
 		
 		
 	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

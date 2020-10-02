@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.controllers.NotAvailableLocationTimeController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.NotAvailableLocationTimeController">
    <children>
       <Text layoutX="164.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Non-Availability of a Location">
          <font>
